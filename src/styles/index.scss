@@ -1,0 +1,53 @@
+@import "base.scss";
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: $background-color;
+}
+
+html {
+  display: flex;
+}
+
+body {
+	min-height: 100vh;
+  width: 100%;
+  display: flex;
+	flex-direction: column;
+	
+	color: $text-color;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul, ol, li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}

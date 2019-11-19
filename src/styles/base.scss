@@ -1,0 +1,50 @@
+// Variables
+// Themes color
+$light-background-color: #178a9e;
+$dark-background-color: #002a67;
+$grey-background-color: #f2f2f2;
+$background-color: #fff;
+// Colors
+$key-color: #b80000;
+$key-underline-color: fade($key-color, 70);
+$link-color: $key-color;
+$link-underline-color: fade($link-color, 35%);
+$text-color: #000;
+$text-color--light: #77828c;
+$text-color--footer-adresses: #ccc;
+$text-reverse-color: #fff;
+$text-reverse-underline-color: fade($text-reverse-color, 70);
+$border-color: #cccccc;
+
+// Media-queries
+@mixin sm { @media (min-width: 600px) { @content; } }
+@mixin md { @media (min-width: 900px) { @content; } }
+@mixin lg { @media (min-width: 1200px) { @content; } }
+@mixin xl { @media (min-width: 1800px) { @content; } }
+
+// Theming
+// .red - data from server
+$themes: '.red', '.blue';
+$default: (
+  key-color: $key-color,
+  background-color: $background-color
+);
+$red: (
+  key-color: $background-color,
+  background-color: $key-color
+);
+@mixin theme($property, $value, $root: false) {
+  @each $name in $themes {
+    @if $root {
+      &#{$name} { #{$property}: map-get($red, $value); }
+    } @else {
+      #{$name} & { #{$property}: map-get($red, $value); }
+    }
+  }
+  #{$property}: map-get($default, $value);
+}
+
+@import "mixins/layout.scss";
+@import "mixins/services.scss";
+@import "mixins/icons.scss";
+@import "mixins/typography.scss";

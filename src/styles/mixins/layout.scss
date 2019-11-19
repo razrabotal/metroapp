@@ -1,0 +1,32 @@
+@mixin centered-builder($max-width) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @include sm {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: $max-width;
+  }
+}
+@mixin centered {
+  @include centered-builder(900px);
+}
+@mixin centered-max {
+  @include centered-builder(1200px);
+}
+@mixin centered-min {
+  @include centered-builder(700px);
+}
+
+@mixin center-padding-compensator {
+  margin-left: -10px;
+  margin-right: -10px;
+
+  @include sm {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}

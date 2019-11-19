@@ -1,0 +1,30 @@
+@mixin reset-button {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+}
+
+@mixin absolute-wrapper {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+// Media-queries
+@mixin sm-show {
+  display: none;
+  @include sm {
+    display: block;
+  }
+}
+@mixin sm-hide {
+  display: block;
+  @include sm {
+    display: none;
+  }
+}
