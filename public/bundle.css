@@ -1,3 +1,4 @@
-*,*:before,*:after{box-sizing:border-box}html,body{position:relative;width:100%;height:100%;background:#fff}html{display:flex}body{min-height:100vh;width:100%;display:flex;flex-direction:column;color:#000;margin:0;padding:0;box-sizing:border-box;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif}header,footer{flex-shrink:0}main{flex-grow:1}a{color:inherit;text-decoration:none}h1,h2,h3,h4,h5,h6,p{margin:0}ul,ol,li{padding:0;margin:0;list-style:none}.metromap{width:700px;margin:50px auto;display:block}
+.container.svelte-zinluk{display:flex}aside.svelte-zinluk{background:#eee}.lel.svelte-zinluk{opacity:1 !important;animation:none !important}.map.svelte-zinluk{display:block;width:500px;margin:50px auto}.fadein.svelte-zinluk{opacity:0.1;animation:svelte-zinluk-showing 1.25s linear forwards}@keyframes svelte-zinluk-showing{0%{opacity:0.1}30%,60%{opacity:1}100%{opacity:0.1}}
+body{font-family:Tahoma}
 
 /*# sourceMappingURL=bundle.css.map */

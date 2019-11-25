@@ -7,6 +7,11 @@
 
 <style lang="scss">
   @import "src/styles/index.scss";
+
+  :global(body) { 
+    font-family: Tahoma;
+  }
+
 </style>
 
 <Scheme />
