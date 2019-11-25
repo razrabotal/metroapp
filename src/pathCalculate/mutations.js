@@ -1,5 +1,4 @@
-import { randomNumber } from "./Untils";
-import { evaluate } from "./Algorithm";
+import { randomNumber } from "../helpers/randomNumber";
 
 export function pushMutateMath(seq) {
   var m, n;

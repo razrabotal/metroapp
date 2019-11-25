@@ -1,17 +1,12 @@
 <script>
   import Scheme from "./Scheme.svelte";
-  import { initArrayPrototypes } from "./Untils";
+  import initArrayPrototypes from "./helpers/arrayExtends";
   
   initArrayPrototypes();
 </script>
 
-<style lang="scss">
-  @import "src/styles/index.scss";
-
-  :global(body) { 
-    font-family: Tahoma;
-  }
-
+<style global lang="scss">
+  @import "src/styles/index.scss"; 
 </style>
 
 <Scheme />

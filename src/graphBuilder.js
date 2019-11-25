@@ -3,14 +3,12 @@ import Graph from "graph-data-structure";
 export default function createGraph(data) {
   const INTERVAL_TIME = 6;
 
-  
-
   function getWeight(weight) {
     return weight + INTERVAL_TIME;
   }
 
   const graph = Graph();
-  
+
   data
     .map(item => ({
       ...item,
@@ -21,23 +19,16 @@ export default function createGraph(data) {
       graph.addEdge(item.to, item.from, item.weight);
     });
 
-
-    // var serialized = graph.serialize();
-
-    // debugger;
-
-
   let stationsBetween = [];
 
   graph.nodes().map((i, index) => {
     stationsBetween.push([]);
-
-    stationsBetween.push([]);
-      graph.nodes().map((j, insideIndex) => {
-        const path = graph.shortestPath(i, j);
-        const cleanPath = path.slice();
-        stationsBetween[index].push(cleanPath);
-      });
+    
+    graph.nodes().map((j, insideIndex) => {
+      const path = graph.shortestPath(i, j);
+      const cleanPath = path.slice();
+      stationsBetween[index].push(cleanPath);
+    });
   });
 
   graph.nodes().map((i, index) => {
@@ -47,24 +38,19 @@ export default function createGraph(data) {
     });
   });
 
+  const distances = countDistances(graph);
 
-//   graph.nodes().map((i, index) => {
-//     stationsBetween.push([]);
+  return { graph, stationsBetween, distances };
+}
 
-//     graph.nodes().map((j, insideIndex) => {
-//       const path = graph.shortestPath(i, j);
-//       const cleanPath = path.slice();
+function countDistances(graph) {
+  const points = graph.nodes();
+  const length = points.length;
 
-//       if(i == 26) {
-// debugger;
-//       }
-
-//       stationsBetween[index].push(cleanPath);
-
-//       graph.addEdge(i, j, path.weight);
-//     });
-//   });
-
-
-  return { graph, stationsBetween };
+  return Array.apply(null, Array(length)).map((item, index) =>
+    Array.apply(null, Array(length)).map(
+      (item, insideIndex) =>
+        ~~graph.getEdgeWeight(points[index], points[insideIndex])
+    )
+  );
 }

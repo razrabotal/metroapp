@@ -1,16 +1,24 @@
 <script>
+  import { onMount } from "svelte";
+
   export let stationsBetween;
   export let path;
 
-  import { stations } from './stations';
   import { quintOut } from 'svelte/easing';
 	import { fade, draw, fly } from 'svelte/transition';
 
   let showScheme = false;
   let resultPath = [];
   let stationsPath = [];
+  let stations;
 
   $: showingStation = null;
+
+  onMount(async () => {
+    const res = await fetch(`https://metro.kh.ua/metroapi.php?value=stations`);
+    const data = await res.json();
+    stations = data;
+  });
 
   function showStation(index) {
     showingStation = index;
@@ -158,12 +166,12 @@ aside {
           {#if station}
             <g class="fadein {showingStation === index ? 'lel' : ''}" style="animation-delay: {index / 30 * 10}s">
               <g fill="none" stroke-miterlimit="10" stroke-width="28">
-                <g stroke={station.color}>
+                <g stroke={colors[station.color]}>
                   {@html station.path}
                 </g>
               </g>
 
-              <g fill={station.color}>
+              <g fill={colors[station.color]}>
                 {@html station.stop}
               </g>
 

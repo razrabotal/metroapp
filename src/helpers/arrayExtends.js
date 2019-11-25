@@ -1,4 +1,6 @@
-export function initArrayPrototypes() {
+import { randomNumber } from "./randomNumber";
+
+export default function initArrayPrototypes() {
   Array.prototype.clone = function() {
     return this.slice(0);
   };
@@ -61,13 +63,3 @@ export function initArrayPrototypes() {
     return tem;
   };
 }
-
-export function randomNumber(boundary) {
-  return parseInt(Math.random() * boundary);
-}
-
-// export function resetIterators(obj) {
-//   return Object.keys(obj).map(function(key, index) {
-//     obj[key] = 0;
-//   });
-// }
