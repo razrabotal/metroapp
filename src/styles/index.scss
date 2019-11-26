@@ -4,6 +4,20 @@
 	box-sizing: border-box;
 } 
 
+:root {
+  --border-width: -1px;
+  --radius: 7px;
+
+  --text-color: #33476B;
+  --text-color-light: #9EB0C4;
+  --shadow-color: #ccdbe8;
+  --mono-font: monaco;
+  --body-font: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
+  --padding-small: .75em;
+  --padding-medium: 1.25em;
+  --padding-large: 2em;
+}
+
 html, body {
 	position: relative;
 	width: 100%;

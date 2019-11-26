@@ -9,32 +9,51 @@
   export let currentBest;
   export let population;
   export let best;
+  export let bestValuesArray;
 
   $: bestPopulation =
-    population[currentBest.bestPosition] &&
-    population[currentBest.bestPosition].toString();
+    population[currentBest.bestPosition] ?
+    population[currentBest.bestPosition].toString() : '';
+
+  $: bestValuesString = bestValuesArray.join(" > ").toString();
 </script>
 
-<style>
+<style lang="scss">
   .info {
     font-family: "Courier New", Courier, monospace;
     display: flex;
-    background: #ddd;
   }
   .table {
-    background: #eee;
     max-width: 300px;
+    flex: 1;
     padding: 10px;
   }
-  .stopWatch {
+  .stop-watch {
     display: flex;
     justify-content: center;
+    margin-bottom: 16px;
   }
   .paths {
-    padding: 10px;
+    padding: 10px 30px;
+    flex: 2;
   }
+  .paths-row {
+      margin-bottom: 10px;
+    }
   .row {
     display: flex;
+    margin-bottom: 10px;
+  }
+  .row-result {
+    flex-direction: column;
+
+    .label {
+      margin-top: 10px;
+    }
+    .value {
+      font-size: 30px;
+      margin-left: 0;
+    }
   }
   .value {
     margin-left: auto;
@@ -42,12 +61,13 @@
 
   p { 
       font-size: 11px;
+      line-height: 1.2;
   }
 </style>
 
 <div class="info">
   <div class="table">
-    <div class="stopWatch">
+    <div class="stop-watch">
       <StopWatch {running} />
     </div>
     <div class="row">
@@ -62,33 +82,43 @@
       <div class="label">Mutations:</div>
       <div class="value">{mutationsCount}</div>
     </div>
-    <div class="row">
+    <div class="row row-result">
       <div class="label">Best value:</div>
-      <div class="value">{bestValue}</div>
-    </div>
-    <div class="row">
-      <div class="label">Best in population:</div>
-      <div class="value">{currentBest.bestValue}</div>
+      <div class="value">{ bestValue}</div>
     </div>
   </div>
 
   <div class="paths">
-    <div>
-      <div class="label-row">Best path:</div>
+    <div class="paths-row">
+      <div class="label-row">Сhange of the best result</div>
+      <div class="value-row">
+        <p>{bestValuesString}</p>
+      </div>
+    </div>
+  
+    <div class="paths-row">
+      <div class="label-row">Best path</div>
       <div class="value-row">
         <p>{best.toString()}</p>
       </div>
     </div>
 
-    <div>
-      <div class="label-row">Best path in current population:</div>
+    <div class="paths-row">
+      <div class="label-row">Best path in current population</div>
       <div class="value-row">
         <p>{bestPopulation}</p>
       </div>
     </div>
 
-    <div>
-      <div class="label-row">Population:</div>
+    <div class="paths-row">
+      <div class="label-row">Best value in population</div>
+      <div class="value-row">
+        <p>{currentBest.bestValue}</p>
+      </div>
+    </div>
+
+    <div class="paths-row">
+      <div class="label-row">Population</div>
       <div class="value-row">
         {#each population as item}
           <p>{item.toString()}</p>

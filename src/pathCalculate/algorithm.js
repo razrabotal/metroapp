@@ -1,11 +1,6 @@
 import { randomNumber } from "../helpers/randomNumber";
 import { pushMutateMath, doMutateMath, reverseMutateMath } from "./mutations";
 import { count } from "./store.js";
-import {
-  POPULATION_SIZE,
-  CROSSOVER_PROBABILITY,
-  MUTATION_PROBABILITY
-} from "./constants";
 
 // Functions with side effects
 function mutationIteration(array) {
@@ -17,7 +12,7 @@ const doMutate = seq => mutationIteration(doMutateMath(seq));
 const pushMutate = seq => mutationIteration(pushMutateMath(seq));
 
 // Main components
-export function selection(population, currentBest, best, values) {
+export function selection(population, currentBest, best, values, populationSize) {
   let newPopulation = population.clone();
 
   let parents = new Array();
@@ -30,7 +25,7 @@ export function selection(population, currentBest, best, values) {
 
   const roulette = createRoulette(values);
 
-  for (let i = initnum; i < POPULATION_SIZE; i++) {
+  for (let i = initnum; i < populationSize; i++) {
     parents.push(newPopulation[wheelOut(roulette)]);
   }
   newPopulation = parents;
@@ -38,10 +33,10 @@ export function selection(population, currentBest, best, values) {
   return newPopulation;
 }
 
-export function mutation(population) {
+export function mutation(population, populationSize, mutationProbability) {
   let newPopulation = population.clone();
-  for (let i = 0; i < POPULATION_SIZE; i++) {
-    if (Math.random() < MUTATION_PROBABILITY) {
+  for (let i = 0; i < populationSize; i++) {
+    if (Math.random() < mutationProbability) {
       if (Math.random() > 0.5) {
         newPopulation[i] = doMutate(population[i]);
       } else {
@@ -53,10 +48,10 @@ export function mutation(population) {
   return newPopulation;
 }
 
-export function crossover(population, dis) {
+export function crossover(population, dis, populationSize, crossoverProbability) {
   let queue = new Array();
-  for (let i = 0; i < POPULATION_SIZE; i++) {
-    if (Math.random() < CROSSOVER_PROBABILITY) {
+  for (let i = 0; i < populationSize; i++) {
+    if (Math.random() < crossoverProbability) {
       queue.push(i);
     }
   }

@@ -1,85 +1,95 @@
 <script>
-  import ResultGrid from './ResultGrid.svelte';
-
-  import { createEventDispatcher } from "svelte";
+  import ResultGrid from "./ResultGrid.svelte";
   import { count } from "./store.js";
-  const dispatch = createEventDispatcher();
-
+  import { createEventDispatcher } from "svelte";
   import { randomNumber } from "../helpers/randomNumber";
   import { evaluate, randomIndivial, getCurrentBest } from "./helper";
   import { selection, mutation, crossover } from "./algorithm";
-  import { POPULATION_SIZE, INTERVAL_DURATION } from "./constants";
+  const dispatch = createEventDispatcher();
+
+  // constants
+  let populationSize = 20;
+  let crossoverProbability = 0.9;
+  let mutationProbability = 0.1;
+  let intervalDuration = 40;
 
   export let graph;
   export let stationsBetween;
   export let dis;
 
-  $: text = "";
-
   let running = false;
   let mainInterval;
 
-  let iterators = {};
-  let bestValue;
+  let currentGeneration = 0;
+  let bestValue = 0;
+  let bestValuesArray = [];
   let best = [];
-  let currentBest = {};
+  let currentBest = {
+    bestPosition: 0,
+    bestValue: []
+  };
   let population = [];
-  let values;
-
+  let values = [];
   let mutationsCount;
 
   const unsubscribe = count.subscribe(value => {
     mutationsCount = value;
   });
 
-  function onStartOrStop() {
-    if (running) {
-      clearInterval(mainInterval);
-      dispatch("getResult", {
-        result: best
-      });
-      return (running = false);
+  function onStart() {
+    if (!running) {
+      GAStart();
+      running = true;
     }
+  }
+
+  function onStop() {
+    if (running) {
+      GAStop();
+      running = false;
+    }
+  }
+
+  function GAStop() {
+    clearInterval(mainInterval);
+    dispatch("getResult", {
+      result: best
+    });
+  }
+
+  function GAStart() {
     initData();
     GAInitialize();
-    mainInterval = setInterval(render, INTERVAL_DURATION);
-    return (running = true);
+    mainInterval = setInterval(render, intervalDuration);
   }
 
   function initData() {
-    iterators = {
-      currentGeneration: 0
-    };
+    currentGeneration = 0;
     bestValue = undefined;
     best = [];
+    bestValuesArray = [];
     currentBest = 0;
     population = [];
-    values = new Array(POPULATION_SIZE);
+    values = new Array(populationSize);
   }
 
   function render() {
     GANextGeneration();
-
-    text = `<p>
-      There are ${graph.nodes().length} stations in the map. 
-      The ${iterators.currentGeneration}th generation 
-      with ${mutationsCount} times of mutation. 
-      Best value: ${~~bestValue} -- ${currentBest.bestValue}. 
-      Path: ${best.toString()}</p>`;
   }
 
   function GAInitialize() {
     const stationsCount = graph.nodes().length;
-    population = Array.apply(null, Array(POPULATION_SIZE)).map(item =>
+    population = Array.apply(null, Array(populationSize)).map(item =>
       randomIndivial(stationsCount)
     );
     setBestValue();
   }
+
   function GANextGeneration() {
-    iterators.currentGeneration++;
-    population = selection(population, currentBest, best, values);
-    population = crossover(population, dis);
-    population = mutation(population);
+    currentGeneration++;
+    population = selection(population, currentBest, best, values, populationSize);
+    population = crossover(population, dis, populationSize, crossoverProbability);
+    population = mutation(population, populationSize, mutationProbability);
     setBestValue();
   }
 
@@ -90,21 +100,111 @@
     if (bestValue === undefined || bestValue > currentBest.bestValue) {
       best = population[currentBest.bestPosition].clone();
       bestValue = currentBest.bestValue;
+      bestValuesArray = [...bestValuesArray, bestValue];
     }
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "src/styles/base.scss";
+
+  .calculate-block {
+    margin-bottom: 30px;
+  }
+
+  .result-wrapper {
+    @include section;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .constants {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    margin-right: 20px;
+
+    span {
+      margin-bottom: 5px;
+    }
+  }
+  .text-input {
+    @include text-input;
+    width: 70px;
+  }
+  .buttons {
+    margin-left: auto;
+  }
   .startButton {
-    border: 0;
-    padding: 8px 20px;
-    background: #ddd;
-    font-size: 14px;
+    @include button;
+    margin-left: 10px;
   }
 </style>
 
-<div class="calculateBlock">
-  <ResultGrid {running} {graph} currentGeneration={iterators.currentGeneration} {mutationsCount} {bestValue} {currentBest} {population} {best} />
+<div class="calculate-block">
 
-  <button class="startButton" on:click={onStartOrStop}>Start/Stop</button>
+  <div class="result-wrapper">
+    <div class="constants">
+      <label>
+        <span>Population size:</span>
+        <input
+          class="text-input"
+          bind:value={populationSize}
+          type="number"
+          step="1"
+          min="1"
+          max="50" />
+      </label>
+      <label>
+        <span>Crossover probability:</span>
+        <input
+          class="text-input"
+          bind:value={crossoverProbability}
+          type="number"
+          step="0.1"
+          min="0.01"
+          max="1" />
+      </label>
+      <label>
+        <span>Mutation probability:</span>
+        <input
+          class="text-input"
+          bind:value={mutationProbability}
+          type="number"
+          step="0.01"
+          min="0.01"
+          max="1" />
+      </label>
+      <label>
+        <span>Interval duration:</span>
+        <input
+          class="text-input"
+          bind:value={intervalDuration}
+          type="number"
+          step="20"
+          min="10"
+          max="3000" />
+      </label>
+
+      <div class="buttons">
+        <button class="startButton protrude" on:click={onStart}>Start</button>
+        <button class="startButton protrude" on:click={onStop}>Stop</button>
+      </div>
+    </div>
+
+    <ResultGrid
+      {running}
+      {graph}
+      {currentGeneration}
+      {mutationsCount}
+      {bestValue}
+      {currentBest}
+      {population}
+      {best}
+      {bestValuesArray} />
+  </div>
 </div>
