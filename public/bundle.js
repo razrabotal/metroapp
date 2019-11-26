@@ -1,2 +1,3346 @@
-var app=function(){"use strict";function t(){}function n(t){return t()}function e(){return Object.create(null)}function o(t){t.forEach(n)}function r(t){return"function"==typeof t}function s(t,n){return t!=t?n==n:t!==n||t&&"object"==typeof t||"function"==typeof t}function i(t,n){t.appendChild(n)}function a(t,n,e){t.insertBefore(n,e||null)}function l(t){t.parentNode.removeChild(t)}function u(t,n){for(let e=0;e<t.length;e+=1)t[e]&&t[e].d(n)}function c(t){return document.createElement(t)}function h(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}function f(t){return document.createTextNode(t)}function p(){return f(" ")}function d(){return f("")}function g(t,n,e,o){return t.addEventListener(n,e,o),()=>t.removeEventListener(n,e,o)}function v(t,n,e){null==e?t.removeAttribute(n):t.setAttribute(n,e)}function m(t,n){n=""+n,t.data!==n&&(t.data=n)}function w(t,n,e,o){t.style.setProperty(n,e,o?"important":"")}class ${constructor(t,n=null){this.e=c("div"),this.a=n,this.u(t)}m(t,n=null){for(let e=0;e<this.n.length;e+=1)a(t,this.n[e],n);this.t=t}u(t){this.e.innerHTML=t,this.n=Array.from(this.e.childNodes)}p(t){this.d(),this.u(t),this.m(this.t,this.a)}d(){this.n.forEach(l)}}let b;function y(t){b=t}function x(){if(!b)throw new Error("Function called outside component initialization");return b}function B(t){x().$$.on_mount.push(t)}function E(){const t=b;return(n,e)=>{const o=t.$$.callbacks[n];if(o){const r=function(t,n){const e=document.createEvent("CustomEvent");return e.initCustomEvent(t,!1,!1,n),e}(n,e);o.slice().forEach(n=>{n.call(t,r)})}}}const P=[],k=[],S=[],A=[],_=Promise.resolve();let M=!1;function C(t){S.push(t)}function O(){const t=new Set;do{for(;P.length;){const t=P.shift();y(t),j(t.$$)}for(;k.length;)k.pop()();for(let n=0;n<S.length;n+=1){const e=S[n];t.has(e)||(e(),t.add(e))}S.length=0}while(P.length);for(;A.length;)A.pop()();M=!1}function j(t){t.fragment&&(t.update(t.dirty),o(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(C))}const V=new Set;let T;function N(t,n){t&&t.i&&(V.delete(t),t.i(n))}function z(t,n,e,o){if(t&&t.o){if(V.has(t))return;V.add(t),T.c.push(()=>{V.delete(t),o&&(e&&t.d(1),o())}),t.o(n)}}function L(t,e,s){const{fragment:i,on_mount:a,on_destroy:l,after_update:u}=t.$$;i.m(e,s),C(()=>{const e=a.map(n).filter(r);l?l.push(...e):o(e),t.$$.on_mount=[]}),u.forEach(C)}function H(t,n){t.$$.fragment&&(o(t.$$.on_destroy),t.$$.fragment.d(n),t.$$.on_destroy=t.$$.fragment=null,t.$$.ctx={})}function G(t,n){t.$$.dirty||(P.push(t),M||(M=!0,_.then(O)),t.$$.dirty=e()),t.$$.dirty[n]=!0}function D(n,r,s,i,a,l){const u=b;y(n);const c=r.props||{},h=n.$$={fragment:null,ctx:null,props:l,update:t,not_equal:a,bound:e(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:e(),dirty:null};let f=!1;h.ctx=s?s(n,c,(t,e,o=e)=>(h.ctx&&a(h.ctx[t],h.ctx[t]=o)&&(h.bound[t]&&h.bound[t](o),f&&G(n,t)),e)):c,h.update(),f=!0,o(h.before_update),h.fragment=i(h.ctx),r.target&&(r.hydrate?h.fragment.l(function(t){return Array.from(t.childNodes)}(r.target)):h.fragment.c(),r.intro&&N(n.$$.fragment),L(n,r.target,r.anchor),O()),y(u)}class I{$destroy(){H(this,1),this.$destroy=t}$on(t,n){const e=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return e.push(n),()=>{const t=e.indexOf(n);-1!==t&&e.splice(t,1)}}$set(){}}function R(t){return t>=10?t.toString():`0${t}`}function W(t){return`${R(Math.floor(t/1e3/60))}:${R(Math.floor(t/1e3)%60)}.${Math.floor(t/10).toString().slice(-2)}`}function F(n){var e,o,r,s,u,c,p,d,g,$,b,y,x,B,E,P,k=W(n.lapse)+"";return{c(){e=h("svg"),o=h("g"),r=h("circle"),s=h("use"),u=h("g"),c=h("g"),p=h("path"),g=h("g"),$=h("g"),b=h("path"),x=h("circle"),B=h("circle"),E=h("text"),P=f(k),v(r,"id","dial"),v(r,"cx","0"),v(r,"cy","0"),v(r,"r","37.8"),v(r,"fill","none"),v(r,"stroke","currentColor"),v(r,"stroke-width","5"),v(r,"stroke-dasharray","0.27 1.7082"),v(s,"href","#dial"),v(s,"transform","scale(-1 1)"),v(p,"d","M -2.25 0 h 4.5 l -2.25 2.5 l -2.25 -2.5"),v(p,"fill","currentColor"),v(p,"stroke","currentColor"),v(p,"stroke-width","1"),v(p,"stroke-linejoin","round"),v(p,"stroke-linecap","round"),v(c,"transform","translate(0 -45)"),v(u,"transform",d="rotate("+n.rotation+")"),v(b,"d","M 0 -1 v -7.5"),v(b,"fill","none"),v(b,"stroke","currentColor"),v(b,"stroke-width","0.4"),v(b,"stroke-linejoin","round"),v(b,"stroke-linecap","round"),v($,"transform",y="rotate("+60*n.rotation%360+")"),v(x,"r","9"),v(x,"fill","none"),v(x,"stroke","currentColor"),v(x,"stroke-width","0.4"),v(B,"r","1"),v(B,"fill","none"),v(B,"stroke","currentColor"),v(B,"stroke-width","0.4"),v(g,"transform","translate(0 20)"),v(E,"text-anchor","middle"),v(E,"fill","currentColor"),v(E,"dominant-baseline","middle"),v(E,"font-size","10"),w(E,"font-weight","300"),w(E,"letter-spacing","1px"),v(o,"transform","translate(50 50)"),v(e,"viewBox","0 0 100 100"),v(e,"width","300"),v(e,"height","300"),v(e,"class","svelte-1ff0jg8")},m(t,l){a(t,e,l),i(e,o),i(o,r),i(o,s),i(o,u),i(u,c),i(c,p),n.g1_binding(u),i(o,g),i(g,$),i($,b),n.g2_binding($),i(g,x),i(g,B),i(o,E),i(E,P)},p(t,n){t.rotation&&d!==(d="rotate("+n.rotation+")")&&v(u,"transform",d),t.rotation&&y!==(y="rotate("+60*n.rotation%360+")")&&v($,"transform",y),t.lapse&&k!==(k=W(n.lapse)+"")&&m(P,k)},i:t,o:t,d(t){t&&l(e),n.g1_binding(null),n.g2_binding(null)}}}function q(t,n,e){let o,r,s,i,{lapse:a=0}=n;return t.$set=t=>{"lapse"in t&&e("lapse",a=t.lapse)},t.$$.update=(t={lapse:1,minutes:1,seconds:1,transitioned:1})=>{t.lapse&&e("rotation",i=a/1e3/60*360%360),(t.lapse||t.minutes||t.seconds)&&!a&&r&&o&&(e("minutes",r.style.transition="transform 0.2s ease-in-out",r),e("seconds",o.style.transition="transform 0.2s ease-in-out",o),e("transitioned",s=!1)),(t.lapse||t.transitioned)&&a&&!s&&(e("minutes",r.style.transition="none",r),e("seconds",o.style.transition="none",o),e("transitioned",s=!0))},{lapse:a,seconds:o,minutes:r,rotation:i,g1_binding:function(t){k[t?"unshift":"push"](()=>{e("minutes",r=t)})},g2_binding:function(t){k[t?"unshift":"push"](()=>{e("seconds",o=t)})}}}class J extends I{constructor(t){super(),D(this,t,q,F,s,["lapse"])}}const K=[];function Q(n,e=t){let o;const r=[];function i(t){if(s(n,t)&&(n=t,o)){const t=!K.length;for(let t=0;t<r.length;t+=1){const e=r[t];e[1](),K.push(e,n)}if(t){for(let t=0;t<K.length;t+=2)K[t][0](K[t+1]);K.length=0}}}return{set:i,update:function(t){i(t(n))},subscribe:function(s,a=t){const l=[s,a];return r.push(l),1===r.length&&(o=e(i)||t),s(n),()=>{const t=r.indexOf(l);-1!==t&&r.splice(t,1),0===r.length&&(o(),o=null)}}}}const U={subscribe:Q(0,(function(t){const n=(new Date).getTime(),e=setInterval(()=>{const e=(new Date).getTime();t(e-n)},10);return function(){t(0),clearInterval(e)}})).subscribe};function X(t){var n,e,o=new J({props:{lapse:t.lapse}});return{c(){n=c("div"),o.$$.fragment.c(),v(n,"class","stopwatch")},m(t,r){a(t,n,r),L(o,n,null),e=!0},p(t,n){var e={};t.lapse&&(e.lapse=n.lapse),o.$set(e)},i(t){e||(N(o.$$.fragment,t),e=!0)},o(t){z(o.$$.fragment,t),e=!1},d(t){t&&l(n),H(o)}}}function Y(t,n,e){let o,{running:r=!1}=n,s=0;function i(){o&&(o(),e("unsubscribe",o=null))}var a;return a=()=>{i()},x().$$.on_destroy.push(a),t.$set=t=>{"running"in t&&e("running",r=t.running)},t.$$.update=(t={running:1,unsubscribe:1})=>{t.running&&(r?(e("lapse",s=0),i(),e("unsubscribe",o=U.subscribe(t=>{e("lapse",s=t)}))):i()),t.unsubscribe},{running:r,lapse:s}}class Z extends I{constructor(t){super(),D(this,t,Y,X,s,["running"])}}const tt=Q(0);function nt(t){return parseInt(Math.random()*t)}const et=30,ot=.9,rt=.1,st=20;function it(t){return tt.update(t=>t+1),t}const at=t=>it(function(t){return t.reverse()}(t)),lt=t=>it(function(t){let n,e;do{n=nt(t.length-2),e=nt(t.length)}while(n>=e);for(var o=0,r=e-n+1>>1;o<r;o++)t.swap(n+o,e-o);return t}(t)),ut=t=>it(function(t){var n,e;do{n=nt(t.length>>1),e=nt(t.length)}while(n>=e);var o=t.slice(0,n),r=t.slice(n,e),s=t.slice(e,t.length);return r.concat(o).concat(s).clone()}(t));function ct(t,n,e,o){let r=e.clone(),s=ht("next",t,n,r,o),i=ht("previous",t,n,r,o);return r[t]=s,r[n]=i,r}function ht(t,n,e,o,r){let s,i,a=new Array,l=o[n].clone(),u=o[e].clone(),c=l[nt(l.length)];for(a.push(c);l.length>1;)s=l[t](l.indexOf(c)),i=u[t](u.indexOf(c)),l.deleteByValue(c),u.deleteByValue(c),c=r[c][s]<r[c][i]?s:i,a.push(c);return a}function ft(t=[]){const n=Math.random();return t.forEach((t,e)=>{if(n<=t)return e}),0}function pt(t,n,e){const o=Object.create(t);return o.item=n[e],o}function dt(t){var n,e,o=t.item.toString()+"";return{c(){n=c("p"),e=f(o)},m(t,o){a(t,n,o),i(n,e)},p(t,n){t.population&&o!==(o=n.item.toString()+"")&&m(e,o)},d(t){t&&l(n)}}}function gt(t){var n,e,o,r,s,h,d,w,$,b,y,x,B,E,P,k,S,A,_,M,C,O,j,V,T,G,D,I,R,W,F,q,J,K,Q,U,X,Y,tt,nt,et,ot,rt,st,it,at,lt,ut,ct,ht,ft,gt,vt,mt,wt,$t,bt,yt=t.graph.nodes().length+"",xt=t.iterators.currentGeneration+"",Bt=t.currentBest.bestValue+"",Et=t.best.toString()+"",Pt=t.population[t.currentBest.bestPosition]&&t.population[t.currentBest.bestPosition].toString()+"",kt=new Z({props:{running:t.running}});let St=t.population,At=[];for(let n=0;n<St.length;n+=1)At[n]=dt(pt(t,St,n));return{c(){n=c("div"),(e=c("button")).textContent="Start/Stop",o=p(),r=c("div"),s=c("div"),h=c("div"),kt.$$.fragment.c(),d=p(),w=c("div"),($=c("div")).textContent="Stations:",b=p(),y=c("div"),x=f(yt),B=p(),E=c("div"),(P=c("div")).textContent="Generation:",k=p(),S=c("div"),A=f(xt),_=p(),M=c("div"),(C=c("div")).textContent="Mutations:",O=p(),j=c("div"),V=f(t.count_value),T=p(),G=c("div"),(D=c("div")).textContent="Best value:",I=p(),R=c("div"),W=f(t.bestValue),F=p(),q=c("div"),(J=c("div")).textContent="Best in population:",K=p(),Q=c("div"),U=f(Bt),X=p(),Y=c("div"),tt=c("div"),(nt=c("div")).textContent="Best path:",et=p(),ot=c("div"),rt=f(Et),st=p(),it=c("div"),(at=c("div")).textContent="Best path in current population:",lt=p(),ut=c("div"),ct=c("p"),ht=f(Pt),ft=p(),gt=c("div"),(vt=c("div")).textContent="Population:",mt=p(),wt=c("div");for(let t=0;t<At.length;t+=1)At[t].c();v(e,"class","startButton svelte-11xn333"),v(h,"class","stopWatch svelte-11xn333"),v($,"class","label"),v(y,"class","value svelte-11xn333"),v(w,"class","row svelte-11xn333"),v(P,"class","label"),v(S,"class","value svelte-11xn333"),v(E,"class","row svelte-11xn333"),v(C,"class","label"),v(j,"class","value svelte-11xn333"),v(M,"class","row svelte-11xn333"),v(D,"class","label"),v(R,"class","value svelte-11xn333"),v(G,"class","row svelte-11xn333"),v(J,"class","label"),v(Q,"class","value svelte-11xn333"),v(q,"class","row svelte-11xn333"),v(s,"class","table svelte-11xn333"),v(nt,"class","label-row svelte-11xn333"),v(ot,"class","value-row svelte-11xn333"),v(at,"class","label-row svelte-11xn333"),v(ut,"class","value-row svelte-11xn333"),v(vt,"class","label-row svelte-11xn333"),v(wt,"class","value-row svelte-11xn333"),v(Y,"class","paths"),v(r,"class","info svelte-11xn333"),v(n,"class","calculateBlock"),bt=g(e,"click",t.onStartOrStop)},m(t,l){a(t,n,l),i(n,e),i(n,o),i(n,r),i(r,s),i(s,h),L(kt,h,null),i(s,d),i(s,w),i(w,$),i(w,b),i(w,y),i(y,x),i(s,B),i(s,E),i(E,P),i(E,k),i(E,S),i(S,A),i(s,_),i(s,M),i(M,C),i(M,O),i(M,j),i(j,V),i(s,T),i(s,G),i(G,D),i(G,I),i(G,R),i(R,W),i(s,F),i(s,q),i(q,J),i(q,K),i(q,Q),i(Q,U),i(r,X),i(r,Y),i(Y,tt),i(tt,nt),i(tt,et),i(tt,ot),i(ot,rt),i(Y,st),i(Y,it),i(it,at),i(it,lt),i(it,ut),i(ut,ct),i(ct,ht),i(Y,ft),i(Y,gt),i(gt,vt),i(gt,mt),i(gt,wt);for(let t=0;t<At.length;t+=1)At[t].m(wt,null);$t=!0},p(t,n){var e={};if(t.running&&(e.running=n.running),kt.$set(e),$t&&!t.graph||yt===(yt=n.graph.nodes().length+"")||m(x,yt),$t&&!t.iterators||xt===(xt=n.iterators.currentGeneration+"")||m(A,xt),$t&&!t.count_value||m(V,n.count_value),$t&&!t.bestValue||m(W,n.bestValue),$t&&!t.currentBest||Bt===(Bt=n.currentBest.bestValue+"")||m(U,Bt),$t&&!t.best||Et===(Et=n.best.toString()+"")||m(rt,Et),$t&&!t.population&&!t.currentBest||Pt===(Pt=n.population[n.currentBest.bestPosition]&&n.population[n.currentBest.bestPosition].toString()+"")||m(ht,Pt),t.population){let e;for(St=n.population,e=0;e<St.length;e+=1){const o=pt(n,St,e);At[e]?At[e].p(t,o):(At[e]=dt(o),At[e].c(),At[e].m(wt,null))}for(;e<At.length;e+=1)At[e].d(1);At.length=St.length}},i(t){$t||(N(kt.$$.fragment,t),$t=!0)},o(t){z(kt.$$.fragment,t),$t=!1},d(t){t&&l(n),H(kt),u(At,t),bt()}}}function vt(t,n,e){const o=E();let r,s,i,a,{graph:l,stationsBetween:u,dis:c}=n,h=!1,f={},p=[],d={},g=[];tt.subscribe(t=>{e("count_value",a=t)});function v(){e("iterators",f.currentGeneration++,f),e("population",g=function(t,n,e,o){let r=t.clone(),s=new Array;s.push(r[n.bestPosition]),s.push(lt(e.clone())),s.push(ut(e.clone())),s.push(at(e.clone())),s.push(e.clone());const i=function(t=[]){const n=t.map(t=>1/t),e=n.reduce((t,n)=>t+=n);let o;return n.map(t=>t/e).map(t=>o=(o||0)+t)}(o);for(let t=5;t<et;t++)s.push(r[ft(i)]);return r=s}(g,d,p,i)),e("population",g=function(t,n){let e=new Array;for(let t=0;t<et;t++)Math.random()<ot&&e.push(t);e.shuffle();for(let o=0,r=e.length-1;o<r;o+=2)t=ct(e[o],e[o+1],t,n);return t}(g,c)),e("population",g=function(t){let n=t.clone();for(let e=0;e<et;e++)Math.random()<rt&&(Math.random()>.5?n[e]=lt(t[e]):n[e]=ut(t[e]),e--);return n}(g)),m(),w=`<p>\n      There are ${l.nodes().length} stations in the map. \n      The ${f.currentGeneration}th generation \n      with ${a} times of mutation. \n      Best value: ${~~s} -- ${d.bestValue}. \n      Path: ${p.toString()}</p>`}function m(){i=g.map(t=>(function(t,n){return t.reduce((t,e,o,r)=>t+=n[e][r[o-1]])})(t,c)),e("currentBest",d=function(t){const n=t.min();return{bestValue:n,bestPosition:t.indexOf(n)}}(i)),(void 0===s||s>d.bestValue)&&(e("best",p=g[d.bestPosition].clone()),e("bestValue",s=d.bestValue))}let w;return t.$set=t=>{"graph"in t&&e("graph",l=t.graph),"stationsBetween"in t&&e("stationsBetween",u=t.stationsBetween),"dis"in t&&e("dis",c=t.dis)},w="",{graph:l,stationsBetween:u,dis:c,running:h,iterators:f,bestValue:s,best:p,currentBest:d,population:g,count_value:a,onStartOrStop:function(){return h?(clearInterval(r),o("getResult",{result:p}),e("running",h=!1)):(e("iterators",f={currentGeneration:0}),e("bestValue",s=void 0),e("best",p=[]),e("currentBest",d=0),e("population",g=[]),i=new Array(et),function(){const t=l.nodes().length;e("population",g=Array.apply(null,Array(et)).map(n=>(function(t){return Array.from(Array(t).keys()).shuffle()})(t))),m()}(),r=setInterval(v,st),e("running",h=!0))}}}class mt extends I{constructor(t){super(),D(this,t,vt,gt,s,["graph","stationsBetween","dis"])}}function wt(t,n,e){const o=Object.create(t);return o.station=n[e],o.index=e,o}function $t(t,n,e){const o=Object.create(t);return o.station=n[e],o.index=e,o}function bt(t){var n,e,o;let r=t.stationsPath,s=[];for(let n=0;n<r.length;n+=1)s[n]=xt($t(t,r,n));var h=t.showScheme&&Bt(t);return{c(){n=c("div"),e=c("aside");for(let t=0;t<s.length;t+=1)s[t].c();o=p(),h&&h.c(),v(e,"class","svelte-1vwv11y"),v(n,"class","container svelte-1vwv11y")},m(t,r){a(t,n,r),i(n,e);for(let t=0;t<s.length;t+=1)s[t].m(e,null);i(n,o),h&&h.m(n,null)},p(t,o){if(t.stationsPath){let n;for(r=o.stationsPath,n=0;n<r.length;n+=1){const i=$t(o,r,n);s[n]?s[n].p(t,i):(s[n]=xt(i),s[n].c(),s[n].m(e,null))}for(;n<s.length;n+=1)s[n].d(1);s.length=r.length}o.showScheme?h?h.p(t,o):((h=Bt(o)).c(),h.m(n,null)):h&&(h.d(1),h=null)},d(t){t&&l(n),u(s,t),h&&h.d()}}}function yt(t){var n,e,o,r,s=t.station.text+"";function u(){return t.mouseover_handler(t)}return{c(){n=c("div"),o=p(),e=new $(s,o),r=g(n,"mouseover",u)},m(t,r){a(t,n,r),e.m(n),i(n,o)},p(n,o){t=o,n.stationsPath&&s!==(s=t.station.text+"")&&e.p(s)},d(t){t&&l(n),r()}}}function xt(t){var n,e=t.station&&yt(t);return{c(){e&&e.c(),n=d()},m(t,o){e&&e.m(t,o),a(t,n,o)},p(t,o){o.station?e?e.p(t,o):((e=yt(o)).c(),e.m(n.parentNode,n)):e&&(e.d(1),e=null)},d(t){e&&e.d(t),t&&l(n)}}}function Bt(t){var n,e,o,r,s,u,c,p,d,g,m,w,$,b,y,x,B,E,P,k=t.resultPath.length&&Et(t);return{c(){n=h("svg"),e=h("defs"),o=h("symbol"),r=h("path"),s=h("path"),u=h("path"),c=h("g"),p=h("text"),d=f("Холодногірсько-заводська лінія\n      "),g=h("text"),m=f("Салтівська лінія\n      "),w=h("text"),$=f("Олексіївська лінія\n      "),b=h("g"),k&&k.c(),y=h("g"),x=h("text"),B=f("Державiнська"),E=h("text"),P=f("Одеська"),v(r,"fill","#fff"),v(r,"d","M6.6 11.5a4.9 4.9 0 110-9.8A4.8 4.8 0 019.7 3a9.7 9.7 0 004.5\n          2v3.5a9.7 9.7 0 00-3.9 1.6l-.9.6a4.8 4.8 0 01-2.8 1z"),v(s,"d","M6.7 3.5a3 3 0 012 .7 11.5 11.5 0 003.7 2V7a11.4 11.4 0 00-3.1\n          1.6l-.9.6a3 3 0 01-1.8.6 3.1 3.1 0 110-6.3m0-3.5A6.6 6.6 0 000 6.6a6.6\n          6.6 0 006.6 6.7 6.5 6.5 0 003.8-1.3l.9-.6a8 8 0 014.6-1.4V3.3a8 8 0\n          01-5-1.8A6.5 6.5 0 006.6 0z"),v(o,"id","w"),v(u,"fill","none"),v(u,"stroke",t.colors.green),v(u,"stroke-width","3"),v(u,"d","M747 1310l-18-18-241 241a72 72 0 00-21 51v85h-15v21h56v-21h-16v-85a47\n      47 0 0114-34l46-45 12 12 15-15-12-12z"),v(p,"fill",t.colors.red),v(p,"transform","rotate(-90 1562.5 515.7)"),v(g,"fill",t.colors.blue),v(g,"transform","rotate(-90 700.6 -347.6)"),v(w,"fill",t.colors.green),v(w,"transform","rotate(-90 415.7 -32.8)"),v(c,"font-size","34"),v(b,"fill",t.colors.text),v(b,"font-size","53"),v(x,"transform","translate(573 1556)"),v(E,"transform","translate(519 1690)"),v(y,"fill",t.colors.textDisable),v(y,"font-size","53"),v(n,"xmlns","http://www.w3.org/2000/svg"),v(n,"xmlns:xlink","http://www.w3.org/1999/xlink"),v(n,"class","map svelte-1vwv11y"),v(n,"font-family","Tahoma"),v(n,"viewBox","0 0 1501 2151")},m(t,l){a(t,n,l),i(n,e),i(e,o),i(o,r),i(o,s),i(n,u),i(n,c),i(c,p),i(p,d),i(c,g),i(g,m),i(c,w),i(w,$),i(n,b),k&&k.m(b,null),i(n,y),i(y,x),i(x,B),i(y,E),i(E,P)},p(t,n){n.resultPath.length?k?k.p(t,n):((k=Et(n)).c(),k.m(b,null)):k&&(k.d(1),k=null)},d(t){t&&l(n),k&&k.d()}}}function Et(t){var n;let e=t.stationsPath,o=[];for(let n=0;n<e.length;n+=1)o[n]=kt(wt(t,e,n));return{c(){for(let t=0;t<o.length;t+=1)o[t].c();n=d()},m(t,e){for(let n=0;n<o.length;n+=1)o[n].m(t,e);a(t,n,e)},p(t,r){if(t.stationsPath||t.showingStation||t.colors){let s;for(e=r.stationsPath,s=0;s<e.length;s+=1){const i=wt(r,e,s);o[s]?o[s].p(t,i):(o[s]=kt(i),o[s].c(),o[s].m(n.parentNode,n))}for(;s<o.length;s+=1)o[s].d(1);o.length=e.length}},d(t){u(o,t),t&&l(n)}}}function Pt(t){var n,e,o,r,s,u,c,f,p,d=t.station.path+"",g=t.station.stop+"",m=t.station.text+"";return{c(){n=h("g"),e=h("g"),o=h("g"),s=h("g"),c=h("text"),v(o,"stroke",r=t.colors[t.station.color]),v(e,"fill","none"),v(e,"stroke-miterlimit","10"),v(e,"stroke-width","28"),v(s,"fill",u=t.colors[t.station.color]),v(c,"style",f=t.station.style),v(n,"class",p="fadein "+(t.showingStation===t.index?"lel":"")+" svelte-1vwv11y"),w(n,"animation-delay",t.index/30*10+"s")},m(t,r){a(t,n,r),i(n,e),i(e,o),o.innerHTML=d,i(n,s),s.innerHTML=g,i(n,c),c.innerHTML=m},p(t,e){t.stationsPath&&d!==(d=e.station.path+"")&&(o.innerHTML=d),t.stationsPath&&r!==(r=e.colors[e.station.color])&&v(o,"stroke",r),t.stationsPath&&g!==(g=e.station.stop+"")&&(s.innerHTML=g),t.stationsPath&&u!==(u=e.colors[e.station.color])&&v(s,"fill",u),t.stationsPath&&m!==(m=e.station.text+"")&&(c.innerHTML=m),t.stationsPath&&f!==(f=e.station.style)&&v(c,"style",f),t.showingStation&&p!==(p="fadein "+(e.showingStation===e.index?"lel":"")+" svelte-1vwv11y")&&v(n,"class",p)},d(t){t&&l(n)}}}function kt(t){var n,e=t.station&&Pt(t);return{c(){e&&e.c(),n=d()},m(t,o){e&&e.m(t,o),a(t,n,o)},p(t,o){o.station?e?e.p(t,o):((e=Pt(o)).c(),e.m(n.parentNode,n)):e&&(e.d(1),e=null)},d(t){e&&e.d(t),t&&l(n)}}}function St(n){var e,o,r,s,u,h,v,w=n.resultPath&&bt(n);return{c(){e=c("div"),o=f(n.resultPath),r=p(),(s=c("button")).textContent="Show",u=p(),w&&w.c(),h=d(),v=g(s,"click",n.onShow)},m(t,n){a(t,e,n),i(e,o),a(t,r,n),a(t,s,n),a(t,u,n),w&&w.m(t,n),a(t,h,n)},p(t,n){t.resultPath&&m(o,n.resultPath),n.resultPath?w?w.p(t,n):((w=bt(n)).c(),w.m(h.parentNode,h)):w&&(w.d(1),w=null)},i:t,o:t,d(t){t&&(l(e),l(r),l(s),l(u)),w&&w.d(t),t&&l(h),v()}}}function At(t,n,e){let o,{stationsBetween:r,path:s}=n,i=!1,a=[],l=[];function u(t){e("showingStation",c=t)}B(async()=>{const t=await fetch("https://metro.kh.ua/metroapi.php?value=stations"),n=await t.json();o=n});let c;return t.$set=t=>{"stationsBetween"in t&&e("stationsBetween",r=t.stationsBetween),"path"in t&&e("path",s=t.path)},t.$$.update=(t={path:1,stationsBetween:1})=>{(t.path||t.stationsBetween)&&function({path:t=[],stationsBetween:n}){e("stationsPath",l=[]),t&&t.length&&(e("resultPath",a=function({path:t=[],stationsBetween:n}){let e=[];for(let o=1;o<t.length;o++){const r=t[o-1],s=t[o];let i=n[r][s].slice(1);e=e.concat(i)}return e.unshift(t[0]),e}({path:t,stationsBetween:n})),a.map(t=>{l.push(o.find(n=>n.id==t))}))}({path:s,stationsBetween:r})},e("showingStation",c=null),{stationsBetween:r,path:s,showScheme:i,resultPath:a,stationsPath:l,showStation:u,onShow:function(){e("showScheme",i=!0)},colors:{red:"#d22531",blue:"#2060ba",green:"#41a747",text:"#09303b",textDisable:"#9c98a6"},showingStation:c,mouseover_handler:({index:t})=>u(t)}}class _t extends I{constructor(t){super(),D(this,t,At,St,s,["stationsBetween","path"])}}var Mt=function(t){var n={addNode:r,removeNode:function(t){return Object.keys(e).forEach((function(n){e[n].forEach((function(e){e===t&&h(n,e)}))})),delete e[t],n},nodes:s,adjacent:i,addEdge:c,removeEdge:h,setEdgeWeight:l,getEdgeWeight:u,indegree:function(t){var n=0;function o(e){e===t&&n++}return Object.keys(e).forEach((function(t){e[t].forEach(o)})),n},outdegree:function(t){return t in e?e[t].length:0},depthFirstSearch:f,lowestCommonAncestors:function(t,n){var e=[],o=[];(function t(r,s){return!!r[s]||(r[s]=!0,e.push(s),s==n?(o.push(s),!1):i(s).every(n=>t(r,n)))})({},t)&&function t(n,r){n[r]||(n[r]=!0,e.indexOf(r)>=0?o.push(r):0==o.length&&i(r).forEach(e=>{t(n,e)}))}({},n);return o},topologicalSort:function(t,n){return f(t,n).reverse()},shortestPath:function(t,n){var e={},o={},r={};function a(){var t,n=1/0;return Object.keys(r).forEach((function(o){e[o]<n&&(n=e[o],t=o)})),void 0===t?(r={},null):(delete r[t],t)}function l(t,n){var r=u(t,n);e[n]>e[t]+r&&(e[n]=e[t]+r,o[n]=t)}return function(){(function(){if(s().forEach((function(t){e[t]=1/0})),e[t]!==1/0)throw new Error("Source node is not in the graph");if(e[n]!==1/0)throw new Error("Destination node is not in the graph");e[t]=0})(),s().forEach((function(t){r[t]=!0}));for(;0!==Object.keys(r).length;){var o=a();i(o).forEach((function(t){l(o,t)}))}}(),function(){var e=[],r=0,s=n;for(;o[s];)e.push(s),r+=u(o[s],s),s=o[s];if(s!==t)throw new Error("No path found");return e.push(s),e.reverse(),e.weight=r,e}()},serialize:function(){var t={nodes:s().map((function(t){return{id:t}})),links:[]};return t.nodes.forEach((function(n){var e=n.id;i(e).forEach((function(n){t.links.push({source:e,target:n,weight:u(e,n)})}))})),t},deserialize:p},e={},o={};function r(t){return e[t]=i(t),n}function s(){var t={};return Object.keys(e).forEach((function(n){t[n]=!0,e[n].forEach((function(n){t[n]=!0}))})),Object.keys(t)}function i(t){return e[t]||[]}function a(t,n){return t+"|"+n}function l(t,e,r){return o[a(t,e)]=r,n}function u(t,n){var e=o[a(t,n)];return void 0===e?1:e}function c(t,e,o){return r(t),r(e),i(t).push(e),void 0!==o&&l(t,e,o),n}function h(t,o){return e[t]&&(e[t]=i(t).filter((function(t){return t!==o}))),n}function f(t,n){t||(t=s()),"boolean"!=typeof n&&(n=!0);var e={},o=[];function r(t){e[t]||(e[t]=!0,i(t).forEach(r),o.push(t))}return n?t.forEach(r):(t.forEach((function(t){e[t]=!0})),t.forEach((function(t){i(t).forEach(r)}))),o}function p(t){return t.nodes.forEach((function(t){r(t.id)})),t.links.forEach((function(t){c(t.source,t.target,t.weight)})),n}return(t&&p(t),n)};function Ct(t){const n=6;function e(t){return t+n}const o=Mt();t.map(t=>({...t,weight:e(t.weight)})).map(t=>{o.addEdge(t.from,t.to,t.weight),o.addEdge(t.to,t.from,t.weight)});let r=[];o.nodes().map((t,n)=>{r.push([]),o.nodes().map((e,s)=>{const i=o.shortestPath(t,e).slice();r[n].push(i)})}),o.nodes().map((t,n)=>{o.nodes().map((n,e)=>{const r=o.shortestPath(t,n);o.addEdge(t,n,r.weight)})});const s=function(t){const n=t.nodes(),e=n.length;return Array.apply(null,Array(e)).map((o,r)=>Array.apply(null,Array(e)).map((e,o)=>~~t.getEdgeWeight(n[r],n[o])))}(o);return{graph:o,stationsBetween:r,distances:s}}function Ot(t){var n,e=new mt({props:{graph:t.graph,stationsBetween:t.stationsBetween,dis:t.dis}});return e.$on("getResult",t.getResult),{c(){e.$$.fragment.c()},m(t,o){L(e,t,o),n=!0},p(t,n){var o={};t.graph&&(o.graph=n.graph),t.stationsBetween&&(o.stationsBetween=n.stationsBetween),t.dis&&(o.dis=n.dis),e.$set(o)},i(t){n||(N(e.$$.fragment,t),n=!0)},o(t){z(e.$$.fragment,t),n=!1},d(t){H(e,t)}}}function jt(t){var n,e,r,s=t.graph&&t.stationsBetween&&t.dis&&Ot(t),u=new _t({props:{path:t.bestPath,stationsBetween:t.stationsBetween}});return{c(){n=c("div"),s&&s.c(),e=p(),u.$$.fragment.c(),v(n,"class","lol")},m(t,o){a(t,n,o),s&&s.m(n,null),i(n,e),L(u,n,null),r=!0},p(t,r){r.graph&&r.stationsBetween&&r.dis?s?(s.p(t,r),N(s,1)):((s=Ot(r)).c(),N(s,1),s.m(n,e)):s&&(T={r:0,c:[],p:T},z(s,1,1,()=>{s=null}),T.r||o(T.c),T=T.p);var i={};t.bestPath&&(i.path=r.bestPath),t.stationsBetween&&(i.stationsBetween=r.stationsBetween),u.$set(i)},i(t){r||(N(s),N(u.$$.fragment,t),r=!0)},o(t){z(s),z(u.$$.fragment,t),r=!1},d(t){t&&l(n),s&&s.d(),H(u)}}}function Vt(t,n,e){let o,r,s,i;return B(async()=>{const t=await fetch("https://metro.kh.ua/metroapi.php?value=path"),n=Ct(await t.json());e("graph",o=n.graph),e("stationsBetween",r=n.stationsBetween),e("dis",s=n.distances)}),{graph:o,stationsBetween:r,dis:s,bestPath:i,getResult:function(t){e("bestPath",i=t.detail.result)}}}class Tt extends I{constructor(t){super(),D(this,t,Vt,jt,s,[])}}function Nt(n){var e,o=new Tt({});return{c(){o.$$.fragment.c()},m(t,n){L(o,t,n),e=!0},p:t,i(t){e||(N(o.$$.fragment,t),e=!0)},o(t){z(o.$$.fragment,t),e=!1},d(t){H(o,t)}}}function zt(t){return Array.prototype.clone=function(){return this.slice(0)},Array.prototype.max=function(){return Math.max.apply(null,this)},Array.prototype.min=function(){return Math.min.apply(null,this)},Array.prototype.shuffle=function(){for(var t,n,e=this.length-1;e;t=nt(e),n=this[--e],this[e]=this[t],this[t]=n);return this},Array.prototype.indexOf=function(t){for(var n=0;n<this.length;n++)if(this[n]===t)return n},Array.prototype.deleteByValue=function(t){var n=this.indexOf(t);this.splice(n,1)},Array.prototype.next=function(t){return t===this.length-1?this[0]:this[t+1]},Array.prototype.previous=function(t){return 0===t?this[this.length-1]:this[t-1]},Array.prototype.swap=function(t,n){if(!(t>this.length||n>this.length||t===n)){var e=this[t];this[t]=this[n],this[n]=e}},Array.prototype.roll=function(){for(var t=nt(this.length),n=[],e=t;e<this.length;e++)n.push(this[e]);for(e=0;e<t;e++)n.push(this[e]);return n},{}}return new class extends I{constructor(t){super(),D(this,t,zt,Nt,s,[])}}({target:document.body})}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.head.appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function null_to_empty(value) {
+        return value == null ? '' : value;
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+    class HtmlTag {
+        constructor(html, anchor = null) {
+            this.e = element('div');
+            this.a = anchor;
+            this.u(html);
+        }
+        m(target, anchor = null) {
+            for (let i = 0; i < this.n.length; i += 1) {
+                insert(target, this.n[i], anchor);
+            }
+            this.t = target;
+        }
+        u(html) {
+            this.e.innerHTML = html;
+            this.n = Array.from(this.e.childNodes);
+        }
+        p(html) {
+            this.d();
+            this.u(html);
+            this.m(this.t, this.a);
+        }
+        d() {
+            this.n.forEach(detach);
+        }
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error(`Function called outside component initialization`);
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    function onDestroy(fn) {
+        get_current_component().$$.on_destroy.push(fn);
+    }
+    function createEventDispatcher() {
+        const component = current_component;
+        return (type, detail) => {
+            const callbacks = component.$$.callbacks[type];
+            if (callbacks) {
+                // TODO are there situations where events could be dispatched
+                // in a server (non-DOM) environment?
+                const event = custom_event(type, detail);
+                callbacks.slice().forEach(fn => {
+                    fn.call(component, event);
+                });
+            }
+        };
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    function flush() {
+        const seen_callbacks = new Set();
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (dirty_components.length) {
+                const component = dirty_components.shift();
+                set_current_component(component);
+                update(component.$$);
+            }
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    callback();
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+    }
+    function update($$) {
+        if ($$.fragment) {
+            $$.update($$.dirty);
+            run_all($$.before_update);
+            $$.fragment.p($$.dirty, $$.ctx);
+            $$.dirty = null;
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        if (component.$$.fragment) {
+            run_all(component.$$.on_destroy);
+            component.$$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            component.$$.on_destroy = component.$$.fragment = null;
+            component.$$.ctx = {};
+        }
+    }
+    function make_dirty(component, key) {
+        if (!component.$$.dirty) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty = blank_object();
+        }
+        component.$$.dirty[key] = true;
+    }
+    function init(component, options, instance, create_fragment, not_equal, prop_names) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const props = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props: prop_names,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty: null
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, props, (key, ret, value = ret) => {
+                if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                    if ($$.bound[key])
+                        $$.bound[key](value);
+                    if (ready)
+                        make_dirty(component, key);
+                }
+                return ret;
+            })
+            : props;
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        $$.fragment = create_fragment($$.ctx);
+        if (options.target) {
+            if (options.hydrate) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.l(children(options.target));
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, detail));
+    }
+    function append_dev(target, node) {
+        dispatch_dev("SvelteDOMInsert", { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev("SvelteDOMInsert", { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev("SvelteDOMRemove", { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev("SvelteDOMAddEventListener", { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev("SvelteDOMRemoveEventListener", { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+        else
+            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.data === data)
+            return;
+        dispatch_dev("SvelteDOMSetData", { node: text, data });
+        text.data = data;
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error(`'target' is a required option`);
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+            };
+        }
+    }
+
+    // utility functions used in the project
+    // prepend a zero to integers smaller than 10 (used for the second and minute values)
+    function zeroPadded(number) {
+      return number >= 10 ? number.toString() : `0${number}`;
+    }
+    // consider the last digit of the input number (used for the tenths of seconds)
+    function lastDigit(number) {
+      return number.toString().slice(-2);
+    }
+
+    /* format time in the following format
+    mm:ss:t
+    zero padded minutes, zero padded seconds, tenths of seconds
+    */
+    function formatTime(milliseconds) {
+      const mm = zeroPadded(Math.floor(milliseconds / 1000 / 60));
+      const ss = zeroPadded(Math.floor(milliseconds / 1000) % 60);
+      const t = lastDigit(Math.floor(milliseconds / 10));
+      return `${mm}:${ss}.${t}`;
+    }
+
+    /* src\stopWatch\StopWatchSVG.svelte generated by Svelte v3.12.1 */
+
+    const file = "src\\stopWatch\\StopWatchSVG.svelte";
+
+    function create_fragment(ctx) {
+    	var svg, g4, circle0, use, g1, g0, path0, g1_transform_value, g3, g2, path1, g2_transform_value, circle1, circle2, text_1, t_value = formatTime(ctx.lapse) + "", t;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			g4 = svg_element("g");
+    			circle0 = svg_element("circle");
+    			use = svg_element("use");
+    			g1 = svg_element("g");
+    			g0 = svg_element("g");
+    			path0 = svg_element("path");
+    			g3 = svg_element("g");
+    			g2 = svg_element("g");
+    			path1 = svg_element("path");
+    			circle1 = svg_element("circle");
+    			circle2 = svg_element("circle");
+    			text_1 = svg_element("text");
+    			t = text(t_value);
+    			attr_dev(circle0, "id", "dial");
+    			attr_dev(circle0, "cx", "0");
+    			attr_dev(circle0, "cy", "0");
+    			attr_dev(circle0, "r", "42");
+    			attr_dev(circle0, "fill", "none");
+    			attr_dev(circle0, "stroke", "currentColor");
+    			attr_dev(circle0, "stroke-width", "5");
+    			attr_dev(circle0, "stroke-dasharray", "0.3 1.898");
+    			add_location(circle0, file, 30, 8, 794);
+    			attr_dev(use, "href", "#dial");
+    			attr_dev(use, "transform", "scale(-1 1)");
+    			add_location(use, file, 31, 8, 932);
+    			attr_dev(path0, "d", "M -2.25 0 h 4.5 l -2.25 2.5 l -2.25 -2.5");
+    			attr_dev(path0, "fill", "currentColor");
+    			attr_dev(path0, "stroke", "currentColor");
+    			attr_dev(path0, "stroke-width", "1");
+    			attr_dev(path0, "stroke-linejoin", "round");
+    			attr_dev(path0, "stroke-linecap", "round");
+    			add_location(path0, file, 35, 16, 1112);
+    			attr_dev(g0, "transform", "translate(0 -50)");
+    			add_location(g0, file, 34, 12, 1062);
+    			attr_dev(g1, "transform", g1_transform_value = "rotate(" + ctx.rotation + ")");
+    			add_location(g1, file, 33, 8, 992);
+    			attr_dev(path1, "d", "M 0 -1 v -7.5");
+    			attr_dev(path1, "fill", "none");
+    			attr_dev(path1, "stroke", "currentColor");
+    			attr_dev(path1, "stroke-width", "0.4");
+    			attr_dev(path1, "stroke-linejoin", "round");
+    			attr_dev(path1, "stroke-linecap", "round");
+    			add_location(path1, file, 41, 16, 1452);
+    			attr_dev(g2, "transform", g2_transform_value = "rotate(" + (ctx.rotation * 60) % 360 + ")");
+    			add_location(g2, file, 40, 12, 1365);
+    			attr_dev(circle1, "r", "9");
+    			attr_dev(circle1, "fill", "none");
+    			attr_dev(circle1, "stroke", "currentColor");
+    			attr_dev(circle1, "stroke-width", "0.4");
+    			add_location(circle1, file, 43, 12, 1615);
+    			attr_dev(circle2, "r", "1");
+    			attr_dev(circle2, "fill", "none");
+    			attr_dev(circle2, "stroke", "currentColor");
+    			attr_dev(circle2, "stroke-width", "0.4");
+    			add_location(circle2, file, 44, 12, 1705);
+    			attr_dev(g3, "transform", "translate(0 20)");
+    			add_location(g3, file, 39, 8, 1320);
+    			attr_dev(text_1, "text-anchor", "middle");
+    			attr_dev(text_1, "fill", "currentColor");
+    			attr_dev(text_1, "dominant-baseline", "middle");
+    			attr_dev(text_1, "font-size", "14");
+    			set_style(text_1, "font-weight", "300");
+    			set_style(text_1, "letter-spacing", "1px");
+    			add_location(text_1, file, 47, 8, 1807);
+    			attr_dev(g4, "transform", "translate(50 50)");
+    			add_location(g4, file, 29, 4, 752);
+    			attr_dev(svg, "viewBox", "0 0 100 100");
+    			attr_dev(svg, "width", "200");
+    			attr_dev(svg, "height", "200");
+    			attr_dev(svg, "class", "svelte-11zd0v3");
+    			add_location(svg, file, 28, 0, 694);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, g4);
+    			append_dev(g4, circle0);
+    			append_dev(g4, use);
+    			append_dev(g4, g1);
+    			append_dev(g1, g0);
+    			append_dev(g0, path0);
+    			ctx.g1_binding(g1);
+    			append_dev(g4, g3);
+    			append_dev(g3, g2);
+    			append_dev(g2, path1);
+    			ctx.g2_binding(g2);
+    			append_dev(g3, circle1);
+    			append_dev(g3, circle2);
+    			append_dev(g4, text_1);
+    			append_dev(text_1, t);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if ((changed.rotation) && g1_transform_value !== (g1_transform_value = "rotate(" + ctx.rotation + ")")) {
+    				attr_dev(g1, "transform", g1_transform_value);
+    			}
+
+    			if ((changed.rotation) && g2_transform_value !== (g2_transform_value = "rotate(" + (ctx.rotation * 60) % 360 + ")")) {
+    				attr_dev(g2, "transform", g2_transform_value);
+    			}
+
+    			if ((changed.lapse) && t_value !== (t_value = formatTime(ctx.lapse) + "")) {
+    				set_data_dev(t, t_value);
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(svg);
+    			}
+
+    			ctx.g1_binding(null);
+    			ctx.g2_binding(null);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { lapse = 0 } = $$props;
+        let seconds;
+        let minutes;
+        let transitioned;
+
+    	const writable_props = ['lapse'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<StopWatchSVG> was created with unknown prop '${key}'`);
+    	});
+
+    	function g1_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('minutes', minutes = $$value);
+    		});
+    	}
+
+    	function g2_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('seconds', seconds = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$props => {
+    		if ('lapse' in $$props) $$invalidate('lapse', lapse = $$props.lapse);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { lapse, seconds, minutes, transitioned, rotation };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('lapse' in $$props) $$invalidate('lapse', lapse = $$props.lapse);
+    		if ('seconds' in $$props) $$invalidate('seconds', seconds = $$props.seconds);
+    		if ('minutes' in $$props) $$invalidate('minutes', minutes = $$props.minutes);
+    		if ('transitioned' in $$props) $$invalidate('transitioned', transitioned = $$props.transitioned);
+    		if ('rotation' in $$props) $$invalidate('rotation', rotation = $$props.rotation);
+    	};
+
+    	let rotation;
+
+    	$$self.$$.update = ($$dirty = { lapse: 1, minutes: 1, seconds: 1, transitioned: 1 }) => {
+    		if ($$dirty.lapse) { $$invalidate('rotation', rotation = ((lapse / 1000 / 60) * 360) % 360); }
+    		if ($$dirty.lapse || $$dirty.minutes || $$dirty.seconds) { if (!lapse && minutes && seconds) {
+                    $$invalidate('minutes', minutes.style.transition = "transform 0.2s ease-in-out", minutes);
+                    $$invalidate('seconds', seconds.style.transition = "transform 0.2s ease-in-out", seconds);
+                    $$invalidate('transitioned', transitioned = false);
+                } }
+    		if ($$dirty.lapse || $$dirty.transitioned) { if (lapse && !transitioned) {
+                    $$invalidate('minutes', minutes.style.transition = "none", minutes);
+                    $$invalidate('seconds', seconds.style.transition = "none", seconds);
+                    $$invalidate('transitioned', transitioned = true);
+                } }
+    	};
+
+    	return {
+    		lapse,
+    		seconds,
+    		minutes,
+    		rotation,
+    		g1_binding,
+    		g2_binding
+    	};
+    }
+
+    class StopWatchSVG extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, ["lapse"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "StopWatchSVG", options, id: create_fragment.name });
+    	}
+
+    	get lapse() {
+    		throw new Error("<StopWatchSVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set lapse(value) {
+    		throw new Error("<StopWatchSVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    const subscriber_queue = [];
+    /**
+     * Creates a `Readable` store that allows reading by subscription.
+     * @param value initial value
+     * @param {StartStopNotifier}start start and stop notifications for subscriptions
+     */
+    function readable(value, start) {
+        return {
+            subscribe: writable(value, start).subscribe,
+        };
+    }
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = [];
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (let i = 0; i < subscribers.length; i += 1) {
+                        const s = subscribers[i];
+                        s[1]();
+                        subscriber_queue.push(s, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.push(subscriber);
+            if (subscribers.length === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                const index = subscribers.indexOf(subscriber);
+                if (index !== -1) {
+                    subscribers.splice(index, 1);
+                }
+                if (subscribers.length === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    // set up a readable store which returns the number of milliseconds between the moment the store is subscribed and following an interval
+    const time = readable(0, function start(set) {
+    	const beginning = new Date();
+    	const beginningTime = beginning.getTime();
+
+    	const interval = setInterval(() => {
+    		const current = new Date();
+    		const currentTime = current.getTime();
+    		set(currentTime - beginningTime);
+    	}, 10);
+
+    	return function stop() {
+    		// ! forcedly set the readable value to 0 before clearing the interval
+    		// it seems the store would otherwise retain the last value and the application would stagger from this value straight to 0
+    		set(0);
+    		clearInterval(interval);
+    	};
+    });
+
+    /* src\stopWatch\StopWatch.svelte generated by Svelte v3.12.1 */
+
+    const file$1 = "src\\stopWatch\\StopWatch.svelte";
+
+    function create_fragment$1(ctx) {
+    	var div, current;
+
+    	var stopwatchsvg = new StopWatchSVG({
+    		props: { lapse: ctx.lapse },
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			stopwatchsvg.$$.fragment.c();
+    			attr_dev(div, "class", "stopwatch");
+    			add_location(div, file$1, 46, 0, 721);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(stopwatchsvg, div, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var stopwatchsvg_changes = {};
+    			if (changed.lapse) stopwatchsvg_changes.lapse = ctx.lapse;
+    			stopwatchsvg.$set(stopwatchsvg_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(stopwatchsvg.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(stopwatchsvg.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			destroy_component(stopwatchsvg);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$1.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	
+
+      let { running = false } = $$props;
+
+      let lapse = 0;
+      let unsubscribe;
+
+      function start() {
+        $$invalidate('unsubscribe', unsubscribe = time.subscribe(value => {
+          $$invalidate('lapse', lapse = value);
+        }));
+      }
+
+      function pause() {
+        terminate();
+      }
+
+      function terminate() {
+        if (unsubscribe) {
+          unsubscribe();
+          $$invalidate('unsubscribe', unsubscribe = null);
+        }
+      }
+
+      function stop() {
+        $$invalidate('lapse', lapse = 0);
+        terminate();
+      }
+
+      onDestroy(() => {
+        terminate();
+      });
+
+    	const writable_props = ['running'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<StopWatch> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('running' in $$props) $$invalidate('running', running = $$props.running);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { running, lapse, unsubscribe, subscription };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('running' in $$props) $$invalidate('running', running = $$props.running);
+    		if ('lapse' in $$props) $$invalidate('lapse', lapse = $$props.lapse);
+    		if ('unsubscribe' in $$props) $$invalidate('unsubscribe', unsubscribe = $$props.unsubscribe);
+    		if ('subscription' in $$props) subscription = $$props.subscription;
+    	};
+
+    	let subscription;
+
+    	$$self.$$.update = ($$dirty = { running: 1, unsubscribe: 1 }) => {
+    		if ($$dirty.running) { if (running) {
+            stop();
+            start();
+          } else {
+            pause();
+          } }
+    		if ($$dirty.unsubscribe) { subscription = !!unsubscribe; }
+    	};
+
+    	return { running, lapse };
+    }
+
+    class StopWatch extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["running"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "StopWatch", options, id: create_fragment$1.name });
+    	}
+
+    	get running() {
+    		throw new Error("<StopWatch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set running(value) {
+    		throw new Error("<StopWatch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\pathCalculate\ResultGrid.svelte generated by Svelte v3.12.1 */
+
+    const file$2 = "src\\pathCalculate\\ResultGrid.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.item = list[i];
+    	return child_ctx;
+    }
+
+    // (93:8) {#each population as item}
+    function create_each_block(ctx) {
+    	var p, t_value = ctx.item.toString() + "", t;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			t = text(t_value);
+    			attr_dev(p, "class", "svelte-159f179");
+    			add_location(p, file$2, 93, 10, 2116);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if ((changed.population) && t_value !== (t_value = ctx.item.toString() + "")) {
+    				set_data_dev(t, t_value);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(p);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_each_block.name, type: "each", source: "(93:8) {#each population as item}", ctx });
+    	return block;
+    }
+
+    function create_fragment$2(ctx) {
+    	var div27, div16, div0, t0, div3, div1, t2, div2, t3_value = ctx.graph.nodes().length + "", t3, t4, div6, div4, t6, div5, t7, t8, div9, div7, t10, div8, t11, t12, div12, div10, t14, div11, t15, t16, div15, div13, t18, div14, t19_value = ctx.currentBest.bestValue + "", t19, t20, div26, div19, div17, t22, div18, p0, t23_value = ctx.best.toString() + "", t23, t24, div22, div20, t26, div21, p1, t27, t28, div25, div23, t30, div24, current;
+
+    	var stopwatch = new StopWatch({
+    		props: { running: ctx.running },
+    		$$inline: true
+    	});
+
+    	let each_value = ctx.population;
+
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div27 = element("div");
+    			div16 = element("div");
+    			div0 = element("div");
+    			stopwatch.$$.fragment.c();
+    			t0 = space();
+    			div3 = element("div");
+    			div1 = element("div");
+    			div1.textContent = "Stations:";
+    			t2 = space();
+    			div2 = element("div");
+    			t3 = text(t3_value);
+    			t4 = space();
+    			div6 = element("div");
+    			div4 = element("div");
+    			div4.textContent = "Generation:";
+    			t6 = space();
+    			div5 = element("div");
+    			t7 = text(ctx.currentGeneration);
+    			t8 = space();
+    			div9 = element("div");
+    			div7 = element("div");
+    			div7.textContent = "Mutations:";
+    			t10 = space();
+    			div8 = element("div");
+    			t11 = text(ctx.mutationsCount);
+    			t12 = space();
+    			div12 = element("div");
+    			div10 = element("div");
+    			div10.textContent = "Best value:";
+    			t14 = space();
+    			div11 = element("div");
+    			t15 = text(ctx.bestValue);
+    			t16 = space();
+    			div15 = element("div");
+    			div13 = element("div");
+    			div13.textContent = "Best in population:";
+    			t18 = space();
+    			div14 = element("div");
+    			t19 = text(t19_value);
+    			t20 = space();
+    			div26 = element("div");
+    			div19 = element("div");
+    			div17 = element("div");
+    			div17.textContent = "Best path:";
+    			t22 = space();
+    			div18 = element("div");
+    			p0 = element("p");
+    			t23 = text(t23_value);
+    			t24 = space();
+    			div22 = element("div");
+    			div20 = element("div");
+    			div20.textContent = "Best path in current population:";
+    			t26 = space();
+    			div21 = element("div");
+    			p1 = element("p");
+    			t27 = text(ctx.bestPopulation);
+    			t28 = space();
+    			div25 = element("div");
+    			div23 = element("div");
+    			div23.textContent = "Population:";
+    			t30 = space();
+    			div24 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+    			attr_dev(div0, "class", "stopWatch svelte-159f179");
+    			add_location(div0, file$2, 49, 4, 898);
+    			attr_dev(div1, "class", "label");
+    			add_location(div1, file$2, 53, 6, 995);
+    			attr_dev(div2, "class", "value svelte-159f179");
+    			add_location(div2, file$2, 54, 6, 1037);
+    			attr_dev(div3, "class", "row svelte-159f179");
+    			add_location(div3, file$2, 52, 4, 970);
+    			attr_dev(div4, "class", "label");
+    			add_location(div4, file$2, 57, 6, 1127);
+    			attr_dev(div5, "class", "value svelte-159f179");
+    			add_location(div5, file$2, 58, 6, 1171);
+    			attr_dev(div6, "class", "row svelte-159f179");
+    			add_location(div6, file$2, 56, 4, 1102);
+    			attr_dev(div7, "class", "label");
+    			add_location(div7, file$2, 61, 6, 1258);
+    			attr_dev(div8, "class", "value svelte-159f179");
+    			add_location(div8, file$2, 62, 6, 1301);
+    			attr_dev(div9, "class", "row svelte-159f179");
+    			add_location(div9, file$2, 60, 4, 1233);
+    			attr_dev(div10, "class", "label");
+    			add_location(div10, file$2, 65, 6, 1385);
+    			attr_dev(div11, "class", "value svelte-159f179");
+    			add_location(div11, file$2, 66, 6, 1429);
+    			attr_dev(div12, "class", "row svelte-159f179");
+    			add_location(div12, file$2, 64, 4, 1360);
+    			attr_dev(div13, "class", "label");
+    			add_location(div13, file$2, 69, 6, 1508);
+    			attr_dev(div14, "class", "value svelte-159f179");
+    			add_location(div14, file$2, 70, 6, 1560);
+    			attr_dev(div15, "class", "row svelte-159f179");
+    			add_location(div15, file$2, 68, 4, 1483);
+    			attr_dev(div16, "class", "table svelte-159f179");
+    			add_location(div16, file$2, 48, 2, 873);
+    			attr_dev(div17, "class", "label-row svelte-159f179");
+    			add_location(div17, file$2, 76, 6, 1674);
+    			attr_dev(p0, "class", "svelte-159f179");
+    			add_location(p0, file$2, 78, 8, 1754);
+    			attr_dev(div18, "class", "value-row svelte-159f179");
+    			add_location(div18, file$2, 77, 6, 1721);
+    			add_location(div19, file$2, 75, 4, 1661);
+    			attr_dev(div20, "class", "label-row svelte-159f179");
+    			add_location(div20, file$2, 83, 6, 1825);
+    			attr_dev(p1, "class", "svelte-159f179");
+    			add_location(p1, file$2, 85, 8, 1927);
+    			attr_dev(div21, "class", "value-row svelte-159f179");
+    			add_location(div21, file$2, 84, 6, 1894);
+    			add_location(div22, file$2, 82, 4, 1812);
+    			attr_dev(div23, "class", "label-row svelte-159f179");
+    			add_location(div23, file$2, 90, 6, 1997);
+    			attr_dev(div24, "class", "value-row svelte-159f179");
+    			add_location(div24, file$2, 91, 6, 2045);
+    			add_location(div25, file$2, 89, 4, 1984);
+    			attr_dev(div26, "class", "paths svelte-159f179");
+    			add_location(div26, file$2, 74, 2, 1636);
+    			attr_dev(div27, "class", "info svelte-159f179");
+    			add_location(div27, file$2, 47, 0, 851);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div27, anchor);
+    			append_dev(div27, div16);
+    			append_dev(div16, div0);
+    			mount_component(stopwatch, div0, null);
+    			append_dev(div16, t0);
+    			append_dev(div16, div3);
+    			append_dev(div3, div1);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div2, t3);
+    			append_dev(div16, t4);
+    			append_dev(div16, div6);
+    			append_dev(div6, div4);
+    			append_dev(div6, t6);
+    			append_dev(div6, div5);
+    			append_dev(div5, t7);
+    			append_dev(div16, t8);
+    			append_dev(div16, div9);
+    			append_dev(div9, div7);
+    			append_dev(div9, t10);
+    			append_dev(div9, div8);
+    			append_dev(div8, t11);
+    			append_dev(div16, t12);
+    			append_dev(div16, div12);
+    			append_dev(div12, div10);
+    			append_dev(div12, t14);
+    			append_dev(div12, div11);
+    			append_dev(div11, t15);
+    			append_dev(div16, t16);
+    			append_dev(div16, div15);
+    			append_dev(div15, div13);
+    			append_dev(div15, t18);
+    			append_dev(div15, div14);
+    			append_dev(div14, t19);
+    			append_dev(div27, t20);
+    			append_dev(div27, div26);
+    			append_dev(div26, div19);
+    			append_dev(div19, div17);
+    			append_dev(div19, t22);
+    			append_dev(div19, div18);
+    			append_dev(div18, p0);
+    			append_dev(p0, t23);
+    			append_dev(div26, t24);
+    			append_dev(div26, div22);
+    			append_dev(div22, div20);
+    			append_dev(div22, t26);
+    			append_dev(div22, div21);
+    			append_dev(div21, p1);
+    			append_dev(p1, t27);
+    			append_dev(div26, t28);
+    			append_dev(div26, div25);
+    			append_dev(div25, div23);
+    			append_dev(div25, t30);
+    			append_dev(div25, div24);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div24, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var stopwatch_changes = {};
+    			if (changed.running) stopwatch_changes.running = ctx.running;
+    			stopwatch.$set(stopwatch_changes);
+
+    			if ((!current || changed.graph) && t3_value !== (t3_value = ctx.graph.nodes().length + "")) {
+    				set_data_dev(t3, t3_value);
+    			}
+
+    			if (!current || changed.currentGeneration) {
+    				set_data_dev(t7, ctx.currentGeneration);
+    			}
+
+    			if (!current || changed.mutationsCount) {
+    				set_data_dev(t11, ctx.mutationsCount);
+    			}
+
+    			if (!current || changed.bestValue) {
+    				set_data_dev(t15, ctx.bestValue);
+    			}
+
+    			if ((!current || changed.currentBest) && t19_value !== (t19_value = ctx.currentBest.bestValue + "")) {
+    				set_data_dev(t19, t19_value);
+    			}
+
+    			if ((!current || changed.best) && t23_value !== (t23_value = ctx.best.toString() + "")) {
+    				set_data_dev(t23, t23_value);
+    			}
+
+    			if (!current || changed.bestPopulation) {
+    				set_data_dev(t27, ctx.bestPopulation);
+    			}
+
+    			if (changed.population) {
+    				each_value = ctx.population;
+
+    				let i;
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div24, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(stopwatch.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(stopwatch.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div27);
+    			}
+
+    			destroy_component(stopwatch);
+
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$2.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	let { running, graph, currentGeneration, mutationsCount, bestValue, currentBest, population, best } = $$props;
+
+    	const writable_props = ['running', 'graph', 'currentGeneration', 'mutationsCount', 'bestValue', 'currentBest', 'population', 'best'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<ResultGrid> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('running' in $$props) $$invalidate('running', running = $$props.running);
+    		if ('graph' in $$props) $$invalidate('graph', graph = $$props.graph);
+    		if ('currentGeneration' in $$props) $$invalidate('currentGeneration', currentGeneration = $$props.currentGeneration);
+    		if ('mutationsCount' in $$props) $$invalidate('mutationsCount', mutationsCount = $$props.mutationsCount);
+    		if ('bestValue' in $$props) $$invalidate('bestValue', bestValue = $$props.bestValue);
+    		if ('currentBest' in $$props) $$invalidate('currentBest', currentBest = $$props.currentBest);
+    		if ('population' in $$props) $$invalidate('population', population = $$props.population);
+    		if ('best' in $$props) $$invalidate('best', best = $$props.best);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { running, graph, currentGeneration, mutationsCount, bestValue, currentBest, population, best, bestPopulation };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('running' in $$props) $$invalidate('running', running = $$props.running);
+    		if ('graph' in $$props) $$invalidate('graph', graph = $$props.graph);
+    		if ('currentGeneration' in $$props) $$invalidate('currentGeneration', currentGeneration = $$props.currentGeneration);
+    		if ('mutationsCount' in $$props) $$invalidate('mutationsCount', mutationsCount = $$props.mutationsCount);
+    		if ('bestValue' in $$props) $$invalidate('bestValue', bestValue = $$props.bestValue);
+    		if ('currentBest' in $$props) $$invalidate('currentBest', currentBest = $$props.currentBest);
+    		if ('population' in $$props) $$invalidate('population', population = $$props.population);
+    		if ('best' in $$props) $$invalidate('best', best = $$props.best);
+    		if ('bestPopulation' in $$props) $$invalidate('bestPopulation', bestPopulation = $$props.bestPopulation);
+    	};
+
+    	let bestPopulation;
+
+    	$$self.$$.update = ($$dirty = { population: 1, currentBest: 1 }) => {
+    		if ($$dirty.population || $$dirty.currentBest) { $$invalidate('bestPopulation', bestPopulation =
+            population[currentBest.bestPosition] &&
+            population[currentBest.bestPosition].toString()); }
+    	};
+
+    	return {
+    		running,
+    		graph,
+    		currentGeneration,
+    		mutationsCount,
+    		bestValue,
+    		currentBest,
+    		population,
+    		best,
+    		bestPopulation
+    	};
+    }
+
+    class ResultGrid extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, ["running", "graph", "currentGeneration", "mutationsCount", "bestValue", "currentBest", "population", "best"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "ResultGrid", options, id: create_fragment$2.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.running === undefined && !('running' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'running'");
+    		}
+    		if (ctx.graph === undefined && !('graph' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'graph'");
+    		}
+    		if (ctx.currentGeneration === undefined && !('currentGeneration' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'currentGeneration'");
+    		}
+    		if (ctx.mutationsCount === undefined && !('mutationsCount' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'mutationsCount'");
+    		}
+    		if (ctx.bestValue === undefined && !('bestValue' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'bestValue'");
+    		}
+    		if (ctx.currentBest === undefined && !('currentBest' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'currentBest'");
+    		}
+    		if (ctx.population === undefined && !('population' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'population'");
+    		}
+    		if (ctx.best === undefined && !('best' in props)) {
+    			console.warn("<ResultGrid> was created without expected prop 'best'");
+    		}
+    	}
+
+    	get running() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set running(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get graph() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set graph(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get currentGeneration() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set currentGeneration(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get mutationsCount() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set mutationsCount(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get bestValue() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set bestValue(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get currentBest() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set currentBest(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get population() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set population(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get best() {
+    		throw new Error("<ResultGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set best(value) {
+    		throw new Error("<ResultGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    const count = writable(0);
+
+    function randomNumber(boundary) {
+      return parseInt(Math.random() * boundary);
+    }
+
+    function evaluate(indivial, dis) {
+      return indivial.reduce(
+        (sum, element, index, array) => (sum += dis[element][array[index - 1]])
+      );
+    }
+
+    function randomIndivial(length) {
+      return Array.from(Array(length).keys()).shuffle();
+    }
+
+    function getCurrentBest(values) {
+      const min = values.min();
+
+      return {
+        bestValue: min,
+        bestPosition: values.indexOf(min)
+      };
+    }
+
+    function pushMutateMath(seq) {
+      var m, n;
+      do {
+        m = randomNumber(seq.length >> 1);
+        n = randomNumber(seq.length);
+      } while (m >= n);
+
+      var s1 = seq.slice(0, m);
+      var s2 = seq.slice(m, n);
+      var s3 = seq.slice(n, seq.length);
+      return s2
+        .concat(s1)
+        .concat(s3)
+        .clone();
+    }
+
+    function doMutateMath(seq) {
+      let m, n;
+        do {
+          m = randomNumber(seq.length - 2);
+          n = randomNumber(seq.length);
+        } while (m >= n);
+
+        for (var i = 0, j = (n - m + 1) >> 1; i < j; i++) {
+          seq.swap(m + i, n - i);
+        }
+        return seq;
+    }
+
+    function reverseMutateMath(seq) {
+      const reversed = seq.reverse();
+
+      return reversed;
+    }
+
+    // No use
+    // export function preciseMutate(orseq, dis) {
+    //   var seq = orseq.clone();
+    //   if (Math.random() > 0.5) {
+    //     seq.reverse();
+    //   }
+    //   var bestv = evaluate(seq, dis);
+    //   for (var i = 0; i < seq.length >> 1; i++) {
+    //     for (var j = i + 2; j < seq.length - 1; j++) {
+    //       var new_seq = swap_seq(seq, i, i + 1, j, j + 1);
+    //       var v = evaluate(new_seq, dis);
+    //       if (v < bestv) {
+    //         bestv = v;
+    //         seq = new_seq;
+    //       }
+    //     }
+    //   }
+    //   return seq;
+    // }
+    // export function preciseMutate1(orseq, dis) {
+    //   var seq = orseq.clone();
+    //   var bestv = evaluate(seq, dis);
+
+    //   for (var i = 0; i < seq.length - 1; i++) {
+    //     var new_seq = seq.clone();
+    //     new_seq.swap(i, i + 1);
+    //     var v = evaluate(new_seq, dis);
+    //     if (v < bestv) {
+    //       bestv = v;
+    //       seq = new_seq;
+    //     }
+    //   }
+    //   return seq;
+    // }
+    // function swap_seq(seq, p0, p1, q0, q1) {
+    //   var seq1 = seq.slice(0, p0);
+    //   var seq2 = seq.slice(p1 + 1, q1);
+    //   seq2.push(seq[p0]);
+    //   seq2.push(seq[p1]);
+    //   var seq3 = seq.slice(q1, seq.length);
+    //   return seq1.concat(seq2).concat(seq3);
+    // }
+
+    const POPULATION_SIZE = 30;
+    const CROSSOVER_PROBABILITY = 0.9;
+    const MUTATION_PROBABILITY = 0.1;  
+    const INTERVAL_DURATION = 40;
+
+    // Functions with side effects
+    function mutationIteration(array) {
+      count.update(n => n + 1);
+      return array;
+    }
+    const reverseMutate = seq => mutationIteration(reverseMutateMath(seq));
+    const doMutate = seq => mutationIteration(doMutateMath(seq));
+    const pushMutate = seq => mutationIteration(pushMutateMath(seq));
+
+    // Main components
+    function selection(population, currentBest, best, values) {
+      let newPopulation = population.clone();
+
+      let parents = new Array();
+      let initnum = 5;
+      parents.push(newPopulation[currentBest.bestPosition]);
+      parents.push(doMutate(best.clone()));
+      parents.push(pushMutate(best.clone()));
+      parents.push(reverseMutate(best.clone()));
+      parents.push(best.clone());
+
+      const roulette = createRoulette(values);
+
+      for (let i = initnum; i < POPULATION_SIZE; i++) {
+        parents.push(newPopulation[wheelOut(roulette)]);
+      }
+      newPopulation = parents;
+
+      return newPopulation;
+    }
+
+    function mutation(population) {
+      let newPopulation = population.clone();
+      for (let i = 0; i < POPULATION_SIZE; i++) {
+        if (Math.random() < MUTATION_PROBABILITY) {
+          if (Math.random() > 0.5) {
+            newPopulation[i] = doMutate(population[i]);
+          } else {
+            newPopulation[i] = pushMutate(population[i]);
+          }
+          i--;
+        }
+      }
+      return newPopulation;
+    }
+
+    function crossover(population, dis) {
+      let queue = new Array();
+      for (let i = 0; i < POPULATION_SIZE; i++) {
+        if (Math.random() < CROSSOVER_PROBABILITY) {
+          queue.push(i);
+        }
+      }
+      queue.shuffle();
+      for (let i = 0, j = queue.length - 1; i < j; i += 2) {
+        population = doCrossover(queue[i], queue[i + 1], population, dis);
+      }
+
+      return population;
+    }
+
+    // Helper functions
+    function createRoulette(values = []) {
+      const fitnessValues = values.map(item => 1.0 / item);
+      const sum = fitnessValues.reduce((tempSum, el) => (tempSum += el));
+
+      let tempSum;
+      return fitnessValues
+        .map(item => item / sum)
+        .map(item => (tempSum = (tempSum || 0) + item));
+    }
+
+    function doCrossover(x, y, population, dis) {
+      let newPopulation = population.clone();
+
+      let child1 = getChild("next", x, y, newPopulation, dis);
+      let child2 = getChild("previous", x, y, newPopulation, dis);
+      newPopulation[x] = child1;
+      newPopulation[y] = child2;
+
+      return newPopulation;
+    }
+
+    function getChild(fun, x, y, population, dis) {
+      let solution = new Array();
+      let px = population[x].clone();
+      let py = population[y].clone();
+      let dx, dy;
+      let c = px[randomNumber(px.length)];
+      solution.push(c);
+      while (px.length > 1) {
+        dx = px[fun](px.indexOf(c));
+        dy = py[fun](py.indexOf(c));
+        px.deleteByValue(c);
+        py.deleteByValue(c);
+        c = dis[c][dx] < dis[c][dy] ? dx : dy;
+        solution.push(c);
+      }
+      return solution;
+    }
+
+    function wheelOut(roulette = []) {
+      const rand = Math.random();
+      roulette.forEach((item, i) => {
+        if (rand <= item) {
+          return i;
+        }
+      });
+      return 0;
+    }
+
+    /* src\pathCalculate\PathCalculate.svelte generated by Svelte v3.12.1 */
+
+    const file$3 = "src\\pathCalculate\\PathCalculate.svelte";
+
+    function create_fragment$3(ctx) {
+    	var div, t, button, current, dispose;
+
+    	var resultgrid = new ResultGrid({
+    		props: {
+    		running: ctx.running,
+    		graph: ctx.graph,
+    		currentGeneration: ctx.iterators.currentGeneration,
+    		mutationsCount: ctx.mutationsCount,
+    		bestValue: ctx.bestValue,
+    		currentBest: ctx.currentBest,
+    		population: ctx.population,
+    		best: ctx.best
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			resultgrid.$$.fragment.c();
+    			t = space();
+    			button = element("button");
+    			button.textContent = "Start/Stop";
+    			attr_dev(button, "class", "startButton svelte-1ena58u");
+    			add_location(button, file$3, 108, 2, 2844);
+    			attr_dev(div, "class", "calculateBlock");
+    			add_location(div, file$3, 105, 0, 2663);
+    			dispose = listen_dev(button, "click", ctx.onStartOrStop);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(resultgrid, div, null);
+    			append_dev(div, t);
+    			append_dev(div, button);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var resultgrid_changes = {};
+    			if (changed.running) resultgrid_changes.running = ctx.running;
+    			if (changed.graph) resultgrid_changes.graph = ctx.graph;
+    			if (changed.iterators) resultgrid_changes.currentGeneration = ctx.iterators.currentGeneration;
+    			if (changed.mutationsCount) resultgrid_changes.mutationsCount = ctx.mutationsCount;
+    			if (changed.bestValue) resultgrid_changes.bestValue = ctx.bestValue;
+    			if (changed.currentBest) resultgrid_changes.currentBest = ctx.currentBest;
+    			if (changed.population) resultgrid_changes.population = ctx.population;
+    			if (changed.best) resultgrid_changes.best = ctx.best;
+    			resultgrid.$set(resultgrid_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(resultgrid.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(resultgrid.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			destroy_component(resultgrid);
+
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$3.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	
+      const dispatch = createEventDispatcher();
+
+      let { graph, stationsBetween, dis } = $$props;
+
+      let running = false;
+      let mainInterval;
+
+      let iterators = {};
+      let bestValue;
+      let best = [];
+      let currentBest = {};
+      let population = [];
+      let values;
+
+      let mutationsCount;
+
+      const unsubscribe = count.subscribe(value => {
+        $$invalidate('mutationsCount', mutationsCount = value);
+      });
+
+      function onStartOrStop() {
+        if (running) {
+          clearInterval(mainInterval);
+          dispatch("getResult", {
+            result: best
+          });
+          return ($$invalidate('running', running = false));
+        }
+        initData();
+        GAInitialize();
+        mainInterval = setInterval(render, INTERVAL_DURATION);
+        return ($$invalidate('running', running = true));
+      }
+
+      function initData() {
+        $$invalidate('iterators', iterators = {
+          currentGeneration: 0
+        });
+        $$invalidate('bestValue', bestValue = undefined);
+        $$invalidate('best', best = []);
+        $$invalidate('currentBest', currentBest = 0);
+        $$invalidate('population', population = []);
+        values = new Array(POPULATION_SIZE);
+      }
+
+      function render() {
+        GANextGeneration();
+
+        text = `<p>
+      There are ${graph.nodes().length} stations in the map. 
+      The ${iterators.currentGeneration}th generation 
+      with ${mutationsCount} times of mutation. 
+      Best value: ${~~bestValue} -- ${currentBest.bestValue}. 
+      Path: ${best.toString()}</p>`;
+      }
+
+      function GAInitialize() {
+        const stationsCount = graph.nodes().length;
+        $$invalidate('population', population = Array.apply(null, Array(POPULATION_SIZE)).map(item =>
+          randomIndivial(stationsCount)
+        ));
+        setBestValue();
+      }
+      function GANextGeneration() {
+        $$invalidate('iterators', iterators.currentGeneration++, iterators);
+        $$invalidate('population', population = selection(population, currentBest, best, values));
+        $$invalidate('population', population = crossover(population, dis));
+        $$invalidate('population', population = mutation(population));
+        setBestValue();
+      }
+
+      function setBestValue() {
+        values = population.map(item => evaluate(item, dis));
+        $$invalidate('currentBest', currentBest = getCurrentBest(values));
+
+        if (bestValue === undefined || bestValue > currentBest.bestValue) {
+          $$invalidate('best', best = population[currentBest.bestPosition].clone());
+          $$invalidate('bestValue', bestValue = currentBest.bestValue);
+        }
+      }
+
+    	const writable_props = ['graph', 'stationsBetween', 'dis'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<PathCalculate> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('graph' in $$props) $$invalidate('graph', graph = $$props.graph);
+    		if ('stationsBetween' in $$props) $$invalidate('stationsBetween', stationsBetween = $$props.stationsBetween);
+    		if ('dis' in $$props) $$invalidate('dis', dis = $$props.dis);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { graph, stationsBetween, dis, running, mainInterval, iterators, bestValue, best, currentBest, population, values, mutationsCount, text };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('graph' in $$props) $$invalidate('graph', graph = $$props.graph);
+    		if ('stationsBetween' in $$props) $$invalidate('stationsBetween', stationsBetween = $$props.stationsBetween);
+    		if ('dis' in $$props) $$invalidate('dis', dis = $$props.dis);
+    		if ('running' in $$props) $$invalidate('running', running = $$props.running);
+    		if ('mainInterval' in $$props) mainInterval = $$props.mainInterval;
+    		if ('iterators' in $$props) $$invalidate('iterators', iterators = $$props.iterators);
+    		if ('bestValue' in $$props) $$invalidate('bestValue', bestValue = $$props.bestValue);
+    		if ('best' in $$props) $$invalidate('best', best = $$props.best);
+    		if ('currentBest' in $$props) $$invalidate('currentBest', currentBest = $$props.currentBest);
+    		if ('population' in $$props) $$invalidate('population', population = $$props.population);
+    		if ('values' in $$props) values = $$props.values;
+    		if ('mutationsCount' in $$props) $$invalidate('mutationsCount', mutationsCount = $$props.mutationsCount);
+    		if ('text' in $$props) text = $$props.text;
+    	};
+
+    	let text;
+
+    	text = "";
+
+    	return {
+    		graph,
+    		stationsBetween,
+    		dis,
+    		running,
+    		iterators,
+    		bestValue,
+    		best,
+    		currentBest,
+    		population,
+    		mutationsCount,
+    		onStartOrStop
+    	};
+    }
+
+    class PathCalculate extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, ["graph", "stationsBetween", "dis"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "PathCalculate", options, id: create_fragment$3.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.graph === undefined && !('graph' in props)) {
+    			console.warn("<PathCalculate> was created without expected prop 'graph'");
+    		}
+    		if (ctx.stationsBetween === undefined && !('stationsBetween' in props)) {
+    			console.warn("<PathCalculate> was created without expected prop 'stationsBetween'");
+    		}
+    		if (ctx.dis === undefined && !('dis' in props)) {
+    			console.warn("<PathCalculate> was created without expected prop 'dis'");
+    		}
+    	}
+
+    	get graph() {
+    		throw new Error("<PathCalculate>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set graph(value) {
+    		throw new Error("<PathCalculate>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get stationsBetween() {
+    		throw new Error("<PathCalculate>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set stationsBetween(value) {
+    		throw new Error("<PathCalculate>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get dis() {
+    		throw new Error("<PathCalculate>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set dis(value) {
+    		throw new Error("<PathCalculate>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\SchemeRender.svelte generated by Svelte v3.12.1 */
+
+    const file$4 = "src\\SchemeRender.svelte";
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.station = list[i];
+    	child_ctx.index = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.station = list[i];
+    	child_ctx.index = i;
+    	return child_ctx;
+    }
+
+    // (126:0) {#if resultPath}
+    function create_if_block(ctx) {
+    	var div, aside, t;
+
+    	let each_value_1 = ctx.stationsPath;
+
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	var if_block = (ctx.showScheme) && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			aside = element("aside");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t = space();
+    			if (if_block) if_block.c();
+    			attr_dev(aside, "class", "svelte-1jqfczw");
+    			add_location(aside, file$4, 129, 0, 2510);
+    			attr_dev(div, "class", "container svelte-1jqfczw");
+    			add_location(div, file$4, 127, 0, 2483);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, aside);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(aside, null);
+    			}
+
+    			append_dev(div, t);
+    			if (if_block) if_block.m(div, null);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.stationsPath || changed.showingStation) {
+    				each_value_1 = ctx.stationsPath;
+
+    				let i;
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(aside, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+    				each_blocks.length = each_value_1.length;
+    			}
+
+    			if (ctx.showScheme) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					if_block.m(div, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			destroy_each(each_blocks, detaching);
+
+    			if (if_block) if_block.d();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block.name, type: "if", source: "(126:0) {#if resultPath}", ctx });
+    	return block;
+    }
+
+    // (132:4) {#if station}
+    function create_if_block_4(ctx) {
+    	var div, html_tag, raw_value = ctx.station.text + "", t, div_class_value, dispose;
+
+    	function mouseover_handler() {
+    		return ctx.mouseover_handler(ctx);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t = space();
+    			html_tag = new HtmlTag(raw_value, t);
+    			attr_dev(div, "class", div_class_value = "" + null_to_empty((ctx.showingStation === ctx.index ? 'activeStation' : '')) + " svelte-1jqfczw");
+    			add_location(div, file$4, 132, 6, 2586);
+    			dispose = listen_dev(div, "mouseover", mouseover_handler);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			html_tag.m(div);
+    			append_dev(div, t);
+    		},
+
+    		p: function update(changed, new_ctx) {
+    			ctx = new_ctx;
+    			if ((changed.stationsPath) && raw_value !== (raw_value = ctx.station.text + "")) {
+    				html_tag.p(raw_value);
+    			}
+
+    			if ((changed.showingStation) && div_class_value !== (div_class_value = "" + null_to_empty((ctx.showingStation === ctx.index ? 'activeStation' : '')) + " svelte-1jqfczw")) {
+    				attr_dev(div, "class", div_class_value);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_4.name, type: "if", source: "(132:4) {#if station}", ctx });
+    	return block;
+    }
+
+    // (131:2) {#each stationsPath as station, index}
+    function create_each_block_1(ctx) {
+    	var if_block_anchor;
+
+    	var if_block = (ctx.station) && create_if_block_4(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.station) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block_4(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_each_block_1.name, type: "each", source: "(131:2) {#each stationsPath as station, index}", ctx });
+    	return block;
+    }
+
+    // (140:0) {#if showScheme}
+    function create_if_block_1(ctx) {
+    	var svg, defs, symbol, path0, path1, path2, g0, text0, t0, text1, t1, text2, t2, g1, g2, text3, t3, text4, t4;
+
+    	var if_block = (ctx.resultPath.length) && create_if_block_2(ctx);
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			defs = svg_element("defs");
+    			symbol = svg_element("symbol");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
+    			path2 = svg_element("path");
+    			g0 = svg_element("g");
+    			text0 = svg_element("text");
+    			t0 = text("Холодногірсько-заводська лінія\r\n      ");
+    			text1 = svg_element("text");
+    			t1 = text("Салтівська лінія\r\n      ");
+    			text2 = svg_element("text");
+    			t2 = text("Олексіївська лінія\r\n      ");
+    			g1 = svg_element("g");
+    			if (if_block) if_block.c();
+    			g2 = svg_element("g");
+    			text3 = svg_element("text");
+    			t3 = text("Державiнська");
+    			text4 = svg_element("text");
+    			t4 = text("Одеська");
+    			attr_dev(path0, "fill", "#fff");
+    			attr_dev(path0, "d", "M6.6 11.5a4.9 4.9 0 110-9.8A4.8 4.8 0 019.7 3a9.7 9.7 0 004.5\r\n          2v3.5a9.7 9.7 0 00-3.9 1.6l-.9.6a4.8 4.8 0 01-2.8 1z");
+    			add_location(path0, file$4, 149, 8, 3006);
+    			attr_dev(path1, "d", "M6.7 3.5a3 3 0 012 .7 11.5 11.5 0 003.7 2V7a11.4 11.4 0 00-3.1\r\n          1.6l-.9.6a3 3 0 01-1.8.6 3.1 3.1 0 110-6.3m0-3.5A6.6 6.6 0 000 6.6a6.6\r\n          6.6 0 006.6 6.7 6.5 6.5 0 003.8-1.3l.9-.6a8 8 0 014.6-1.4V3.3a8 8 0\r\n          01-5-1.8A6.5 6.5 0 006.6 0z");
+    			add_location(path1, file$4, 153, 8, 3188);
+    			attr_dev(symbol, "id", "w");
+    			add_location(symbol, file$4, 148, 6, 2981);
+    			add_location(defs, file$4, 147, 4, 2967);
+    			attr_dev(path2, "fill", "none");
+    			attr_dev(path2, "stroke", ctx.colors.green);
+    			attr_dev(path2, "stroke-width", "3");
+    			attr_dev(path2, "d", "M747 1310l-18-18-241 241a72 72 0 00-21 51v85h-15v21h56v-21h-16v-85a47\r\n      47 0 0114-34l46-45 12 12 15-15-12-12z");
+    			add_location(path2, file$4, 161, 4, 3512);
+    			attr_dev(text0, "fill", ctx.colors.red);
+    			attr_dev(text0, "transform", "rotate(-90 1562.5 515.7)");
+    			add_location(text0, file$4, 169, 6, 3752);
+    			attr_dev(text1, "fill", ctx.colors.blue);
+    			attr_dev(text1, "transform", "rotate(-90 700.6 -347.6)");
+    			add_location(text1, file$4, 172, 6, 3876);
+    			attr_dev(text2, "fill", ctx.colors.green);
+    			attr_dev(text2, "transform", "rotate(-90 415.7 -32.8)");
+    			add_location(text2, file$4, 175, 6, 3987);
+    			attr_dev(g0, "font-size", "34");
+    			add_location(g0, file$4, 168, 4, 3726);
+    			attr_dev(g1, "fill", ctx.colors.text);
+    			attr_dev(g1, "font-size", "53");
+    			add_location(g1, file$4, 179, 4, 4108);
+    			attr_dev(text3, "transform", "translate(573 1556)");
+    			add_location(text3, file$4, 207, 6, 4887);
+    			attr_dev(text4, "transform", "translate(519 1690)");
+    			add_location(text4, file$4, 208, 6, 4952);
+    			attr_dev(g2, "fill", ctx.colors.textDisable);
+    			attr_dev(g2, "font-size", "53");
+    			add_location(g2, file$4, 206, 4, 4835);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "xmlns:xlink", "http://www.w3.org/1999/xlink");
+    			attr_dev(svg, "class", "map svelte-1jqfczw");
+    			attr_dev(svg, "font-family", "Tahoma");
+    			attr_dev(svg, "viewBox", "0 0 1501 2151");
+    			add_location(svg, file$4, 140, 2, 2794);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, defs);
+    			append_dev(defs, symbol);
+    			append_dev(symbol, path0);
+    			append_dev(symbol, path1);
+    			append_dev(svg, path2);
+    			append_dev(svg, g0);
+    			append_dev(g0, text0);
+    			append_dev(text0, t0);
+    			append_dev(g0, text1);
+    			append_dev(text1, t1);
+    			append_dev(g0, text2);
+    			append_dev(text2, t2);
+    			append_dev(svg, g1);
+    			if (if_block) if_block.m(g1, null);
+    			append_dev(svg, g2);
+    			append_dev(g2, text3);
+    			append_dev(text3, t3);
+    			append_dev(g2, text4);
+    			append_dev(text4, t4);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.resultPath.length) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block_2(ctx);
+    					if_block.c();
+    					if_block.m(g1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(svg);
+    			}
+
+    			if (if_block) if_block.d();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_1.name, type: "if", source: "(140:0) {#if showScheme}", ctx });
+    	return block;
+    }
+
+    // (182:6) {#if resultPath.length}
+    function create_if_block_2(ctx) {
+    	var each_1_anchor;
+
+    	let each_value = ctx.stationsPath;
+
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.stationsPath || changed.showingStation || changed.colors) {
+    				each_value = ctx.stationsPath;
+
+    				let i;
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+
+    			if (detaching) {
+    				detach_dev(each_1_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_2.name, type: "if", source: "(182:6) {#if resultPath.length}", ctx });
+    	return block;
+    }
+
+    // (185:10) {#if station}
+    function create_if_block_3(ctx) {
+    	var g3, g1, g0, raw0_value = ctx.station.path + "", g0_stroke_value, g2, raw1_value = ctx.station.stop + "", g2_fill_value, text_1, raw2_value = ctx.station.text + "", text_1_style_value, g3_class_value;
+
+    	const block = {
+    		c: function create() {
+    			g3 = svg_element("g");
+    			g1 = svg_element("g");
+    			g0 = svg_element("g");
+    			g2 = svg_element("g");
+    			text_1 = svg_element("text");
+    			attr_dev(g0, "stroke", g0_stroke_value = ctx.colors[ctx.station.color]);
+    			add_location(g0, file$4, 187, 16, 4419);
+    			attr_dev(g1, "fill", "none");
+    			attr_dev(g1, "stroke-miterlimit", "10");
+    			attr_dev(g1, "stroke-width", "28");
+    			add_location(g1, file$4, 186, 14, 4345);
+    			attr_dev(g2, "fill", g2_fill_value = ctx.colors[ctx.station.color]);
+    			add_location(g2, file$4, 192, 14, 4553);
+    			attr_dev(text_1, "style", text_1_style_value = ctx.station.style);
+    			add_location(text_1, file$4, 196, 14, 4661);
+    			attr_dev(g3, "class", g3_class_value = "station " + (ctx.showingStation === ctx.index ? 'fadein' : '') + " svelte-1jqfczw");
+    			add_location(g3, file$4, 185, 12, 4267);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g3, anchor);
+    			append_dev(g3, g1);
+    			append_dev(g1, g0);
+    			g0.innerHTML = raw0_value;
+    			append_dev(g3, g2);
+    			g2.innerHTML = raw1_value;
+    			append_dev(g3, text_1);
+    			text_1.innerHTML = raw2_value;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if ((changed.stationsPath) && raw0_value !== (raw0_value = ctx.station.path + "")) {
+    				g0.innerHTML = raw0_value;
+    			}
+
+    			if ((changed.stationsPath) && g0_stroke_value !== (g0_stroke_value = ctx.colors[ctx.station.color])) {
+    				attr_dev(g0, "stroke", g0_stroke_value);
+    			}
+
+    			if ((changed.stationsPath) && raw1_value !== (raw1_value = ctx.station.stop + "")) {
+    				g2.innerHTML = raw1_value;
+    			}
+
+    			if ((changed.stationsPath) && g2_fill_value !== (g2_fill_value = ctx.colors[ctx.station.color])) {
+    				attr_dev(g2, "fill", g2_fill_value);
+    			}
+
+    			if ((changed.stationsPath) && raw2_value !== (raw2_value = ctx.station.text + "")) {
+    				text_1.innerHTML = raw2_value;
+    			}
+
+    			if ((changed.stationsPath) && text_1_style_value !== (text_1_style_value = ctx.station.style)) {
+    				attr_dev(text_1, "style", text_1_style_value);
+    			}
+
+    			if ((changed.showingStation) && g3_class_value !== (g3_class_value = "station " + (ctx.showingStation === ctx.index ? 'fadein' : '') + " svelte-1jqfczw")) {
+    				attr_dev(g3, "class", g3_class_value);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(g3);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_3.name, type: "if", source: "(185:10) {#if station}", ctx });
+    	return block;
+    }
+
+    // (184:8) {#each stationsPath as station, index}
+    function create_each_block$1(ctx) {
+    	var if_block_anchor;
+
+    	var if_block = (ctx.station) && create_if_block_3(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.station) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block_3(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_each_block$1.name, type: "each", source: "(184:8) {#each stationsPath as station, index}", ctx });
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	var div, t0, t1, button, t3, if_block_anchor, dispose;
+
+    	var if_block = (ctx.resultPath) && create_if_block(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t0 = text(ctx.resultPath);
+    			t1 = space();
+    			button = element("button");
+    			button.textContent = "Show";
+    			t3 = space();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    			add_location(div, file$4, 120, 0, 2388);
+    			add_location(button, file$4, 122, 0, 2415);
+    			dispose = listen_dev(button, "click", ctx.onShow);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, button, anchor);
+    			insert_dev(target, t3, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.resultPath) {
+    				set_data_dev(t0, ctx.resultPath);
+    			}
+
+    			if (ctx.resultPath) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    				detach_dev(t1);
+    				detach_dev(button);
+    				detach_dev(t3);
+    			}
+
+    			if (if_block) if_block.d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$4.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function getResultPath({ path = [], stationsBetween }) {
+      let resultPath = [];
+
+      for (let i = 1; i < path.length; i++) {
+        const firstIndex = path[i - 1];
+        const secondIndex = path[i];
+        let stations = stationsBetween[firstIndex][secondIndex].slice(1);
+        resultPath = resultPath.concat(stations);
+      }
+      resultPath.unshift(path[0]);
+
+      return resultPath;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let { stationsBetween, path } = $$props;
+
+      let showScheme = false;
+      let resultPath = [];
+      let stationsPath = [];
+      let stations;
+
+      let timerId;
+
+      onMount(async () => {
+        const res = await fetch(`https://metro.kh.ua/metroapi.php?value=stations`);
+        const data = await res.json();
+        stations = data;
+      });
+
+      function showStation(index) {
+        $$invalidate('showingStation', showingStation = index);
+      }
+
+      function onStationHover(index) {
+        clearInterval(timerId);
+        showStation(index);
+      }
+
+      function onShow(){
+        clearInterval(timerId);
+        $$invalidate('showScheme', showScheme = true);
+        showPath();
+      }
+
+      function calculatePath({ path = [], stationsBetween }) {
+        $$invalidate('stationsPath', stationsPath = []);
+
+        if(path && path.length) {
+          $$invalidate('resultPath', resultPath = getResultPath({ path, stationsBetween }));
+
+          resultPath.map(item => {
+            stationsPath.push(stations.find(station => station.id == item));
+          });
+        }
+      }
+
+      function showPath() {
+        let index = 0;
+        timerId = setInterval(() => { 
+          if(index < resultPath.length) {
+            showStation(index);
+            index++;
+          } else {
+            clearInterval(timerId);
+          }  
+        }, 300);
+      }
+
+      const colors = {
+        red: "#d22531",
+        blue: "#2060ba",
+        green: "#41a747",
+        text: "#09303b",
+        textDisable: "#9c98a6"
+      };
+
+    	const writable_props = ['stationsBetween', 'path'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<SchemeRender> was created with unknown prop '${key}'`);
+    	});
+
+    	const mouseover_handler = ({ index }) => onStationHover(index);
+
+    	$$self.$set = $$props => {
+    		if ('stationsBetween' in $$props) $$invalidate('stationsBetween', stationsBetween = $$props.stationsBetween);
+    		if ('path' in $$props) $$invalidate('path', path = $$props.path);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { stationsBetween, path, showScheme, resultPath, stationsPath, stations, timerId, showingStation };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('stationsBetween' in $$props) $$invalidate('stationsBetween', stationsBetween = $$props.stationsBetween);
+    		if ('path' in $$props) $$invalidate('path', path = $$props.path);
+    		if ('showScheme' in $$props) $$invalidate('showScheme', showScheme = $$props.showScheme);
+    		if ('resultPath' in $$props) $$invalidate('resultPath', resultPath = $$props.resultPath);
+    		if ('stationsPath' in $$props) $$invalidate('stationsPath', stationsPath = $$props.stationsPath);
+    		if ('stations' in $$props) stations = $$props.stations;
+    		if ('timerId' in $$props) timerId = $$props.timerId;
+    		if ('showingStation' in $$props) $$invalidate('showingStation', showingStation = $$props.showingStation);
+    	};
+
+    	let showingStation;
+
+    	$$self.$$.update = ($$dirty = { path: 1, stationsBetween: 1 }) => {
+    		if ($$dirty.path || $$dirty.stationsBetween) { calculatePath({ path, stationsBetween }); }
+    	};
+
+    	$$invalidate('showingStation', showingStation = null);
+
+    	return {
+    		stationsBetween,
+    		path,
+    		showScheme,
+    		resultPath,
+    		stationsPath,
+    		onStationHover,
+    		onShow,
+    		colors,
+    		showingStation,
+    		mouseover_handler
+    	};
+    }
+
+    class SchemeRender extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, ["stationsBetween", "path"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "SchemeRender", options, id: create_fragment$4.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.stationsBetween === undefined && !('stationsBetween' in props)) {
+    			console.warn("<SchemeRender> was created without expected prop 'stationsBetween'");
+    		}
+    		if (ctx.path === undefined && !('path' in props)) {
+    			console.warn("<SchemeRender> was created without expected prop 'path'");
+    		}
+    	}
+
+    	get stationsBetween() {
+    		throw new Error("<SchemeRender>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set stationsBetween(value) {
+    		throw new Error("<SchemeRender>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get path() {
+    		throw new Error("<SchemeRender>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set path(value) {
+    		throw new Error("<SchemeRender>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    // A graph data structure with depth-first search and topological sort.
+    var graphDataStructure = function Graph(serialized){
+
+      // The returned graph instance.
+      var graph = {
+        addNode: addNode,
+        removeNode: removeNode,
+        nodes: nodes,
+        adjacent: adjacent,
+        addEdge: addEdge,
+        removeEdge: removeEdge,
+        setEdgeWeight: setEdgeWeight,
+        getEdgeWeight: getEdgeWeight,
+        indegree: indegree,
+        outdegree: outdegree,
+        depthFirstSearch: depthFirstSearch,
+        lowestCommonAncestors: lowestCommonAncestors,
+        topologicalSort: topologicalSort,
+        shortestPath: shortestPath,
+        serialize: serialize,
+        deserialize: deserialize
+      };
+
+      // The adjacency list of the graph.
+      // Keys are node ids.
+      // Values are adjacent node id arrays.
+      var edges = {};
+
+      // The weights of edges.
+      // Keys are string encodings of edges.
+      // Values are weights (numbers).
+      var edgeWeights = {};
+
+      // If a serialized graph was passed into the constructor, deserialize it.
+      if(serialized){
+        deserialize(serialized);
+      }
+
+      // Adds a node to the graph.
+      // If node was already added, this function does nothing.
+      // If node was not already added, this function sets up an empty adjacency list.
+      function addNode(node){
+        edges[node] = adjacent(node);
+        return graph;
+      }
+
+      // Removes a node from the graph.
+      // Also removes incoming and outgoing edges.
+      function removeNode(node){
+
+        // Remove incoming edges.
+        Object.keys(edges).forEach(function (u){
+          edges[u].forEach(function (v){
+            if(v === node){
+              removeEdge(u, v);
+            }
+          });
+        });
+
+        // Remove outgoing edges (and signal that the node no longer exists).
+        delete edges[node];
+
+        return graph;
+      }
+
+      // Gets the list of nodes that have been added to the graph.
+      function nodes(){
+        var nodeSet = {};
+        Object.keys(edges).forEach(function (u){
+          nodeSet[u] = true;
+          edges[u].forEach(function (v){
+            nodeSet[v] = true;
+          });
+        });
+        return Object.keys(nodeSet);
+      }
+
+      // Gets the adjacent node list for the given node.
+      // Returns an empty array for unknown nodes.
+      function adjacent(node){
+        return edges[node] || [];
+      }
+
+      // Computes a string encoding of an edge,
+      // for use as a key in an object.
+      function encodeEdge(u, v){
+        return u + "|" + v;
+      }
+
+      // Sets the weight of the given edge.
+      function setEdgeWeight(u, v, weight){
+        edgeWeights[encodeEdge(u, v)] = weight;
+        return graph;
+      }
+
+      // Gets the weight of the given edge.
+      // Returns 1 if no weight was previously set.
+      function getEdgeWeight(u, v){
+        var weight = edgeWeights[encodeEdge(u, v)];
+        return weight === undefined ? 1 : weight;
+      }
+
+      // Adds an edge from node u to node v.
+      // Implicitly adds the nodes if they were not already added.
+      function addEdge(u, v, weight){
+        addNode(u);
+        addNode(v);
+        adjacent(u).push(v);
+
+        if (weight !== undefined) {
+          setEdgeWeight(u, v, weight);
+        }
+
+        return graph;
+      }
+
+      // Removes the edge from node u to node v.
+      // Does not remove the nodes.
+      // Does nothing if the edge does not exist.
+      function removeEdge(u, v){
+        if(edges[u]){
+          edges[u] = adjacent(u).filter(function (_v){
+            return _v !== v;
+          });
+        }
+        return graph;
+      }
+
+      // Computes the indegree for the given node.
+      // Not very efficient, costs O(E) where E = number of edges.
+      function indegree(node){
+        var degree = 0;
+        function check(v){
+          if(v === node){
+            degree++;
+          }
+        }
+        Object.keys(edges).forEach(function (u){
+          edges[u].forEach(check);
+        });
+        return degree;
+      }
+
+      // Computes the outdegree for the given node.
+      function outdegree(node){
+        return node in edges ? edges[node].length : 0;
+      }
+
+      // Depth First Search algorithm, inspired by
+      // Cormen et al. "Introduction to Algorithms" 3rd Ed. p. 604
+      // This variant includes an additional option
+      // `includeSourceNodes` to specify whether to include or
+      // exclude the source nodes from the result (true by default).
+      // If `sourceNodes` is not specified, all nodes in the graph
+      // are used as source nodes.
+      function depthFirstSearch(sourceNodes, includeSourceNodes){
+
+        if(!sourceNodes){
+          sourceNodes = nodes();
+        }
+
+        if(typeof includeSourceNodes !== "boolean"){
+          includeSourceNodes = true;
+        }
+
+        var visited = {};
+        var nodeList = [];
+
+        function DFSVisit(node){
+          if(!visited[node]){
+            visited[node] = true;
+            adjacent(node).forEach(DFSVisit);
+            nodeList.push(node);
+          }
+        }
+
+        if(includeSourceNodes){
+          sourceNodes.forEach(DFSVisit);
+        } else {
+          sourceNodes.forEach(function (node){
+            visited[node] = true;
+          });
+          sourceNodes.forEach(function (node){
+            adjacent(node).forEach(DFSVisit);
+          });
+        }
+
+        return nodeList;
+      }
+
+      // Least Common Ancestors
+      // Inspired by https://github.com/relaxedws/lca/blob/master/src/LowestCommonAncestor.php code
+      // but uses depth search instead of breadth. Also uses some optimizations
+      function lowestCommonAncestors(node1, node2){
+
+        var node1Ancestors = [];
+        var lcas = [];
+
+        function CA1Visit(visited, node){
+          if(!visited[node]){
+            visited[node] = true;
+            node1Ancestors.push(node);
+            if (node == node2) {
+              lcas.push(node);
+              return false; // found - shortcut
+            }
+            return adjacent(node).every(node => {
+              return CA1Visit(visited, node);
+            });
+          } else {
+            return true;
+          }
+        }
+
+        function CA2Visit(visited, node){
+          if(!visited[node]){
+            visited[node] = true;
+            if (node1Ancestors.indexOf(node) >= 0) {
+              lcas.push(node);
+            } else if (lcas.length == 0) {
+              adjacent(node).forEach(node => {
+                CA2Visit(visited, node);
+              });
+            }
+          }
+        }
+
+        if (CA1Visit({}, node1)) { // No shortcut worked
+          CA2Visit({}, node2);
+        }
+
+        return lcas;
+      }
+
+      // The topological sort algorithm yields a list of visited nodes
+      // such that for each visited edge (u, v), u comes before v in the list.
+      // Amazingly, this comes from just reversing the result from depth first search.
+      // Cormen et al. "Introduction to Algorithms" 3rd Ed. p. 613
+      function topologicalSort(sourceNodes, includeSourceNodes){
+        return depthFirstSearch(sourceNodes, includeSourceNodes).reverse();
+      }
+
+      // Dijkstra's Shortest Path Algorithm.
+      // Cormen et al. "Introduction to Algorithms" 3rd Ed. p. 658
+      // Variable and function names correspond to names in the book.
+      function shortestPath(source, destination){
+
+        // Upper bounds for shortest path weights from source.
+        var d = {};
+
+        // Predecessors.
+        var p = {};
+
+        // Poor man's priority queue, keyed on d.
+        var q = {};
+
+        function initializeSingleSource(){
+          nodes().forEach(function (node){
+            d[node] = Infinity;
+          });
+          if (d[source] !== Infinity) {
+            throw new Error("Source node is not in the graph");
+          }
+          if (d[destination] !== Infinity) {
+            throw new Error("Destination node is not in the graph");
+          }
+          d[source] = 0;
+        }
+
+        // Adds entries in q for all nodes.
+        function initializePriorityQueue(){
+          nodes().forEach(function (node){
+            q[node] = true;
+          });
+        }
+
+        // Returns true if q is empty.
+        function priorityQueueEmpty(){
+          return Object.keys(q).length === 0;
+        }
+
+        // Linear search to extract (find and remove) min from q.
+        function extractMin(){
+          var min = Infinity;
+          var minNode;
+          Object.keys(q).forEach(function(node){
+            if (d[node] < min) {
+              min = d[node];
+              minNode = node;
+            }
+          });
+          if (minNode === undefined) {
+            // If we reach here, there's a disconnected subgraph, and we're done.
+            q = {};
+            return null;
+          }
+          delete q[minNode];
+          return minNode;
+        }
+
+        function relax(u, v){
+          var w = getEdgeWeight(u, v);
+          if (d[v] > d[u] + w) {
+            d[v] = d[u] + w;
+            p[v] = u;
+          }
+        }
+
+        function dijkstra(){
+          initializeSingleSource();
+          initializePriorityQueue();
+          while(!priorityQueueEmpty()){
+            var u = extractMin();
+            adjacent(u).forEach(function (v){
+              relax(u, v);
+            });
+          }
+        }
+
+        // Assembles the shortest path by traversing the
+        // predecessor subgraph from destination to source.
+        function path(){
+          var nodeList = [];
+          var weight = 0;
+          var node = destination;
+          while(p[node]){
+            nodeList.push(node);
+            weight += getEdgeWeight(p[node], node);
+            node = p[node];
+          }
+          if (node !== source) {
+            throw new Error("No path found");
+          }
+          nodeList.push(node);
+          nodeList.reverse();
+          nodeList.weight = weight;
+          return nodeList;
+        }
+
+        dijkstra();
+
+        return path();
+      }
+
+      // Serializes the graph.
+      function serialize(){
+        var serialized = {
+          nodes: nodes().map(function (id){
+            return { id: id };
+          }),
+          links: []
+        };
+
+        serialized.nodes.forEach(function (node){
+          var source = node.id;
+          adjacent(source).forEach(function (target){
+            serialized.links.push({
+              source: source,
+              target: target,
+              weight: getEdgeWeight(source, target)
+            });
+          });
+        });
+
+        return serialized;
+      }
+
+      // Deserializes the given serialized graph.
+      function deserialize(serialized){
+        serialized.nodes.forEach(function (node){ addNode(node.id); });
+        serialized.links.forEach(function (link){ addEdge(link.source, link.target, link.weight); });
+        return graph;
+      }
+
+      return graph;
+    };
+
+    function createGraph(data) {
+      const INTERVAL_TIME = 6;
+
+      function getWeight(weight) {
+        return weight + INTERVAL_TIME;
+      }
+
+      const graph = graphDataStructure();
+
+      data
+        .map(item => ({
+          ...item,
+          weight: getWeight(item.weight)
+        }))
+        .map(item => {
+          graph.addEdge(item.from, item.to, item.weight);
+          graph.addEdge(item.to, item.from, item.weight);
+        });
+
+      let stationsBetween = [];
+
+      graph.nodes().map((i, index) => {
+        stationsBetween.push([]);
+        
+        graph.nodes().map((j, insideIndex) => {
+          const path = graph.shortestPath(i, j);
+          const cleanPath = path.slice();
+          stationsBetween[index].push(cleanPath);
+        });
+      });
+
+      graph.nodes().map((i, index) => {
+        graph.nodes().map((j, insideIndex) => {
+          const path = graph.shortestPath(i, j);
+          graph.addEdge(i, j, path.weight);
+        });
+      });
+
+      const distances = countDistances(graph);
+
+      return { graph, stationsBetween, distances };
+    }
+
+    function countDistances(graph) {
+      const points = graph.nodes();
+      const length = points.length;
+
+      return Array.apply(null, Array(length)).map((item, index) =>
+        Array.apply(null, Array(length)).map(
+          (item, insideIndex) =>
+            ~~graph.getEdgeWeight(points[index], points[insideIndex])
+        )
+      );
+    }
+
+    /* src\Scheme.svelte generated by Svelte v3.12.1 */
+
+    const file$5 = "src\\Scheme.svelte";
+
+    // (28:2) {#if graph && stationsBetween && dis}
+    function create_if_block$1(ctx) {
+    	var current;
+
+    	var pathcalculate = new PathCalculate({
+    		props: {
+    		graph: ctx.graph,
+    		stationsBetween: ctx.stationsBetween,
+    		dis: ctx.dis
+    	},
+    		$$inline: true
+    	});
+    	pathcalculate.$on("getResult", ctx.getResult);
+
+    	const block = {
+    		c: function create() {
+    			pathcalculate.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(pathcalculate, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var pathcalculate_changes = {};
+    			if (changed.graph) pathcalculate_changes.graph = ctx.graph;
+    			if (changed.stationsBetween) pathcalculate_changes.stationsBetween = ctx.stationsBetween;
+    			if (changed.dis) pathcalculate_changes.dis = ctx.dis;
+    			pathcalculate.$set(pathcalculate_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(pathcalculate.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(pathcalculate.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(pathcalculate, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block$1.name, type: "if", source: "(28:2) {#if graph && stationsBetween && dis}", ctx });
+    	return block;
+    }
+
+    function create_fragment$5(ctx) {
+    	var div, t, current;
+
+    	var if_block = (ctx.graph && ctx.stationsBetween && ctx.dis) && create_if_block$1(ctx);
+
+    	var schemerender = new SchemeRender({
+    		props: {
+    		path: ctx.bestPath,
+    		stationsBetween: ctx.stationsBetween
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if (if_block) if_block.c();
+    			t = space();
+    			schemerender.$$.fragment.c();
+    			attr_dev(div, "class", "lol");
+    			add_location(div, file$5, 26, 0, 665);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if (if_block) if_block.m(div, null);
+    			append_dev(div, t);
+    			mount_component(schemerender, div, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.graph && ctx.stationsBetween && ctx.dis) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    					transition_in(if_block, 1);
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div, t);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+    				check_outros();
+    			}
+
+    			var schemerender_changes = {};
+    			if (changed.bestPath) schemerender_changes.path = ctx.bestPath;
+    			if (changed.stationsBetween) schemerender_changes.stationsBetween = ctx.stationsBetween;
+    			schemerender.$set(schemerender_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+
+    			transition_in(schemerender.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			transition_out(schemerender.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			if (if_block) if_block.d();
+
+    			destroy_component(schemerender);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$5.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	
+
+      let graph;
+      let stationsBetween;
+      let dis;
+      let bestPath;
+
+      onMount(async () => {
+        const res = await fetch(`https://metro.kh.ua/metroapi.php?value=path`);
+        const data = await res.json();
+        const graphData = createGraph(data);
+        $$invalidate('graph', graph = graphData.graph);
+        $$invalidate('stationsBetween', stationsBetween = graphData.stationsBetween);
+        $$invalidate('dis', dis = graphData.distances);
+      });
+
+      function getResult(e) {
+        $$invalidate('bestPath', bestPath = e.detail.result);
+      }
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('graph' in $$props) $$invalidate('graph', graph = $$props.graph);
+    		if ('stationsBetween' in $$props) $$invalidate('stationsBetween', stationsBetween = $$props.stationsBetween);
+    		if ('dis' in $$props) $$invalidate('dis', dis = $$props.dis);
+    		if ('bestPath' in $$props) $$invalidate('bestPath', bestPath = $$props.bestPath);
+    	};
+
+    	return {
+    		graph,
+    		stationsBetween,
+    		dis,
+    		bestPath,
+    		getResult
+    	};
+    }
+
+    class Scheme extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Scheme", options, id: create_fragment$5.name });
+    	}
+    }
+
+    function initArrayPrototypes() {
+      Array.prototype.clone = function() {
+        return this.slice(0);
+      };
+      Array.prototype.max = function() {
+        return Math.max.apply(null, this);
+      };
+      Array.prototype.min = function() {
+        return Math.min.apply(null, this);
+      };
+      Array.prototype.shuffle = function() {
+        for (
+          var j, x, i = this.length - 1;
+          i;
+          j = randomNumber(i), x = this[--i], this[i] = this[j], this[j] = x
+        );
+        return this;
+      };
+      Array.prototype.indexOf = function(value) {
+        for (var i = 0; i < this.length; i++) {
+          if (this[i] === value) {
+            return i;
+          }
+        }
+      };
+      Array.prototype.deleteByValue = function(value) {
+        var pos = this.indexOf(value);
+        this.splice(pos, 1);
+      };
+      Array.prototype.next = function(index) {
+        if (index === this.length - 1) {
+          return this[0];
+        } else {
+          return this[index + 1];
+        }
+      };
+      Array.prototype.previous = function(index) {
+        if (index === 0) {
+          return this[this.length - 1];
+        } else {
+          return this[index - 1];
+        }
+      };
+      Array.prototype.swap = function(x, y) {
+        if (x > this.length || y > this.length || x === y) {
+          return;
+        }
+        var tem = this[x];
+        this[x] = this[y];
+        this[y] = tem;
+      };
+      Array.prototype.roll = function() {
+        var rand = randomNumber(this.length);
+        var tem = [];
+        for (var i = rand; i < this.length; i++) {
+          tem.push(this[i]);
+        }
+        for (var i = 0; i < rand; i++) {
+          tem.push(this[i]);
+        }
+        return tem;
+      };
+    }
+
+    /* src\App.svelte generated by Svelte v3.12.1 */
+
+    const file$6 = "src\\App.svelte";
+
+    function create_fragment$6(ctx) {
+    	var main, current;
+
+    	var scheme = new Scheme({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			scheme.$$.fragment.c();
+    			add_location(main, file$6, 56, 0, 3086);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			mount_component(scheme, main, null);
+    			current = true;
+    		},
+
+    		p: noop,
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(scheme.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(scheme.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(main);
+    			}
+
+    			destroy_component(scheme);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$6.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$6($$self) {
+    	
+      
+      initArrayPrototypes();
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {};
+
+    	return {};
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "App", options, id: create_fragment$6.name });
+    	}
+    }
+
+    const app = new App({
+    	target: document.body
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map

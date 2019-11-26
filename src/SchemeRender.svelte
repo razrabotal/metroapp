@@ -12,6 +12,8 @@
   let stationsPath = [];
   let stations;
 
+  let timerId;
+
   $: showingStation = null;
 
   onMount(async () => {
@@ -24,8 +26,15 @@
     showingStation = index;
   }
 
+  function onStationHover(index) {
+    clearInterval(timerId);
+    showStation(index);
+  }
+
   function onShow(){
+    clearInterval(timerId);
     showScheme = true;
+    showPath();
   }
 
   function getResultPath({ path = [], stationsBetween }) {
@@ -54,6 +63,18 @@
     }
   }
 
+  function showPath() {
+    let index = 0;
+    timerId = setInterval(() => { 
+      if(index < resultPath.length) {
+        showStation(index);
+        index++
+      } else {
+        clearInterval(timerId);
+      }  
+    }, 300)
+  }
+
   $: calculatePath({ path, stationsBetween });
 
   const colors = {
@@ -72,29 +93,27 @@
 aside {
   background: #eee;
 }
-
-.lel {
-  opacity: 1 !important;
-  animation: none !important;
-}
+  .station {
+    opacity: 0.1;
+  }
+  .fadein {
+    opacity: 1;
+    animation: show 0.5s linear forwards;
+  }
+  .activeStation {
+    background: #999;
+  }
   .map {
     display: block;
     width: 500px;
     margin: 50px auto;
   }
-  .fadein {
-    opacity: 0.1;
-    animation: showing 1.25s linear forwards;
-  }
-  @keyframes showing {
+  @keyframes show {
     0% { 
       opacity: 0.1;
     }
-    30%, 60% {
+    30% {
       opacity: 1;
-    }
-    100% {
-      opacity: 0.1;
     }
   }
 </style>
@@ -111,7 +130,7 @@ aside {
 <aside>
   {#each stationsPath as station, index}
     {#if station}
-      <div on:mouseover="{() => showStation(index)}">
+      <div on:mouseover="{() => onStationHover(index)}" class="{showingStation === index ? 'activeStation' : ''}">
         {@html station.text}
       </div>
     {/if}
@@ -164,7 +183,7 @@ aside {
 
         {#each stationsPath as station, index}
           {#if station}
-            <g class="fadein {showingStation === index ? 'lel' : ''}" style="animation-delay: {index / 30 * 10}s">
+            <g class="station {showingStation === index ? 'fadein' : ''}">
               <g fill="none" stroke-miterlimit="10" stroke-width="28">
                 <g stroke={colors[station.color]}>
                   {@html station.path}

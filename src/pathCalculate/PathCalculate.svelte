@@ -1,5 +1,5 @@
 <script>
-  import StopWatch from "../stopWatch/StopWatch.svelte";
+  import ResultGrid from './ResultGrid.svelte';
 
   import { createEventDispatcher } from "svelte";
   import { count } from "./store.js";
@@ -26,10 +26,10 @@
   let population = [];
   let values;
 
-  let count_value;
+  let mutationsCount;
 
   const unsubscribe = count.subscribe(value => {
-    count_value = value;
+    mutationsCount = value;
   });
 
   function onStartOrStop() {
@@ -63,7 +63,7 @@
     text = `<p>
       There are ${graph.nodes().length} stations in the map. 
       The ${iterators.currentGeneration}th generation 
-      with ${count_value} times of mutation. 
+      with ${mutationsCount} times of mutation. 
       Best value: ${~~bestValue} -- ${currentBest.bestValue}. 
       Path: ${best.toString()}</p>`;
   }
@@ -92,97 +92,19 @@
       bestValue = currentBest.bestValue;
     }
   }
-
-  function toggleStopWatch() {
-
-  }
-  function stopStopWatch() {
-
-  }
 </script>
 
 <style>
-.startButton {
-  border: 0;
-  padding: 8px 20px;
-  background: #ddd;
-  font-size: 14px;
-}
-.info {
-  display: flex;
-  background: #ddd;
-}
-  .table {
-    background: #eee;
-    max-width: 300px;
-  }
-  .stopWatch {
-    display: flex;
-    justify-content: center;
-  }
-  .row {
-    display: flex;
-  }
-  .value {
-    margin-left: auto;
+  .startButton {
+    border: 0;
+    padding: 8px 20px;
+    background: #ddd;
+    font-size: 14px;
   }
 </style>
 
 <div class="calculateBlock">
+  <ResultGrid {running} {graph} currentGeneration={iterators.currentGeneration} {mutationsCount} {bestValue} {currentBest} {population} {best} />
+
   <button class="startButton" on:click={onStartOrStop}>Start/Stop</button>
-
-  
-  <div class="info">
-  <div class="table">
-    <div class="stopWatch">
-        <StopWatch {running}/>
-    </div>
-    <div class="row">
-      <div class="label">Stations:</div>
-      <div class="value">{graph.nodes().length}</div>
-    </div>
-    <div class="row">
-      <div class="label">Generation:</div>
-      <div class="value">{iterators.currentGeneration}</div>
-    </div>
-    <div class="row">
-      <div class="label">Mutations:</div>
-      <div class="value">{count_value}</div>
-    </div>
-    <div class="row">
-      <div class="label">Best value:</div>
-      <div class="value">{bestValue}</div>
-    </div>
-    <div class="row">
-      <div class="label">Best in population:</div>
-      <div class="value">{currentBest.bestValue}</div>
-    </div>
-  </div>
-  
-    <div class="paths">
-      <div>
-        <div class="label-row">Best path:</div>
-        <div class="value-row">{best.toString()}</div>
-      </div>
-
-      <div>
-        <div class="label-row">Best path in current population:</div>
-        <div class="value-row">
-          <p>{ population[currentBest.bestPosition] && population[currentBest.bestPosition].toString() }</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="label-row">Population:</div>
-        <div class="value-row">
-          {#each population as item}
-            <p>{ item.toString()}</p>
-          {/each}
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  
 </div>
