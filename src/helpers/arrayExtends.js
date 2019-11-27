@@ -11,6 +11,7 @@ export default function initArrayPrototypes() {
     return Math.min.apply(null, this);
   };
   Array.prototype.shuffle = function() {
+    if(!this.length) return this;
     for (
       var j, x, i = this.length - 1;
       i;
