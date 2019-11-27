@@ -26,7 +26,7 @@ export default function createGraph(data) {
     
     graph.nodes().map((j, insideIndex) => {
       const path = graph.shortestPath(i, j);
-      const cleanPath = path.slice();
+      const cleanPath = path;
       stationsBetween[index].push(cleanPath);
     });
   });

@@ -1,10 +1,14 @@
 <script>
+  import { onMount } from 'svelte';
   import PathCalculate from "./pathCalculate/PathCalculate.svelte";
   import SchemeRender from "./SchemeRender.svelte";
   import GraphSwitcher from "./GraphSwitcher/GraphSwitcher.svelte";
+  import UserMetroGraph from "./GraphSwitcher/UserMetroGraph.svelte";
   import createGraph from "./graphBuilder";
+  
 
   let selectedMetro;
+  let cache = {};
 
   let bestPath;
   let graph;
@@ -15,28 +19,56 @@
 
   function onSelectMetro(e) {
     selectedMetro = e.detail.result;
-    getGraph();
-    getStations();
+
+    setGraph();
+    setStations();
   }
 
   function getResult(e) {
     bestPath = e.detail.result;
   }
 
+  function onGetUserGraph(e) {
+    let userGraph = e.detail.result;
+    const graphData = createGraph(userGraph);
+    debugger;
+  }
+
   async function getGraph() {
     const res = await fetch(`https://metro.kh.ua/metroapi.php?value=path`);
     const data = await res.json();
-    const graphData = createGraph(data)
+    return createGraph(data);
+  }
+  async function getStations() {
+    const res = await fetch(`https://metro.kh.ua/metroapi.php?value=stations`);
+    const data = await res.json();
+    return data;
+  };
+  async function setGraph() {
+    const graphData = await getData('graphData', getGraph);
     graph = graphData.graph;
     stationsBetween = graphData.stationsBetween;
     dis = graphData.distances;
   }
+  async function setStations() {
+    const stationsData = await getData('stations', getStations);
+    stations = stationsData;
+  }
 
-  async function getStations() {
-    const res = await fetch(`https://metro.kh.ua/metroapi.php?value=stations`);
-    const data = await res.json();
-    stations = data;
-  };
+  onMount(async () => {
+    selectedMetro = 1;
+		setGraph();
+		setStations();
+  });
+  
+  async function getData(variable, func) {
+    if (cache[variable]) {
+      return cache[variable];
+    }
+    const result = await func();
+    cache[variable] = result;
+    return result;
+  }
 </script>
 
 <style global lang="scss">
@@ -64,9 +96,15 @@
 <main>
   <GraphSwitcher on:onSelectMetro={onSelectMetro} {selectedMetro}/>
 
+  {#if selectedMetro === 2}
+    <UserMetroGraph on:onSubmitGraph={onGetUserGraph}/>
+  {/if}
+
   {#if graph && stationsBetween && dis}
     <PathCalculate {graph} {stationsBetween} {dis} on:getResult={getResult}/>
   {/if}
 
-  <SchemeRender path={bestPath} {stationsBetween} {stations}/>
+  {#if bestPath}
+    <SchemeRender path={bestPath} {stationsBetween} {stations}/>
+  {/if}
 </main>

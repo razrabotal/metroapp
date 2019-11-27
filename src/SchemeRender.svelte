@@ -6,9 +6,6 @@
   export let path;
   export let stations;
 
-  import { quintOut } from "svelte/easing";
-  import { fade, draw, fly } from "svelte/transition";
-
   let isMapActive = true;
   let showScheme = false;
   let resultPath = [];
@@ -24,6 +21,7 @@
   }
 
   function onStationHover(index) {
+    // debugger;
     clearInterval(timerId);
     showStation(index);
   }
@@ -40,15 +38,23 @@
   }
 
   function getResultPath({ path = [], stationsBetween }) {
-    let resultPath = [];
+    let resultPath = new Array(path.length);
+    let resultWeight = [];
 
     for (let i = 1; i < path.length; i++) {
       const firstIndex = path[i - 1];
       const secondIndex = path[i];
-      let stations = stationsBetween[firstIndex][secondIndex].slice(1);
-      resultPath = resultPath.concat(stations);
+      const currentGap = stationsBetween[firstIndex][secondIndex];
+      resultPath[i] = {
+        stations: currentGap.slice(1),
+        weight: currentGap.weight
+      };
     }
-    resultPath.unshift(path[0]);
+
+    resultPath[0] = {
+      stations: [path[0].toString()],
+      weight: 0
+    };
 
     return resultPath;
   }
@@ -59,8 +65,10 @@
     if (path && path.length) {
       resultPath = getResultPath({ path, stationsBetween });
 
-      resultPath.map(item => {
-        newStationsPath.push(stations.find(station => station.id == item));
+      resultPath.map(gap => {
+        gap.stations.map(item => {
+          newStationsPath.push(stations.find(station => station.id == item));
+        });
       });
     }
 
@@ -80,7 +88,13 @@
     }, 300);
   }
 
+  // onMount(() => {
+  //   stationsPath = calculatePath({ path, stationsBetween });
+  // });
+
   $: stationsPath = calculatePath({ path, stationsBetween });
+
+  const getStation = station => stations.find(item => item.id == station) || {};
 
   const colors = {
     red: "#d22531",
@@ -132,6 +146,46 @@
     font-size: 12px;
     padding-bottom: 5px;
   }
+
+  .aside-row {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    &__name {
+      padding-bottom: 7px;
+      margin-bottom: -2px;
+
+      :global(tspan) {
+        pointer-events: none;
+      }
+    }
+
+    &__stations {
+      flex: 1;
+    }
+
+    &__weight {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 7px;
+      margin-bottom: -2px;
+      margin-left: 16px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 4px;
+        bottom: 22px;
+        width: 2px;
+        background: #000;
+      }
+    }
+  }
 </style>
 
 {#if resultPath && resultPath.length}
@@ -141,15 +195,20 @@
     <aside>
       <button class="start-button" on:click={onShow}>Play</button>
 
-      {#each stationsPath as station, index}
-        {#if station}
-          <div
-            on:mouseover={() => onStationHover(index)}
-            on:mouseout={disableStationHover}
-            class="station-row {showingStation === index ? 'activeStation' : ''}">
-            {@html station.text}
+      {#each resultPath as gap, index}
+        <div class="aside-row">
+          <div class="aside-row__stations">
+            {#each gap.stations as station, indexInside}
+              <div
+                class="aside-row__name"
+                on:mouseenter={() => onStationHover(getStation(station).id)}
+                on:mouseout={disableStationHover}>
+                {@html getStation(station).text}
+              </div>
+            {/each}
           </div>
-        {/if}
+          <div class="aside-row__weight">{gap.weight}</div>
+        </div>
       {/each}
     </aside>
 
@@ -197,7 +256,7 @@
         {#if resultPath.length}
           {#each stationsPath as station, index (station.id)}
             {#if station}
-              <g class="station {showingStation === index ? 'fadein' : ''}">
+              <g class="station {showingStation == station.id ? 'fadein' : ''}">
                 <g fill="none" stroke-miterlimit="10" stroke-width="28">
                   <g stroke={colors[station.color]}>
                     {@html station.path}
@@ -223,9 +282,8 @@
       </g>
     </svg>
 
-
-<!-- TODO -->
-    <SchemeSVG/>
+    <!-- TODO -->
+    <!-- <SchemeSVG/> -->
 
   </div>
 {/if}

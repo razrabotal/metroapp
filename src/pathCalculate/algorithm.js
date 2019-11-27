@@ -1,10 +1,10 @@
 import { randomNumber } from "../helpers/randomNumber";
 import { pushMutateMath, doMutateMath, reverseMutateMath } from "./mutations";
-import { count } from "./store.js";
+import { mutationCount, crossoverCount } from "./store.js";
 
 // Functions with side effects
 function mutationIteration(array) {
-  count.update(n => n + 1);
+  mutationCount.update(n => n + 1);
   return array;
 }
 const reverseMutate = seq => mutationIteration(reverseMutateMath(seq));
@@ -58,6 +58,7 @@ export function crossover(population, dis, populationSize, crossoverProbability)
   queue.shuffle();
   for (let i = 0, j = queue.length - 1; i < j; i += 2) {
     population = doCrossover(queue[i], queue[i + 1], population, dis);
+    crossoverCount.update(n => n + 1);
   }
 
   return population;

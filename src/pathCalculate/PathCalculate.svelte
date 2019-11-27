@@ -1,6 +1,6 @@
 <script>
   import ResultGrid from "./ResultGrid.svelte";
-  import { count } from "./store.js";
+  import { mutationCount, crossoverCount } from "./store.js";
   import { createEventDispatcher } from "svelte";
   import { randomNumber } from "../helpers/randomNumber";
   import { evaluate, randomIndivial, getCurrentBest } from "./helper";
@@ -31,10 +31,10 @@
   let population = [];
   let values = [];
   let mutationsCount;
+  let crossoversCount;
 
-  const unsubscribe = count.subscribe(value => {
-    mutationsCount = value;
-  });
+  const unsubscribeMutation = mutationCount.subscribe(value => mutationsCount = value );
+  const unsubscribeCrossover = crossoverCount.subscribe(value => crossoversCount = value );
 
   function onStart() {
     if (!running) {
@@ -71,6 +71,8 @@
     currentBest = 0;
     population = [];
     values = new Array(populationSize);
+    mutationCount.update(n => 0);
+    crossoverCount.update(n => 0);
   }
 
   function render() {
@@ -201,6 +203,7 @@
       {graph}
       {currentGeneration}
       {mutationsCount}
+      {crossoversCount}
       {bestValue}
       {currentBest}
       {population}

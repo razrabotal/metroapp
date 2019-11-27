@@ -5,6 +5,7 @@
   export let graph;
   export let currentGeneration;
   export let mutationsCount;
+  export let crossoversCount;
   export let bestValue;
   export let currentBest;
   export let population;
@@ -81,6 +82,10 @@
     <div class="row">
       <div class="label">Mutations:</div>
       <div class="value">{mutationsCount}</div>
+    </div>
+    <div class="row">
+      <div class="label">Crossovers:</div>
+      <div class="value">{crossoversCount}</div>
     </div>
     <div class="row row-result">
       <div class="label">Best value:</div>
