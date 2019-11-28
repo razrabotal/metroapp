@@ -12,17 +12,13 @@
     stop();
     start();
   } else {
-    pause();
+    terminate();
   }
 
   function start() {
     unsubscribe = time.subscribe(value => {
       lapse = value;
     });
-  }
-
-  function pause() {
-    terminate();
   }
 
   function terminate() {
@@ -37,13 +33,11 @@
     terminate();
   }
 
-  $: subscription = !!unsubscribe;
-
   onDestroy(() => {
     terminate();
   });
 </script>
 
 <div class="stopwatch">
-  <StopWatchSVG {lapse} />
+  <StopWatchSVG {lapse}/>
 </div>

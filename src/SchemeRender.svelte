@@ -1,18 +1,13 @@
 <script>
-  import { onMount } from "svelte";
-  import SchemeSVG from "./SchemeSVG.svelte";
-
   export let stationsBetween;
   export let path;
   export let stations;
 
   let isMapActive = true;
-  let showScheme = false;
   let resultPath = [];
   let stationsPath = [];
 
   let timerId;
-
   let showingStation = null;
 
   function showStation(index) {
@@ -21,7 +16,6 @@
   }
 
   function onStationHover(index) {
-    // debugger;
     clearInterval(timerId);
     showStation(index);
   }
@@ -33,7 +27,6 @@
 
   function onShow() {
     clearInterval(timerId);
-    showScheme = true;
     showPath();
   }
 
@@ -88,10 +81,6 @@
     }, 300);
   }
 
-  // onMount(() => {
-  //   stationsPath = calculatePath({ path, stationsBetween });
-  // });
-
   $: stationsPath = calculatePath({ path, stationsBetween });
 
   const getStation = station => stations.find(item => item.id == station) || {};
@@ -120,31 +109,22 @@
   }
   .fadein {
     opacity: 1;
-    // animation: show 0.5s linear forwards;
-  }
-  .activeStation {
-    background: #ddd;
   }
   .map {
     display: block;
     width: 500px;
     margin: 50px auto;
-  }
 
-  .map-active {
-    .station {
-      opacity: 1;
+    &-active {
+      .station {
+        opacity: 1;
+      }
     }
   }
 
   .start-button {
     @include button;
     margin-bottom: 20px;
-  }
-
-  .station-row {
-    font-size: 12px;
-    padding-bottom: 5px;
   }
 
   .aside-row {
@@ -252,38 +232,33 @@
         </text>
       </g>
       <g fill={colors.text} font-size="53">
-
-        {#if resultPath.length}
-          {#each stationsPath as station, index (station.id)}
-            {#if station}
-              <g class="station {showingStation == station.id ? 'fadein' : ''}">
-                <g fill="none" stroke-miterlimit="10" stroke-width="28">
-                  <g stroke={colors[station.color]}>
-                    {@html station.path}
-                  </g>
-                </g>
-
-                <g fill={colors[station.color]}>
-                  {@html station.stop}
-                </g>
-
-                <text style={station.style}>
-                  {@html station.text}
-                </text>
+        {#each stationsPath as station, index (station.id)}
+          {#if station}
+            <g class="station {showingStation == station.id ? 'fadein' : ''}">
+              <g
+                fill="none"
+                stroke-miterlimit="10"
+                stroke-width="28"
+                stroke={colors[station.color]}>
+                {@html station.path}
               </g>
-            {/if}
-          {/each}
-        {/if}
 
+              <g fill={colors[station.color]}>
+                {@html station.stop}
+              </g>
+
+              <text style={station.style}>
+                {@html station.text}
+              </text>
+            </g>
+          {/if}
+        {/each}
       </g>
       <g fill={colors.textDisable} font-size="53">
         <text transform="translate(573 1556)">Державiнська</text>
         <text transform="translate(519 1690)">Одеська</text>
       </g>
     </svg>
-
-    <!-- TODO -->
-    <!-- <SchemeSVG/> -->
 
   </div>
 {/if}

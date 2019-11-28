@@ -6,7 +6,6 @@
   import UserMetroGraph from "./GraphSwitcher/UserMetroGraph.svelte";
   import createGraph from "./graphBuilder";
   
-
   let selectedMetro;
   let cache = {};
 
@@ -19,7 +18,6 @@
 
   function onSelectMetro(e) {
     selectedMetro = e.detail.result;
-
     setGraph();
     setStations();
   }
