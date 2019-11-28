@@ -4,9 +4,25 @@
 
   export let selectedMetro;
 
+// TODO: move to js file
+  const schemes = {
+    kharkiv: {
+      graphUrl: 'https://metro.kh.ua/metroapi.php?value=path',
+      stationsUrl: 'https://metro.kh.ua/metroapi.php?value=stations'
+    },
+    custom: {
+      graphUrl: null,
+      stationsUrl: null
+    }
+  }
+
   function onChange() {
+    const currentScheme = schemes[selectedMetro];
+
     dispatch("onSelectMetro", {
-      result: selectedMetro
+      result: selectedMetro,
+      graphUrl: currentScheme && currentScheme.graphUrl,
+      stationsUrl: currentScheme && currentScheme.stationsUrl
     });
   }
 </script>
@@ -19,12 +35,12 @@
 
 <section>
   <label>
-    <input type=radio bind:group={selectedMetro} on:change={onChange} value={1}>
+    <input type=radio bind:group={selectedMetro} on:change={onChange} value={'kharkiv'}>
     Kharkiv metro
   </label>
 
   <label>
-    <input type=radio bind:group={selectedMetro} on:change={onChange} value={2}>
+    <input type=radio bind:group={selectedMetro} on:change={onChange} value={'custom'}>
     Other metro
   </label>
 </section>

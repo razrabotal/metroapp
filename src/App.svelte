@@ -1,78 +1,66 @@
 <script>
-  import { onMount } from 'svelte';
   import PathCalculate from "./pathCalculate/PathCalculate.svelte";
   import SchemeRender from "./SchemeRender.svelte";
   import GraphSwitcher from "./GraphSwitcher/GraphSwitcher.svelte";
   import UserMetroGraph from "./GraphSwitcher/UserMetroGraph.svelte";
-  import createGraph from "./graphBuilder";
-  
-  let selectedMetro;
-  let cache = {};
+  import { getGraph, getStations, getData } from "./graphSwitcher/getData";
 
-  let bestPath;
-  let graph;
-  let stationsBetween;
-  let dis;
-
-  let stations;
+  let graphUrl, stationsUrl, selectedMetro;
+  let bestPath, stations, graph, stationsBetween, dis;
+  let isCalculateShowed = false;
+  let isCustomShowed = false;
 
   function onSelectMetro(e) {
     selectedMetro = e.detail.result;
-    setGraph();
-    setStations();
+    graphUrl = e.detail.graphUrl;
+    stationsUrl = e.detail.stationsUrl;
+
+    resetData();
+
+    if(!graphUrl && !stationsUrl) {
+      return isCustomShowed = true;
+    }
+    setData();
+    return isCustomShowed = false;
   }
 
   function getResult(e) {
     bestPath = e.detail.result;
   }
 
-  function onGetUserGraph(e) {
-    let userGraph = e.detail.result;
-    const graphData = createGraph(userGraph);
-    debugger;
+  function resetData() {
+    bestPath = null;
+    stations = null;
+    isCalculateShowed = false;
   }
 
-  async function getGraph() {
-    const res = await fetch(`https://metro.kh.ua/metroapi.php?value=path`);
-    const data = await res.json();
-    return createGraph(data);
+  async function onGetUserGraph(e) {
+    graphUrl = e.detail.graphUrl;
+    stationsUrl = e.detail.stationsUrl;
+    setData();
   }
-  async function getStations() {
-    const res = await fetch(`https://metro.kh.ua/metroapi.php?value=stations`);
-    const data = await res.json();
-    return data;
-  };
-  async function setGraph() {
-    const graphData = await getData('graphData', getGraph);
+  async function setGraph(url) {
+    const graphData = await getData(`${selectedMetro}-graphData`, () => getGraph(url));
     graph = graphData.graph;
     stationsBetween = graphData.stationsBetween;
     dis = graphData.distances;
   }
-  async function setStations() {
-    const stationsData = await getData('stations', getStations);
+  async function setStations(url) {
+    const stationsData = await getData(`${selectedMetro}-stations`, () => getStations(url));
     stations = stationsData;
   }
-
-  onMount(async () => {
-    selectedMetro = 1;
-		setGraph();
-		setStations();
-  });
-  
-  async function getData(variable, func) {
-    if (cache[variable]) {
-      return cache[variable];
-    }
-    const result = await func();
-    cache[variable] = result;
-    return result;
+  async function setData() {
+    if(graphUrl) await setGraph(graphUrl);
+    isCalculateShowed = true;
+    
+    if(stationsUrl) await setStations(stationsUrl);
   }
 </script>
 
 <style global lang="scss">
-  @import "src/styles/index.scss"; 
+  @import "src/styles/index.scss";
 
-  main { 
+  main {
     display: block;
     @include centered;
     margin-bottom: 40px;
@@ -92,17 +80,17 @@
 </header>
 
 <main>
-  <GraphSwitcher on:onSelectMetro={onSelectMetro} {selectedMetro}/>
+  <GraphSwitcher on:onSelectMetro={onSelectMetro} {selectedMetro} />
 
-  {#if selectedMetro === 2}
-    <UserMetroGraph on:onSubmitGraph={onGetUserGraph}/>
+  {#if isCustomShowed}
+    <UserMetroGraph on:onSubmitGraph={onGetUserGraph} />
   {/if}
 
-  {#if graph && stationsBetween && dis}
-    <PathCalculate {graph} {stationsBetween} {dis} on:getResult={getResult}/>
+  {#if graph && stationsBetween && dis && isCalculateShowed}
+    <PathCalculate {graph} {stationsBetween} {dis} on:getResult={getResult} />
   {/if}
 
-  {#if bestPath}
-    <SchemeRender path={bestPath} {stationsBetween} {stations}/>
+  {#if stations && bestPath}
+    <SchemeRender path={bestPath} {stationsBetween} {stations} />
   {/if}
 </main>
