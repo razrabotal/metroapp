@@ -1,4 +1,6 @@
 <script>
+  import { fly } from 'svelte/transition';
+  import { onDestroy } from 'svelte';
   import ResultGrid from "./ResultGrid.svelte";
   import { mutationCount, crossoverCount } from "./store.js";
   import { createEventDispatcher } from "svelte";
@@ -35,6 +37,10 @@
 
   const unsubscribeMutation = mutationCount.subscribe(value => mutationsCount = value );
   const unsubscribeCrossover = crossoverCount.subscribe(value => crossoversCount = value );
+
+  onDestroy(() => {
+		clearInterval(mainInterval);
+	});
 
   function onStart() {
     if (!running) {
@@ -147,7 +153,7 @@
   }
 </style>
 
-<div class="calculate-block">
+<div class="calculate-block" in:fly="{{ y: 50, duration: 1000 }}">
 
   <div class="result-wrapper">
     <div class="constants">
@@ -184,6 +190,7 @@
       <label>
         <span>Interval duration:</span>
         <input
+          disabled={running}
           class="text-input"
           bind:value={intervalDuration}
           type="number"

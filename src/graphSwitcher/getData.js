@@ -2,10 +2,10 @@ import createGraph from "./graphBuilder";
 
 let cache = {};
 
-export async function getGraph(url) {
+export async function getGraph(url, timeOnStation) {
   const res = await fetch(url);
   const data = await res.json();
-  return createGraph(data);
+  return createGraph(data, timeOnStation);
 }
 export async function getStations(url) {
   const res = await fetch(url);

@@ -5,7 +5,7 @@
   import UserMetroGraph from "./GraphSwitcher/UserMetroGraph.svelte";
   import { getGraph, getStations, getData } from "./graphSwitcher/getData";
 
-  let graphUrl, stationsUrl, selectedMetro;
+  let graphUrl, stationsUrl, selectedMetro, timeOnStation;
   let bestPath, stations, graph, stationsBetween, dis;
   let isCalculateShowed = false;
   let isCustomShowed = false;
@@ -14,6 +14,7 @@
     selectedMetro = e.detail.result;
     graphUrl = e.detail.graphUrl;
     stationsUrl = e.detail.stationsUrl;
+    timeOnStation = e.detail.timeOnStation;
 
     resetData();
 
@@ -40,13 +41,13 @@
     setData();
   }
   async function setGraph(url) {
-    const graphData = await getData(`${selectedMetro}-graphData`, () => getGraph(url));
+    const graphData = await getData(`${selectedMetro + timeOnStation}-graphData`, () => getGraph(url, timeOnStation));
     graph = graphData.graph;
     stationsBetween = graphData.stationsBetween;
     dis = graphData.distances;
   }
   async function setStations(url) {
-    const stationsData = await getData(`${selectedMetro}-stations`, () => getStations(url));
+    const stationsData = await getData(`${selectedMetro + timeOnStation}-stations`, () => getStations(url));
     stations = stationsData;
   }
   async function setData() {
@@ -80,7 +81,7 @@
 </header>
 
 <main>
-  <GraphSwitcher on:onSelectMetro={onSelectMetro} {selectedMetro} />
+  <GraphSwitcher on:onSelectMetro={onSelectMetro} />
 
   {#if isCustomShowed}
     <UserMetroGraph on:onSubmitGraph={onGetUserGraph} />

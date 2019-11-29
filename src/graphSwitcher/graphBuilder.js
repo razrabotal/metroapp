@@ -1,12 +1,11 @@
 import Graph from "graph-data-structure";
 
-export default function createGraph(data) {
-  const INTERVAL_TIME = 6;
-
+export default function createGraph(data = [], timeOnStation = 0) {
   function getWeight(weight) {
-    return weight + INTERVAL_TIME;
+    return weight + timeOnStation;
   }
 
+  const graphTemp = Graph();
   const graph = Graph();
 
   data
@@ -15,26 +14,20 @@ export default function createGraph(data) {
       weight: getWeight(item.weight)
     }))
     .map(item => {
-      graph.addEdge(item.from, item.to, item.weight);
-      graph.addEdge(item.to, item.from, item.weight);
+      graphTemp.addEdge(item.from, item.to, item.weight);
+      graphTemp.addEdge(item.to, item.from, item.weight);
     });
 
   let stationsBetween = [];
 
-  graph.nodes().map((i, index) => {
+  graphTemp.nodes().map((i, index) => {
     stationsBetween.push([]);
-    
-    graph.nodes().map((j, insideIndex) => {
-      const path = graph.shortestPath(i, j);
-      const cleanPath = path;
-      stationsBetween[index].push(cleanPath);
-    });
-  });
 
-  graph.nodes().map((i, index) => {
-    graph.nodes().map((j, insideIndex) => {
-      const path = graph.shortestPath(i, j);
+    graphTemp.nodes().map(j => {
+      const path = graphTemp.shortestPath(i, j);
+      // TODO: Maybe subtract time of station * path.length
       graph.addEdge(i, j, path.weight);
+      stationsBetween[index].push(path);
     });
   });
 

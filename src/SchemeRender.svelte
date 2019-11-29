@@ -1,4 +1,6 @@
 <script>
+  import { fly } from 'svelte/transition';
+
   export let stationsBetween, path, stations;
 
   let isMapActive = true;
@@ -183,7 +185,7 @@
   }
 </style>
 
-<div class="container">
+<div class="container" in:fly="{{ y: 50, duration: 1000 }}" >
 
   <aside>
     <button class="start-button" on:click={onPlay}>Play</button>

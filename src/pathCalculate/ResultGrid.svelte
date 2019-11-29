@@ -88,7 +88,7 @@
       <div class="value">{crossoversCount}</div>
     </div>
     <div class="row row-result">
-      <div class="label">Best value:</div>
+      <div class="label">Best result:</div>
       <div class="value">{ bestValue}</div>
     </div>
   </div>
