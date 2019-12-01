@@ -33,13 +33,17 @@ export function selection(population, currentBest, best, values, populationSize)
   return newPopulation;
 }
 
-export function mutation(population, populationSize, mutationProbability) {
+export function mutation(population, populationSize, mutationProps) {
   let newPopulation = population.clone();
   for (let i = 0; i < populationSize; i++) {
-    if (Math.random() < mutationProbability) {
-      if (Math.random() > 0.5) {
+    if (Math.random() < mutationProps.mutationProbability) {
+      if (Math.random() > mutationProps.doMutateProbability) {
         newPopulation[i] = doMutate(population[i]);
-      } else {
+      } 
+      if (Math.random() > mutationProps.pushMutateProbability) {
+        newPopulation[i] = pushMutate(population[i]);
+      }
+      if (Math.random() > mutationProps.reverseMutateProbability) {
         newPopulation[i] = pushMutate(population[i]);
       }
       i--;

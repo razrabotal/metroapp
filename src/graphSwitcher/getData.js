@@ -12,6 +12,11 @@ export async function getStations(url) {
   const data = await res.json();
   return data;
 };
+export async function getScheme(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
+};
 
 export async function getData(variable, func) {
   if (cache[variable]) {

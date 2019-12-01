@@ -1,12 +1,13 @@
 <script>
   import PathCalculate from "./pathCalculate/PathCalculate.svelte";
-  import SchemeRender from "./SchemeRender.svelte";
+  import ResultRender from "./render/ResultRender.svelte";
   import GraphSwitcher from "./GraphSwitcher/GraphSwitcher.svelte";
   import UserMetroGraph from "./GraphSwitcher/UserMetroGraph.svelte";
-  import { getGraph, getStations, getData } from "./graphSwitcher/getData";
+  import { getGraph, getStations, getScheme, getData } from "./graphSwitcher/getData";
 
-  let graphUrl, stationsUrl, selectedMetro, timeOnStation;
-  let bestPath, stations, graph, stationsBetween, dis;
+  let graphUrl, stationsUrl, schemeUrl;
+  let selectedMetro, timeOnStation, metroImage;
+  let schemeSVGData, bestPath, stations, graph, stationsBetween, dis;
   let isCalculateShowed = false;
   let isCustomShowed = false;
 
@@ -14,15 +15,17 @@
     selectedMetro = e.detail.result;
     graphUrl = e.detail.graphUrl;
     stationsUrl = e.detail.stationsUrl;
+    schemeUrl = e.detail.schemeUrl;
     timeOnStation = e.detail.timeOnStation;
+    metroImage = e.detail.metroImage;
 
     resetData();
 
-    if(!graphUrl && !stationsUrl) {
-      return isCustomShowed = true;
+    if (!graphUrl && !stationsUrl) {
+      return (isCustomShowed = true);
     }
-    setData();
-    return isCustomShowed = false;
+    setData(); 
+    return (isCustomShowed = false);
   }
 
   function getResult(e) {
@@ -32,6 +35,7 @@
   function resetData() {
     bestPath = null;
     stations = null;
+    schemeSVGData = null;
     isCalculateShowed = false;
   }
 
@@ -40,21 +44,37 @@
     stationsUrl = e.detail.stationsUrl;
     setData();
   }
+
+
   async function setGraph(url) {
-    const graphData = await getData(`${selectedMetro + timeOnStation}-graphData`, () => getGraph(url, timeOnStation));
+    const graphData = await getData(
+      `${selectedMetro + timeOnStation}-graphData`,
+      () => getGraph(url, timeOnStation)
+    );
     graph = graphData.graph;
     stationsBetween = graphData.stationsBetween;
     dis = graphData.distances;
   }
   async function setStations(url) {
-    const stationsData = await getData(`${selectedMetro + timeOnStation}-stations`, () => getStations(url));
+    const stationsData = await getData(
+      `${selectedMetro + timeOnStation}-stations`,
+      () => getStations(url)
+    );
     stations = stationsData;
   }
+  async function setScheme(url) {
+    const schemeData = await getData(
+      `${selectedMetro + timeOnStation}-scheme`,
+      () => getScheme(url)
+    );
+    schemeSVGData = schemeData;
+  }
   async function setData() {
-    if(graphUrl) await setGraph(graphUrl);
+    if (graphUrl) await setGraph(graphUrl);
     isCalculateShowed = true;
-    
-    if(stationsUrl) await setStations(stationsUrl);
+
+    if (stationsUrl) await setStations(stationsUrl);
+    if (schemeUrl) await setScheme(schemeUrl);
   }
 </script>
 
@@ -62,22 +82,30 @@
   @import "src/styles/index.scss";
 
   main {
-    display: block;
+    display: block; 
     @include centered;
     margin-bottom: 40px;
-  }
+  } 
 
   header {
-    @include centered;
-    display: block;
+    @include centered;  
+    display: block; 
     margin-top: 20px;
     margin-bottom: 40px;
-  }
-</style>
+  } 
 
+  footer {
+    @include centered;
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 12px; 
+  }   
+</style>  
+ 
 <header>
   <h1>Transit challenge solver</h1>
-  <p>For Kharkiv metropoliten</p>
+  <p>For Kharkiv and other metropolitens</p>
 </header>
 
 <main>
@@ -88,10 +116,19 @@
   {/if}
 
   {#if graph && stationsBetween && dis && isCalculateShowed}
-    <PathCalculate {graph} {stationsBetween} {dis} on:getResult={getResult} />
-  {/if}
+    <PathCalculate
+      {graph}
+      {stationsBetween}
+      {dis}
+      {metroImage}
+      on:getResult={getResult} />
+  {/if}  
 
-  {#if stations && bestPath}
-    <SchemeRender path={bestPath} {stationsBetween} {stations} />
-  {/if}
+  {#if bestPath}
+    <ResultRender path={bestPath} {stationsBetween} {stations} {metroImage} {schemeSVGData}/>
+  {/if} 
 </main>
+ 
+<footer>
+  <p>Taras Gordienko, 2019</p>
+</footer>

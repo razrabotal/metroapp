@@ -33,7 +33,7 @@
 
 @mixin section {
   position: relative;
-  box-shadow: 0 14px 12px -6px #ccd6e2;
+  box-shadow: 0 14px 12px -6px $background-color--light;
   z-index: 1;
   border-radius: var(--radius);
 
@@ -63,7 +63,7 @@
     width: 100%;
     height: 100%;
     border-radius: calc(var(--radius) - 1px);
-    background-image: linear-gradient(165deg, #ecf0f3 9%, #ffffff 80%);
+    background-image: linear-gradient(165deg, $background-color--light 9%, #ffffff 80%);
     z-index: -1;
   }
 }

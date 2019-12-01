@@ -27,7 +27,7 @@
   }
 </style>
 
-<svg viewBox="0 0 100 100" width="200" height="200">
+<svg viewBox="0 0 100 100" width="230" height="230">
   <g transform="translate(50 50)">
     <circle
       cx="0"

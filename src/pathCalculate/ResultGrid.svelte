@@ -23,11 +23,20 @@
   .info {
     font-family: "Courier New", Courier, monospace;
     display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 3;
   }
   .table {
-    max-width: 300px;
+    display: flex;
+    // max-width: 300px;
     flex: 1;
     padding: 10px;
+
+    &__content {
+      flex: 1;
+      margin-left: 20px;
+    }
   }
   .stop-watch {
     display: flex;
@@ -46,18 +55,22 @@
     margin-bottom: 10px;
   }
   .row-result {
-    flex-direction: column;
+    // flex-direction: column;
 
     .label {
       margin-top: 10px;
     }
     .value {
       font-size: 30px;
-      margin-left: 0;
+      // margin-left: 0;
     }
   }
   .value {
     margin-left: auto;
+  }
+
+  .value-row {
+    word-break: break-word;
   }
 
   p { 
@@ -71,25 +84,27 @@
     <div class="stop-watch">
       <StopWatch {running} />
     </div>
-    <div class="row">
-      <div class="label">Stations:</div>
-      <div class="value">{graph.nodes().length}</div>
-    </div>
-    <div class="row">
-      <div class="label">Generation:</div>
-      <div class="value">{currentGeneration}</div>
-    </div>
-    <div class="row">
-      <div class="label">Mutations:</div>
-      <div class="value">{mutationsCount}</div>
-    </div>
-    <div class="row">
-      <div class="label">Crossovers:</div>
-      <div class="value">{crossoversCount}</div>
-    </div>
-    <div class="row row-result">
-      <div class="label">Best result:</div>
-      <div class="value">{ bestValue}</div>
+    <div class="table__content">
+      <div class="row">
+        <div class="label">Stations:</div>
+        <div class="value">{graph.nodes().length}</div>
+      </div>
+      <div class="row">
+        <div class="label">Generation:</div>
+        <div class="value">{currentGeneration}</div>
+      </div>
+      <div class="row">
+        <div class="label">Mutations:</div>
+        <div class="value">{mutationsCount}</div>
+      </div>
+      <div class="row">
+        <div class="label">Crossovers:</div>
+        <div class="value">{crossoversCount}</div>
+      </div>
+      <div class="row row-result">
+        <div class="label">Best result:</div>
+        <div class="value">{ bestValue}</div>
+      </div>
     </div>
   </div>
 

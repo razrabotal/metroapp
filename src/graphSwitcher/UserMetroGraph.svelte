@@ -36,4 +36,4 @@
 <section>
   <input bind:value={jsonUrl} type="text"/>
   <button on:click={onSubmit}>Send</button>
-</section>
+</section> 
