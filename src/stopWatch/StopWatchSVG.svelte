@@ -30,8 +30,8 @@
     height: 130px;
 
     @include sm {
-      width: 230px;
-      height: 230px;
+      width: 170px;
+      height: 170px;
     }
   }
 </style>

@@ -11,7 +11,7 @@ export default function createGraph(data = [], timeOnStation = 0) {
   data
     .map(item => ({
       ...item,
-      weight: getWeight(item.weight)
+      weight: ~~getWeight(item.weight)
     }))
     .map(item => {
       graphTemp.addEdge(item.from, item.to, item.weight);

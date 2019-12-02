@@ -63,12 +63,15 @@
   .container {
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid $background-color--dark;
+    border-radius: var(--radius);
   }
   aside {
     order: 2;
     width: 100%;
-    background: #f0f0f0;
-    padding: 10px;
+    background: $background-color--light;
+    border-radius: var(--radius);
+    padding: 20px;
     max-height: initial;
     overflow: auto;
     padding-right: 24px;
@@ -76,6 +79,7 @@
     @include sm {
       order: 0;
       max-height: 800px;
+      width: initial;
     }
   }
   .station {
@@ -91,7 +95,7 @@
     margin: 0 auto 30px;
 
     @include sm {
-      margin: 50px auto;
+      margin: auto;
     }
 
     &__back {
@@ -172,7 +176,7 @@
 <div class="container">
 
   <aside>
-    <button class="start-button" on:click={onPlay}>Play</button>
+    <button class="start-button general" on:click={onPlay}>Play</button>
 
     {#each resultPath as gap, index}
       <div class="aside-row">

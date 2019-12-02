@@ -118,8 +118,20 @@
   }
 </style>
 
+{#if stationsPath && resultPath && stations}
+  <section class="scheme" in:fly={{ y: 50, duration: 1000 }}>
+    <h3>Path render</h3>
+    <SchemeRender
+      {stations}
+      {stationsPath}
+      {resultPath}
+      {metroImage}
+      {schemeSVGData} />
+  </section>
+{/if}
+
 {#if resultPath}
-  <section in:fly={{ y: 50, duration: 1000 }}>
+  <section class="full-path" in:fly={{ y: 50, duration: 1000 }}>
     <h3>Full best path</h3>
 
     <div class="path-list-wrapper">
@@ -136,9 +148,3 @@
   </section>
 {/if}
 
-{#if stationsPath && resultPath && stations}
-  <section in:fly={{ y: 50, duration: 1000 }}>
-    <h3>Path render</h3>
-    <SchemeRender {stations} {stationsPath} {resultPath} {metroImage} {schemeSVGData}/>
-  </section>
-{/if}

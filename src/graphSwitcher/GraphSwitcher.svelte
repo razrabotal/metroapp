@@ -81,7 +81,6 @@
       &:hover {
         cursor: pointer;
         background: $background-color--light;
-        // border-color: darken($background-color--dark, 20%);
       }
 
       img {

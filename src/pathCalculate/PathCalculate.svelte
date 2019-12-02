@@ -1,11 +1,15 @@
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
   import { onDestroy } from "svelte";
-  import ResultGrid from "./ResultGrid.svelte";
-  import MatrixRender from "./MatrixRender.svelte";
-  import { mutationCount, crossoverCount } from "./store.js";
   import { createEventDispatcher } from "svelte";
+
+  import { fly } from "svelte/transition";
+
+  import ResultGrid from "./ResultGrid.svelte";
+  import LabelItem from "./_LabelItem.svelte";
+  import MatrixRender from "./MatrixRender.svelte";
+
+  import { mutationCount, crossoverCount } from "./store.js";
   import { randomNumber } from "../helpers/randomNumber";
   import { evaluate, randomIndivial, getCurrentBest } from "./helper";
   import { selection, mutation, crossover } from "./algorithm";
@@ -16,7 +20,6 @@
   let populationSize = 20;
   let crossoverProbability = 0.9;
   let intervalDuration = 80;
-
   let mutationProps = {
     mutationProbability: 0.1,
     doMutateProbability: 0.1,
@@ -162,57 +165,27 @@
 <style lang="scss">
   @import "src/styles/base.scss";
 
-  .calculate-block-wrapper {
-    margin-bottom: 30px;
-  }
-
   .calculate-block {
     @include section;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 40px;
 
-    display: flex;
-    flex-direction: column; 
-
-    &__content {
+    &__left {
       display: flex;
-      flex-wrap: wrap;
-    }
-  }
-
-  .constants {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 250px;
-    // border-right: 1px solid #ddd;
-    padding: 20px;
-    background: $background-color--base;
-    border-radius: var(--radius) 0 0 var(--radius);
-
-    h4 {
-      margin-bottom: 20px;
-    }
-  }
-  label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 12px;
-    margin-bottom: 8px;
-
-    @include sm {
       flex-direction: column;
-    }
+      flex: 1;
+      width: 250px;
+      padding: 20px;
+      background: $background-color--base;
+      border-radius: var(--radius) 0 0 var(--radius);
 
-    span {
-      margin-bottom: 5px;
-      min-width: 140px;
+      h4 {
+        margin-bottom: 20px;
+      }
     }
   }
-  .text-input {
-    @include text-input;
-    width: 70px;
-  }
+
   .buttons {
     display: flex;
     flex-direction: column;
@@ -220,7 +193,7 @@
   }
   .startButton {
     @include button;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .flex {
@@ -245,127 +218,94 @@
 
 <MatrixRender {graph} {metroImage} />
 
-<div class="calculate-block-wrapper" in:fly={{ y: 50, duration: 1000 }}>
+<div class="calculate-block" in:fly={{ y: 50, duration: 1000 }}>
 
-  <div class="calculate-block">
+  <div class="calculate-block__left">
+    <h4>Algorithm parameters</h4>
 
-    <div class="calculate-block__content">
+    <div class="flex">
+      <LabelItem step="1" min="1" max="50" bind:value={populationSize}>
+        Population size:
+      </LabelItem>
 
-      <div class="constants">
-        <h4>Algorithm parameters</h4>
-
-        <div class="flex">
-          <label>
-            <span>Population size:</span>
-            <input
-              class="text-input"
-              bind:value={populationSize}
-              type="number"
-              step="1"
-              min="1"
-              max="50" />
-          </label>
-
-          <label>
-            <span>Interval duration:</span>
-            <input
-              disabled={running}
-              class="text-input"
-              bind:value={intervalDuration}
-              type="number"
-              step="20"
-              min="10"
-              max="3000" />
-          </label>
-        </div>
-
-        <div class="flex">
-          <label>
-            <span>Crossover probability:</span>
-            <input
-              class="text-input"
-              bind:value={crossoverProbability}
-              type="number"
-              step="0.1"
-              min="0.01"
-              max="1" />
-          </label>
-        </div>
-
-        <label>
-          <span>Mutation probability:</span>
-          <input
-            class="text-input"
-            bind:value={mutationProps.mutationProbability}
-            type="number"
-            step="0.01"
-            min="0.01"
-            max="1" />
-        </label>
-        <label>
-          <span>'Do' mutation:</span>
-          <input
-            class="text-input"
-            bind:value={mutationProps.doMutateProbability}
-            type="number"
-            step="0.01"
-            min="0.01"
-            max="1" />
-        </label>
-        <label>
-          <span>'Push' mutation:</span>
-          <input
-            class="text-input"
-            bind:value={mutationProps.pushMutateProbability}
-            type="number"
-            step="0.01"
-            min="0.01"
-            max="1" />
-        </label>
-        <label>
-          <span>'Reverse' mutation:</span>
-          <input
-            class="text-input"
-            bind:value={mutationProps.reverseMutateProbability}
-            type="number"
-            step="0.01"
-            min="0.01"
-            max="1" />
-        </label>
-
-        <div class="buttons">
-          <button class="startButton protrude" on:click={onStart}>Start</button>
-          <button class="startButton protrude" on:click={onStop}>Stop</button>
-        </div>
-
-        {#if !running && bestValue}
-          <div class="storage-buttons">
-            <button class="startButton protrude" on:click={onSave}>
-              Save to storage
-            </button>
-
-            {#if bestResultsFromStorage.length}
-              <button class="startButton protrude" on:click={onClear}>
-                Clear storage
-              </button>
-            {/if}
-          </div>
-        {/if}
-      </div>
-
-      <ResultGrid
-        {running}
-        {graph}
-        {currentGeneration}
-        {mutationsCount}
-        {crossoversCount}
-        {bestValue}
-        {currentBest}
-        {population}
-        {best}
-        {bestValuesArray}
-        {bestResultsFromStorage} />
+      <LabelItem
+        step="20"
+        min="10"
+        max="3000"
+        disabled={running}
+        bind:value={intervalDuration}>
+        Interval duration:
+      </LabelItem>
     </div>
 
+    <div class="flex">
+      <LabelItem
+        step="0.1"
+        min="0.01"
+        max="1"
+        bind:value={crossoverProbability}>
+        Population size:
+      </LabelItem>
+    </div>
+
+    <LabelItem
+      step="0.01"
+      min="0.01"
+      max="1"
+      bind:value={mutationProps.mutationProbability}>
+      Mutation probability:
+    </LabelItem>
+
+    <LabelItem
+      step="0.01"
+      min="0.01"
+      max="1"
+      bind:value={mutationProps.doMutateProbability}>
+      'Do' mutation:
+    </LabelItem>
+
+    <LabelItem
+      step="0.01"
+      min="0.01"
+      max="1"
+      bind:value={mutationProps.pushMutateProbability}>
+      'Push' mutation:
+    </LabelItem>
+
+    <LabelItem
+      step="0.01"
+      min="0.01"
+      max="1"
+      bind:value={mutationProps.reverseMutateProbability}>
+      'Reverse' mutation:
+    </LabelItem>
+
+    <div class="buttons">
+      <button class="startButton general" on:click={onStart}>Start</button>
+      <button class="startButton" on:click={onStop}>Stop</button>
+    </div>
+
+    {#if !running && bestValue}
+      <div class="storage-buttons">
+        <button class="startButton" on:click={onSave}>Save to storage</button>
+
+        {#if bestResultsFromStorage.length}
+          <button class="startButton" on:click={onClear}>Clear storage</button>
+        {/if}
+      </div>
+    {/if}
   </div>
+
+  <ResultGrid
+    {running}
+    {graph}
+    {currentGeneration}
+    {mutationsCount}
+    {crossoversCount}
+    {bestValue}
+    {currentBest}
+    {population}
+    {best}
+    {bestValuesArray}
+    {bestResultsFromStorage} />
 </div>

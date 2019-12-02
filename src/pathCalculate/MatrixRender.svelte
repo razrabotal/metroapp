@@ -12,11 +12,10 @@
   }
 
   .matrix-render {
-    margin-bottom: 20px;
-
       &__data {
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: 30px;
 
         .metro-image {
           margin-left: auto;
