@@ -62,13 +62,21 @@
 
   .container {
     display: flex;
+    flex-wrap: wrap;
   }
   aside {
+    order: 2;
+    width: 100%;
     background: #f0f0f0;
     padding: 10px;
-    max-height: 800px;
+    max-height: initial;
     overflow: auto;
     padding-right: 24px;
+
+    @include sm {
+      order: 0;
+      max-height: 800px;
+    }
   }
   .station {
     opacity: 0;
@@ -80,7 +88,11 @@
   .svg-render {
     position: relative;
     width: 500px;
-    margin: 50px auto;
+    margin: 0 auto 30px;
+
+    @include sm {
+      margin: 50px auto;
+    }
 
     &__back {
       position: absolute;

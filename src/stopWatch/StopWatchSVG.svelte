@@ -20,10 +20,19 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "src/styles/base.scss";
+
   svg {
     font-family: monospace;
     color: hsl(0, 0%, 5%);
+    width: 130px;
+    height: 130px;
+
+    @include sm {
+      width: 230px;
+      height: 230px;
+    }
   }
 </style>
 

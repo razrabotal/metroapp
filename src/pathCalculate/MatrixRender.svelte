@@ -12,18 +12,28 @@
   }
 
   .matrix-render {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
       &__data {
         display: flex;
+        flex-wrap: wrap;
 
         .metro-image {
           margin-left: auto;
-          max-width: 35%;
+          max-width:  100%;
+          max-height: 60vh;
           min-width: 35%;
+          width: 100%;
 
           img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+
+          @include sm {
+            max-height: 600px;
+            max-width: 35%;
           }
         }
 
@@ -31,8 +41,15 @@
           overflow: auto;
           -webkit-overflow-scrolling: touch;
           width: 100%;
-          max-height: 500px;
-          margin-right: 20px;
+          max-width: 100%;
+          max-height: 60vh;
+          margin-bottom: 16px;
+
+          @include sm {
+            max-width: 60%;
+            max-height: 500px;
+            margin-right: 20px;
+          }
         }
 
         .metro-table {

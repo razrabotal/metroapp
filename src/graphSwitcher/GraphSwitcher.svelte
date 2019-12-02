@@ -29,8 +29,9 @@
 <style lang="scss">
   @import "src/styles/base.scss";
 
-  .graph-wsitcher {
+  .graph-switcher {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 40px;
   }
@@ -50,7 +51,10 @@
     display: inline-flex;
     flex-direction: column;
     font-size: 12px;
-    margin-left: 20px;
+
+    @include sm {
+      margin-left: 20px;
+    }
 
     span {
       margin-bottom: 5px;
@@ -58,7 +62,12 @@
   }
 
   .radio-input { 
-    margin-right: 20px; 
+    padding-right: 20px;
+    flex: 0 0 50%; 
+
+    @include sm {
+      flex: initial; 
+    }
     
     section {
       display: block;
@@ -67,6 +76,7 @@
       border-radius: 10px;
       padding: 10px;
       transition: 0.2s;
+      margin-bottom: 16px;
 
       &:hover {
         cursor: pointer;
@@ -75,11 +85,15 @@
       }
 
       img {
-        width: 100px;
+        width: 100%;
         height: 100px;
         object-fit: cover;
         border-radius: 10px;
         margin-bottom: 8px;
+
+        @include sm {
+          width: 100px;
+        }
       }
 
       h3 {
@@ -104,7 +118,7 @@
   }
 </style> 
 
-<section class="graph-wsitcher">
+<section class="graph-switcher">
   
   {#each schemes as { id, name, image }}
     <label class="radio-input">

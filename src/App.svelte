@@ -19,7 +19,7 @@
     timeOnStation = e.detail.timeOnStation;
     metroImage = e.detail.metroImage;
 
-    resetData();
+    resetData(); 
 
     if (!graphUrl && !stationsUrl) {
       return (isCustomShowed = true);
@@ -93,8 +93,12 @@
   header {
     @include centered;  
     display: block; 
-    margin-top: 20px;
+    margin-top: 20px; 
     margin-bottom: 40px;
+
+    h1 {
+      margin-bottom: 8px;
+    }
   } 
 
   footer {

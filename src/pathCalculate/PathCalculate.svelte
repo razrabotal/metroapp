@@ -171,10 +171,11 @@
     margin-bottom: 40px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 
     &__content {
       display: flex;
+      flex-wrap: wrap;
     }
   }
 
@@ -194,12 +195,18 @@
   }
   label {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     font-size: 12px;
     margin-bottom: 8px;
 
+    @include sm {
+      flex-direction: column;
+    }
+
     span {
       margin-bottom: 5px;
+      min-width: 140px;
     }
   }
   .text-input {
@@ -219,9 +226,14 @@
   .flex {
     display: flex;
     margin-bottom: 10px;
+    flex-direction: column;
 
-    & > *:not(:last-child) {
-      margin-right: 12px;
+    @include sm {
+      flex-direction: row;
+
+      & > *:not(:last-child) {
+        margin-right: 12px;
+      }
     }
   }
 

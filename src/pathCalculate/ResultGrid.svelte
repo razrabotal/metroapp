@@ -21,15 +21,22 @@
 </script>
 
 <style lang="scss">
+  @import "src/styles/base.scss";
+
   .info {
     font-family: "Courier New", Courier, monospace;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     flex: 3;
+
+    @include sm {
+      padding: 20px;
+    }
   }
   .table {
     display: flex;
+    flex-wrap: wrap;
     // max-width: 300px;
     flex: 1;
     padding: 10px;
@@ -40,13 +47,17 @@
     }
   }
   .stop-watch {
-    display: flex;
+    display: flex; 
     justify-content: center;
     margin-bottom: 16px;
   }
   .paths {
-    padding: 10px 30px;
+    padding: 10px;
     flex: 2;
+
+    @include sm {
+      padding: 10px 30px;
+    }
   }
   .paths-row {
       margin-bottom: 10px;
@@ -56,14 +67,14 @@
     margin-bottom: 10px;
   }
   .row-result {
-    // flex-direction: column;
+    margin-top: 10px;
 
-    .label {
-      margin-top: 10px;
-    }
     .value {
-      font-size: 30px;
-      // margin-left: 0;
+      font-size: 20px;
+      
+      @include sm {
+        font-size: 30px;
+      }
     }
   }
   .value {
