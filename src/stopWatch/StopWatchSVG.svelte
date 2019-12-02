@@ -26,12 +26,12 @@
   svg {
     font-family: monospace;
     color: hsl(0, 0%, 5%);
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
 
     @include sm {
-      width: 170px;
-      height: 170px;
+      width: 140px;
+      height: 140px;
     }
   }
 </style>

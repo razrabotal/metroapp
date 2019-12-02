@@ -29,27 +29,37 @@
     flex-direction: column;
     padding: 10px;
     flex: 3;
+    font-size: 15px;
 
     @include sm {
       padding: 20px;
+      font-size: 14px;
     }
   }
   .table {
     display: flex;
-    flex-wrap: wrap;
     // max-width: 300px;
     flex: 1;
-    padding: 10px;
+    padding: 10px 10px 0;
 
     &__content {
       flex: 1;
+      margin-bottom: 20px;
       margin-left: 20px;
+      
+      @include sm {
+        margin-bottom: 0;
+      }
     }
   }
   .stop-watch {
     display: flex; 
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+
+    @include sm {
+      margin-bottom: 0;
+    }
   }
   .paths {
     padding: 10px;
@@ -60,7 +70,7 @@
     }
   }
   .paths-row {
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
   .row {
     display: flex;
@@ -68,6 +78,7 @@
   }
   .row-result {
     margin-top: 10px;
+    margin-bottom: 0;
 
     .value {
       font-size: 20px;
@@ -81,13 +92,27 @@
     margin-left: auto;
   }
 
+  .label-row {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+
+    @include sm {
+      font-size: 14px;
+    }
+  }
+
   .value-row {
     word-break: break-word;
   }
 
   p { 
-      font-size: 11px;
+      font-size: 15px;
       line-height: 1.2;
+
+      @include sm {
+        font-size: 13px;
+      }
   }
 </style>
 

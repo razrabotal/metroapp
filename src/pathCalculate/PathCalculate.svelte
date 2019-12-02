@@ -18,8 +18,8 @@
 
   // constants
   let populationSize = 20;
-  let crossoverProbability = 0.9;
-  let intervalDuration = 80;
+  let crossoverProbability = 0.8;
+  let intervalDuration = 100;
   let mutationProps = {
     mutationProbability: 0.1,
     doMutateProbability: 0.1,
@@ -244,7 +244,7 @@
         min="0.01"
         max="1"
         bind:value={crossoverProbability}>
-        Population size:
+        Crossovers probability:
       </LabelItem>
     </div>
 
