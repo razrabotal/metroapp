@@ -24,8 +24,9 @@ export default function createGraph(data = [], timeOnStation = 0) {
     stationsBetween.push([]);
 
     graphTemp.nodes().map(j => {
-      const path = graphTemp.shortestPath(i, j);
+      let path = graphTemp.shortestPath(i, j);
       // TODO: Maybe subtract time of station * path.length
+      path = subsctractTimeOfStation(path, timeOnStation);
       graph.addEdge(i, j, path.weight);
       stationsBetween[index].push(path);
     });
@@ -34,6 +35,14 @@ export default function createGraph(data = [], timeOnStation = 0) {
   const distances = countDistances(graph);
 
   return { graph, stationsBetween, distances };
+}
+
+function subsctractTimeOfStation(path, timeOnStation) {
+  if (path.length > 2) {
+    path.weight = path.weight - (path.length - 2) * timeOnStation;
+  }
+
+  return path;
 }
 
 function countDistances(graph) {

@@ -45,10 +45,13 @@
     setData();
   }
 
+  function getUniqueId(value = '') {
+    return `${selectedMetro}-${timeOnStation}-${value}`;
+  }
 
   async function setGraph(url) {
     const graphData = await getData(
-      `${selectedMetro + timeOnStation}-graphData`,
+      getUniqueId('graphData'),
       () => getGraph(url, timeOnStation)
     );
     graph = graphData.graph;
@@ -57,14 +60,14 @@
   }
   async function setStations(url) {
     const stationsData = await getData(
-      `${selectedMetro + timeOnStation}-stations`,
+      getUniqueId('stations'),
       () => getStations(url)
     );
     stations = stationsData;
   }
   async function setScheme(url) {
     const schemeData = await getData(
-      `${selectedMetro + timeOnStation}-scheme`,
+      getUniqueId('scheme'),
       () => getScheme(url)
     );
     schemeSVGData = schemeData;
@@ -121,6 +124,7 @@
       {stationsBetween}
       {dis}
       {metroImage}
+      id={getUniqueId()}
       on:getResult={getResult} />
   {/if}  
 

@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { onDestroy } from "svelte";
   import ResultGrid from "./ResultGrid.svelte";
@@ -8,12 +9,12 @@
   import { randomNumber } from "../helpers/randomNumber";
   import { evaluate, randomIndivial, getCurrentBest } from "./helper";
   import { selection, mutation, crossover } from "./algorithm";
+
   const dispatch = createEventDispatcher();
 
   // constants
   let populationSize = 20;
   let crossoverProbability = 0.9;
-  // let mutationProbability = 0.1;
   let intervalDuration = 80;
 
   let mutationProps = {
@@ -23,12 +24,12 @@
     reverseMutateProbability: 0.1
   };
 
-  export let graph;
-  export let stationsBetween;
-  export let dis;
+  export let id;
+  export let graph, stationsBetween, dis;
   export let metroImage;
 
   let running = false;
+  let bestResultsFromStorage = [];
   let mainInterval;
 
   let currentGeneration = 0;
@@ -55,6 +56,23 @@
     clearInterval(mainInterval);
   });
 
+  onMount(() => {
+    bestResultsFromStorage = JSON.parse(localStorage.getItem(id)) || [];
+  });
+
+  function onSave() {
+    bestResultsFromStorage = [
+      ...bestResultsFromStorage,
+      { bestValue, bestPath: best }
+    ];
+    localStorage.setItem(id, JSON.stringify(bestResultsFromStorage));
+  }
+
+  function onClear() {
+    localStorage.setItem(id, JSON.stringify("[]"));
+    bestResultsFromStorage = [];
+  }
+
   function onStart() {
     if (!running) {
       GAStart();
@@ -69,11 +87,15 @@
     }
   }
 
-  function GAStop() {
-    clearInterval(mainInterval);
+  function dispatchBestResult() {
     dispatch("getResult", {
       result: best
     });
+  }
+
+  function GAStop() {
+    clearInterval(mainInterval);
+    dispatchBestResult();
   }
 
   function GAStart() {
@@ -157,6 +179,8 @@
   }
 
   .constants {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     width: 250px;
     // border-right: 1px solid #ddd;
@@ -199,6 +223,11 @@
     & > *:not(:last-child) {
       margin-right: 12px;
     }
+  }
+
+  .storage-buttons {
+    margin-top: auto;
+    padding-top: 30px;
   }
 </style>
 
@@ -296,6 +325,20 @@
           <button class="startButton protrude" on:click={onStart}>Start</button>
           <button class="startButton protrude" on:click={onStop}>Stop</button>
         </div>
+
+        {#if !running && bestValue}
+          <div class="storage-buttons">
+            <button class="startButton protrude" on:click={onSave}>
+              Save to storage
+            </button>
+
+            {#if bestResultsFromStorage.length}
+              <button class="startButton protrude" on:click={onClear}>
+                Clear storage
+              </button>
+            {/if}
+          </div>
+        {/if}
       </div>
 
       <ResultGrid
@@ -308,7 +351,8 @@
         {currentBest}
         {population}
         {best}
-        {bestValuesArray} />
+        {bestValuesArray}
+        {bestResultsFromStorage} />
     </div>
 
   </div>

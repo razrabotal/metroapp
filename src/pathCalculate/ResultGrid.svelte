@@ -11,6 +11,7 @@
   export let population;
   export let best;
   export let bestValuesArray;
+  export let bestResultsFromStorage;
 
   $: bestPopulation =
     population[currentBest.bestPosition] ?
@@ -145,5 +146,19 @@
         {/each}
       </div>
     </div>
+
+    <div class="paths-row">
+      <div class="label-row">Best results from storage</div>
+      <div class="value-row">
+        {#each bestResultsFromStorage as item}
+          {#if item.bestValue && item.bestPath}
+            <p>{item.bestValue} - {item.bestPath.toString()}</p>
+          {/if}
+        {:else}
+          <p>No paths in storage</p>
+        {/each}
+      </div>
+    </div>
+
   </div>
 </div>
