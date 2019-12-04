@@ -18,13 +18,13 @@
 
   // constants
   let populationSize = 20;
-  let crossoverProbability = 0.8;
-  let intervalDuration = 100;
+  let crossoverProbability = 0.5;
+  let intervalDuration = 20;
   let mutationProps = {
     mutationProbability: 0.1,
     doMutateProbability: 0.1,
     pushMutateProbability: 0.1,
-    reverseMutateProbability: 0.1
+    reverseMutateProbability: 0.05
   };
 
   export let id;

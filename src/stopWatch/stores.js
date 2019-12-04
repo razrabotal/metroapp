@@ -6,7 +6,7 @@ export const time = readable(0, function start(set) {
 
   const interval = setInterval(() => {
     const currentTime = new Date().getTime();
-    set(currentTime - beginningTime);
+    set((currentTime - beginningTime) * 4);
   }, 10);
 
   return function stop() {
